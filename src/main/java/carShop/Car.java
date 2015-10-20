@@ -7,9 +7,9 @@ public class Car {
 
     private String brand;
     private String name;
-    private String cost;
+    private int cost;
 
-    public Car(String brand, String name, String cost) {
+    public Car(String brand, String name, int cost) {
         this.brand = brand;
         this.name = name;
         this.cost = cost;
@@ -23,11 +23,11 @@ public class Car {
         return name;
     }
 
-    public void setCost(String cost) {
+    public void setCost(int cost) {
         this.cost = cost;
     }
 
-    public String getCost() {
+    public int getCost() {
         return cost;
     }
 }
