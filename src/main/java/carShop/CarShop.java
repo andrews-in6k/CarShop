@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * Created by employee on 10/20/15.
  */
-public class CarShop {
+public class CarShop implements CarShopInterface{
     private List<Car> cars = new ArrayList<>();
     private List<SalesManager> salesManagers = new ArrayList<>();
     private List<Deal> deals = new ArrayList<>();

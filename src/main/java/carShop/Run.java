@@ -6,6 +6,7 @@ package carShop;
 public class Run {
 
     public static void main(String[] args) {
-
+        CarShop carShop = new CarShop();
+        CarShopController carShopController = new ConsoleCarShopController(carShop);
     }
 }
