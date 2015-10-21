@@ -101,11 +101,11 @@ public class ConsoleCarShopController implements CarShopController {
     private void buyingCar() {
         carShopPrinter.printChooseCarByNumber();
         outputAvailableCars();
-        int carIndex = inputStream.inputInteger();
+        int carIndex = inputStream.inputInteger() + 1;
 
         carShopPrinter.printChooseManagerByNumber();
         outputSalesManagers();
-        int managerIndex = inputStream.inputInteger();
+        int managerIndex = inputStream.inputInteger() + 1;
 
         carShopPrinter.printInputBuyingDate();
         LocalDate date = LocalDate.parse(inputStream.inputString());
@@ -126,9 +126,17 @@ public class ConsoleCarShopController implements CarShopController {
         LocalDate endDate = LocalDate.parse(inputStream.inputString());
 
         SalesManager bestSalesManager = carShop.getSalesManagers().get(0);
+        int maxDealsCount = 0;
         for (SalesManager salesManager : carShop.getSalesManagers()) {
-            if (salesManager.getDeals().size() > bestSalesManager.getDeals().size()) {
+            int pretendentMaxDealsCount = 0;
+            for (Deal deal : salesManager.getDeals()) {
+                if (deal.getDate().isAfter(startDate) || deal.getDate().isBefore(endDate)) {
+                    pretendentMaxDealsCount++;
+                }
+            }
+            if (pretendentMaxDealsCount > maxDealsCount) {
                 bestSalesManager = salesManager;
+                maxDealsCount = pretendentMaxDealsCount;
             }
         }
 
