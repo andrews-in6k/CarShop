@@ -41,15 +41,12 @@ public class ConsoleCarShopController implements CarShopController {
                     break;
                 case ADD_MANAGER:
                     addManager();
-
                     break;
                 case BUY_CAR:
                     buyingCar();
-
                     break;
                 case OUTPUT_BEST_MANAGER:
                     outputBestManager();
-
                     break;
                 case EXIT:
                     isNotExit = false;
@@ -123,22 +120,29 @@ public class ConsoleCarShopController implements CarShopController {
         carShopPrinter.printInputEndDate();
         LocalDate endDate = getParsedDate();
 
+        carShopPrinter.printSalesManagerDeals(getBestSalesManager(startDate, endDate));
+    }
+
+    private SalesManager getBestSalesManager(LocalDate startDate, LocalDate endDate) {
         SalesManager bestSalesManager = carShop.getSalesManagers().get(0);
         int maxDealsCount = 0;
+
         for (SalesManager salesManager : carShop.getSalesManagers()) {
             int pretendingMaxDealsCount = 0;
+
             for (Deal deal : salesManager.getDeals()) {
                 if (deal.getDate().isAfter(startDate) && deal.getDate().isBefore(endDate)) {
                     pretendingMaxDealsCount++;
                 }
             }
+
             if (pretendingMaxDealsCount > maxDealsCount) {
                 bestSalesManager = salesManager;
                 maxDealsCount = pretendingMaxDealsCount;
             }
         }
 
-        carShopPrinter.printSalesManagerDeals(bestSalesManager);
+        return bestSalesManager;
     }
 
     private LocalDate getParsedDate() {

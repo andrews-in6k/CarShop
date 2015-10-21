@@ -21,4 +21,5 @@ public class ConsoleCarShopControllerTest {
         new ConsoleCarShopController(new CarShop(), inputStream, carShopPrinter);
     }
 
+
 }
