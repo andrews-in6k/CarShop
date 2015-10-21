@@ -14,7 +14,7 @@ import static org.hamcrest.core.Is.is;
 public class ConsoleCarShopControllerTest {
 
     ConsoleCarShopController consoleCarShopController;
-    ControllInterfacesImplementer controllInterfacesImplementer = new ControllInterfacesImplementer();
+    ControlInterfacesImplementer controlInterfacesImplementer = new ControlInterfacesImplementer();
 
     @Test
     public void testCreateConsoleCarShopController() {
@@ -29,18 +29,183 @@ public class ConsoleCarShopControllerTest {
 
     @Test
     public void testManageCarShopOutputAvailableCars() {
-        controllInterfacesImplementer.setOption(Options.OUTPUT_AVAILABLE_CARS);
+        controlInterfacesImplementer.setOption(Options.OUTPUT_AVAILABLE_CARS);
 
         consoleCarShopController = new ConsoleCarShopController(
-                controllInterfacesImplementer,
-                controllInterfacesImplementer,
-                controllInterfacesImplementer
+                controlInterfacesImplementer,
+                controlInterfacesImplementer,
+                controlInterfacesImplementer
         );
 
         consoleCarShopController.startManageCarShop();
 
-        assertThat(controllInterfacesImplementer.getResultSet(), is("printAvailableCars "));
+        assertThat(controlInterfacesImplementer.getResultSet(), is(
+                "printMainMenu " +
+                "chooseMainMenuItem " +
+                "getCars " +
+                "printAvailableCars " +
+                "printMainMenu " +
+                "chooseMainMenuItem "
+        ));
+    }
 
-        controllInterfacesImplementer.setOption(Options.EXIT);
+    @Test
+    public void testManageCarShopOutputManagers() {
+        controlInterfacesImplementer.setOption(Options.OUTPUT_MANAGERS);
+
+        consoleCarShopController = new ConsoleCarShopController(
+                controlInterfacesImplementer,
+                controlInterfacesImplementer,
+                controlInterfacesImplementer
+        );
+
+        consoleCarShopController.startManageCarShop();
+
+        assertThat(controlInterfacesImplementer.getResultSet(), is(
+                "printMainMenu " +
+                "chooseMainMenuItem " +
+                "getSalesManagers " +
+                "printSalesManagers " +
+                "printMainMenu " +
+                "chooseMainMenuItem "
+        ));
+    }
+
+    @Test
+    public void testManageCarShopOutputDeals() {
+        controlInterfacesImplementer.setOption(Options.OUTPUT_DEALS);
+
+        consoleCarShopController = new ConsoleCarShopController(
+                controlInterfacesImplementer,
+                controlInterfacesImplementer,
+                controlInterfacesImplementer
+        );
+
+        consoleCarShopController.startManageCarShop();
+
+        assertThat(controlInterfacesImplementer.getResultSet(), is(
+                "printMainMenu " +
+                "chooseMainMenuItem " +
+                "getDeals " +
+                "printDeals " +
+                "printMainMenu " +
+                "chooseMainMenuItem "
+        ));
+    }
+
+    @Test
+    public void testManageCarShopAddCar() {
+        controlInterfacesImplementer.setOption(Options.ADD_CAR);
+
+        consoleCarShopController = new ConsoleCarShopController(
+                controlInterfacesImplementer,
+                controlInterfacesImplementer,
+                controlInterfacesImplementer
+        );
+
+        consoleCarShopController.startManageCarShop();
+
+        assertThat(controlInterfacesImplementer.getResultSet(), is(
+                "printMainMenu " +
+                "chooseMainMenuItem " +
+                "printInputBrand " +
+                "inputString " +
+                "printInputCarName " +
+                "inputString " +
+                "printInputCost " +
+                "inputInteger " +
+                "addCar " +
+                "printMainMenu " +
+                "chooseMainMenuItem "
+        ));
+    }
+
+    @Test
+    public void testManageCarShopAddManager() {
+        controlInterfacesImplementer.setOption(Options.ADD_MANAGER);
+
+        consoleCarShopController = new ConsoleCarShopController(
+                controlInterfacesImplementer,
+                controlInterfacesImplementer,
+                controlInterfacesImplementer
+        );
+
+        consoleCarShopController.startManageCarShop();
+
+        assertThat(controlInterfacesImplementer.getResultSet(), is(
+                "printMainMenu " +
+                "chooseMainMenuItem " +
+                "hasDefault " +
+                "printInputManagerName " +
+                "inputString " +
+                "printInputManagerSurname " +
+                "inputString " +
+                "addSalesManager " +
+                "printMainMenu " +
+                "chooseMainMenuItem "
+        ));
+    }
+
+    @Test
+    public void testManageCarShopBuyCar() {
+        controlInterfacesImplementer.setOption(Options.BUY_CAR);
+
+        consoleCarShopController = new ConsoleCarShopController(
+                controlInterfacesImplementer,
+                controlInterfacesImplementer,
+                controlInterfacesImplementer
+        );
+
+        consoleCarShopController.startManageCarShop();
+
+        assertThat(controlInterfacesImplementer.getResultSet(), is(
+                "printMainMenu " +
+                "chooseMainMenuItem " +
+                "hasCars " +
+                "printInputBuyingDate " +
+                "inputString " +
+                "getSalesManagers " +
+                "printChooseManagerByNumber " +
+                "getSalesManagers " +
+                "printSalesManagers " +
+                "inputInteger " +
+                "getSalesManagers " +
+                "getCars " +
+                "printChooseCarByNumber " +
+                "getCars " +
+                "printAvailableCars " +
+                "inputInteger " +
+                "getCars " +
+                "addDeal " +
+                "printMainMenu " +
+                "chooseMainMenuItem "
+        ));
+    }
+
+    @Test
+    public void testManageCarShopOutputBestManager() {
+        controlInterfacesImplementer.setOption(Options.OUTPUT_BEST_MANAGER);
+
+        consoleCarShopController = new ConsoleCarShopController(
+                controlInterfacesImplementer,
+                controlInterfacesImplementer,
+                controlInterfacesImplementer
+        );
+
+        consoleCarShopController.startManageCarShop();
+
+        assertThat(controlInterfacesImplementer.getResultSet(), is(
+                "printMainMenu " +
+                "chooseMainMenuItem " +
+                "printInputStartDate " +
+                "inputString " +
+                "printInputEndDate " +
+                "inputString " +
+                "getSalesManagers " +
+                "getSalesManagers " +
+                "printSalesManagerDeals " +
+                "printMainMenu " +
+                "chooseMainMenuItem "
+        ));
     }
 }

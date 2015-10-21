@@ -15,6 +15,18 @@ public class CarShop implements CarShopInterface{
         addSalesManager(new SalesManager("Manager", "Default"));
     }
 
+    public boolean hasDefault() {
+        return getSalesManagers().get(0).getSurname().equals("Default");
+    }
+
+    public boolean hasCars() {
+        if (getCars().isEmpty()) {
+            return false;
+        }
+
+        return true;
+    }
+
     public void addDeal(Deal deal) {
         deals.add(deal);
         deal.getSalesManager().addDeal(deal);

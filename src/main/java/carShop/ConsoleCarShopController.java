@@ -69,57 +69,100 @@ public class ConsoleCarShopController implements CarShopController {
     }
 
     private void addCar() {
+        carShop.addCar(new Car(inputCarBrand(), inputCarName(), inputCarCost()));
+    }
+
+    private String inputCarBrand() {
         carShopPrinter.printInputBrand();
-        String brand = inputStream.inputString();
+        return inputStream.inputString();
+    }
 
+    private String inputCarName() {
         carShopPrinter.printInputCarName();
-        String carName = inputStream.inputString();
+        return inputStream.inputString();
+    }
 
+    private int inputCarCost() {
         carShopPrinter.printInputCost();
-        int cost = inputStream.inputInteger();
-
-        carShop.addCar(new Car(brand, carName, cost));
+        return inputStream.inputInteger();
     }
 
     private void addManager() {
+        removeDefaultManager();
+
+        carShop.addSalesManager(new SalesManager(inputManagerName(), inputManagerSurname()));
+    }
+
+    private String inputManagerName() {
         carShopPrinter.printInputManagerName();
-        String name = inputStream.inputString();
+        return inputStream.inputString();
+    }
 
+    private String inputManagerSurname() {
         carShopPrinter.printInputManagerSurname();
-        String surname = inputStream.inputString();
+        return inputStream.inputString();
+    }
 
-        if (carShop.getSalesManagers().get(0).getSurname().equals("Default")) {
+    private void removeDefaultManager() {
+        if (carShop.hasDefault()) {
             carShop.removeSalesManager(carShop.getSalesManagers().get(0));
         }
-
-        carShop.addSalesManager(new SalesManager(name, surname));
     }
 
     private void buyingCar() {
+        if (carShop.hasCars()) {
+            Deal deal = new Deal(
+                    inputBuyingDate(),
+                    carShop.getSalesManagers().get(chooseManagerNumber()),
+                    carShop.getCars().get(chooseCarNumber()));
+
+            carShop.addDeal(deal);
+        }
+    }
+
+    private int chooseCarNumber() {
         carShopPrinter.printChooseCarByNumber();
         outputAvailableCars();
-        int carIndex = inputStream.inputInteger() - 1;
 
+        int inputInteger = inputStream.inputInteger() - 1;
+
+        if ((inputInteger < 0) || (inputInteger >= carShop.getCars().size())) {
+            return 0;
+        }
+
+        return inputInteger;
+    }
+
+    private int chooseManagerNumber() {
         carShopPrinter.printChooseManagerByNumber();
         outputSalesManagers();
-        int managerIndex = inputStream.inputInteger() - 1;
 
+        int inputInteger = inputStream.inputInteger() - 1;
+
+        if ((inputInteger < 0) || (inputInteger >= carShop.getSalesManagers().size())) {
+            return 0;
+        }
+
+        return inputInteger;
+    }
+
+    private LocalDate inputBuyingDate() {
         carShopPrinter.printInputBuyingDate();
-        LocalDate date = getParsedDate();
-
-        Deal deal = new Deal(date, carShop.getSalesManagers().get(managerIndex), carShop.getCars().get(carIndex));
-
-        carShop.addDeal(deal);
+        return getParsedDate();
     }
 
     private void outputBestManager() {
+        carShopPrinter.printSalesManagerDeals(getBestSalesManager(inputStartDate(), inputEndDate()));
+    }
+
+    private LocalDate inputStartDate() {
         carShopPrinter.printInputStartDate();
-        LocalDate startDate = getParsedDate();
+        return getParsedDate();
+    }
 
+    private LocalDate inputEndDate() {
         carShopPrinter.printInputEndDate();
-        LocalDate endDate = getParsedDate();
-
-        carShopPrinter.printSalesManagerDeals(getBestSalesManager(startDate, endDate));
+        return getParsedDate();
     }
 
     private SalesManager getBestSalesManager(LocalDate startDate, LocalDate endDate) {

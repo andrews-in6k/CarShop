@@ -1,16 +1,27 @@
 package carShop;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by employee on 10/21/15.
  */
-public class ControllInterfacesImplementer implements CarShopPrinter, InputStream, CarShopInterface{
+public class ControlInterfacesImplementer implements CarShopPrinter, InputStream, CarShopInterface{
 
     private String resultSet = "";
-    private Options option;
+    private Options option = Options.EXIT;
+    private boolean iterationFlag = false;
+    private List<Car> cars = new ArrayList<>();
+    private List<SalesManager> salesManagers = new ArrayList<>();
+    private List<Deal> deals = new ArrayList<>();
 
     public void setOption(Options option) {
+        cars.add(new Car("Porshe", "911", 95000));
+        salesManagers.add(new SalesManager("name", "surname"));
+        deals.add(new Deal(LocalDate.now(), salesManagers.get(0), cars.get(0)));
+
+        iterationFlag = false;
         this.option = option;
     }
 
@@ -19,6 +30,18 @@ public class ControllInterfacesImplementer implements CarShopPrinter, InputStrea
     }
 
     //CarShopInterface
+    public boolean hasDefault(){
+        resultSet += "hasDefault ";
+
+        return false;
+    }
+
+    public boolean hasCars(){
+        resultSet += "hasCars ";
+
+        return true;
+    }
+
     public void addDeal(Deal deal) {
         resultSet += "addDeal ";
     }
@@ -41,22 +64,31 @@ public class ControllInterfacesImplementer implements CarShopPrinter, InputStrea
 
     public List<Car> getCars() {
         resultSet += "getCars ";
-        return null;
+
+        return cars;
     }
 
     public List<SalesManager> getSalesManagers() {
         resultSet += "getSalesManagers ";
-        return null;
+
+        return salesManagers;
     }
 
     public List<Deal> getDeals() {
         resultSet += "getDeals ";
-        return null;
+
+        return deals;
     }
 
     //ConsoleInputStream
     public Options chooseMainMenuItem() {
         resultSet += "chooseMainMenuItem ";
+
+        if (iterationFlag) {
+            return Options.EXIT;
+        }
+
+        iterationFlag = true;
         return option;
     }
 
@@ -67,7 +99,7 @@ public class ControllInterfacesImplementer implements CarShopPrinter, InputStrea
 
     public int inputInteger() {
         resultSet += "inputInteger ";
-        return 0;
+        return 1;
     }
 
     //CarShopPrinter
@@ -76,7 +108,7 @@ public class ControllInterfacesImplementer implements CarShopPrinter, InputStrea
     }
 
     public void printSalesManagers(List<SalesManager> salesManagers) {
-        resultSet += "printSalesManagers";
+        resultSet += "printSalesManagers ";
     }
 
     public void printDeals(List<Deal> deals) {
