@@ -95,6 +95,7 @@ public class ConsoleCarShopController implements CarShopController {
         if (carShop.getSalesManagers().get(0).getSurname().equals("Default")) {
             carShop.removeSalesManager(carShop.getSalesManagers().get(0));
         }
+
         carShop.addSalesManager(new SalesManager(name, surname));
     }
 
@@ -108,7 +109,7 @@ public class ConsoleCarShopController implements CarShopController {
         int managerIndex = inputStream.inputInteger() - 1;
 
         carShopPrinter.printInputBuyingDate();
-        LocalDate date = LocalDate.parse(inputStream.inputString());
+        LocalDate date = getParsedDate();
 
         Deal deal = new Deal(date, carShop.getSalesManagers().get(managerIndex), carShop.getCars().get(carIndex));
 
@@ -117,17 +118,17 @@ public class ConsoleCarShopController implements CarShopController {
 
     private void outputBestManager() {
         carShopPrinter.printInputStartDate();
-        LocalDate startDate = LocalDate.parse(inputStream.inputString());
+        LocalDate startDate = getParsedDate();
 
         carShopPrinter.printInputEndDate();
-        LocalDate endDate = LocalDate.parse(inputStream.inputString());
+        LocalDate endDate = getParsedDate();
 
         SalesManager bestSalesManager = carShop.getSalesManagers().get(0);
         int maxDealsCount = 0;
         for (SalesManager salesManager : carShop.getSalesManagers()) {
             int pretendingMaxDealsCount = 0;
             for (Deal deal : salesManager.getDeals()) {
-                if (deal.getDate().isAfter(startDate) || deal.getDate().isBefore(endDate)) {
+                if (deal.getDate().isAfter(startDate) && deal.getDate().isBefore(endDate)) {
                     pretendingMaxDealsCount++;
                 }
             }
@@ -138,5 +139,13 @@ public class ConsoleCarShopController implements CarShopController {
         }
 
         carShopPrinter.printSalesManagerDeals(bestSalesManager);
+    }
+
+    private LocalDate getParsedDate() {
+        try {
+            return LocalDate.parse(inputStream.inputString());
+        } catch (Exception e) {
+            return LocalDate.now();
+        }
     }
 }

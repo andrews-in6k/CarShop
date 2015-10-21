@@ -53,13 +53,13 @@ public class ANSICarShopPrinter implements CarShopPrinter {
         printStream.println("Deals:");
         printStream.println(
                 "|           DATE|" +
-                "                                           MANAGER|" +
-                "                                     SOLD CAR|"
+                "                                            MANAGER|" +
+                "                                       SOLD CAR|"
         );
 
         for (Deal deal : deals) {
             printStream.printf(
-                    "|%15s|%30s%20s|%17s%16s%11d$|\n",
+                    "|%15s|%30s|%20s|%17s|%16s|%11d$|\n",
                     deal.getDate().toString(),
                     deal.getSalesManager().getSurname(),
                     deal.getSalesManager().getName(),
@@ -125,14 +125,14 @@ public class ANSICarShopPrinter implements CarShopPrinter {
     }
 
     public void printInputBuyingDate() {
-        printStream.println("Enter buying date:");
+        printStream.println("Enter buying date(yyyy-mm-dd):");
     }
 
     public void printInputStartDate() {
-        printStream.println("Enter start date:");
+        printStream.println("Enter start date(yyyy-mm-dd):");
     }
 
     public void printInputEndDate() {
-        printStream.println("Enter end date:");
+        printStream.println("Enter end date(yyyy-mm-dd):");
     }
 }

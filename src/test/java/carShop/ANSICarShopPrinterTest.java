@@ -94,8 +94,8 @@ public class ANSICarShopPrinterTest {
         assertThat(baos.toString(), is(
                 "Deals:\n" +
                 "|           DATE|" +
-                "                                           MANAGER|" +
-                "                                     SOLD CAR|\n"
+                "                                            MANAGER|" +
+                "                                       SOLD CAR|\n"
         ));
     }
 
@@ -112,11 +112,11 @@ public class ANSICarShopPrinterTest {
         assertThat(baos.toString(), is(
                 "Deals:\n" +
                 "|           DATE|" +
-                "                                           MANAGER|" +
-                "                                     SOLD CAR|\n" +
+                "                                            MANAGER|" +
+                "                                       SOLD CAR|\n" +
                 "|     2015-02-05|" +
-                "                         Pupko               Anton|" +
-                "          Peugeot             306      15000$|\n"
+                "                         Pupko|               Anton|" +
+                "          Peugeot|             306|      15000$|\n"
         ));
     }
 
@@ -125,7 +125,7 @@ public class ANSICarShopPrinterTest {
         ansiCarShopPrinter.printSalesManagerDeals(carShop.getSalesManagers().get(0));
 
         assertThat(baos.toString(), is(
-                "                       Default             Manager     deals:\n" +
+                "Default Manager deals:\n" +
                 "|           DATE|" +
                 "                                     SOLD CAR|\n"
         ));
@@ -146,7 +146,7 @@ public class ANSICarShopPrinterTest {
         ansiCarShopPrinter.printSalesManagerDeals(carShop.getSalesManagers().get(0));
 
         assertThat(baos.toString(), is(
-                "                         Pupko               Anton     deals:\n" +
+                "Pupko Anton deals:\n" +
                 "|           DATE|" +
                 "                                     SOLD CAR|\n" +
                 "|     2015-02-05|" +
