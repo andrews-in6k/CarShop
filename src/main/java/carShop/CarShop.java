@@ -11,6 +11,10 @@ public class CarShop implements CarShopInterface{
     private List<SalesManager> salesManagers = new ArrayList<>();
     private List<Deal> deals = new ArrayList<>();
 
+    public CarShop() {
+        addSalesManager(new SalesManager("Manager", "Default"));
+    }
+
     public void addDeal(Deal deal) {
         deals.add(deal);
     }
