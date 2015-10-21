@@ -1,7 +1,6 @@
 package carShop;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 
 /**
  * Created by anri on 20.10.15.
@@ -11,7 +10,7 @@ public class ConsoleCarShopController implements CarShopController {
     CarShop carShop;
     InputStream inputStream;
     CarShopPrinter carShopPrinter;
-    Options options;
+    Options option;
 
     public ConsoleCarShopController(CarShop carShop, InputStream inputStream, CarShopPrinter carShopPrinter) {
         this.carShop = carShop;
@@ -24,9 +23,9 @@ public class ConsoleCarShopController implements CarShopController {
 
         while (isNotExit){
             carShopPrinter.printMainMenu();
-            options = inputStream.chooseMainMenuItem();
+            option = inputStream.chooseMainMenuItem();
 
-            switch (options){
+            switch (option){
                 case OUTPUT_AVAILABLE_CARS:
                     outputAvailableCars();
                     break;
