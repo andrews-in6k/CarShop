@@ -7,12 +7,12 @@ import java.time.LocalDate;
  */
 public class ConsoleCarShopController implements CarShopController {
 
-    CarShop carShop;
+    CarShopInterface carShop;
     InputStream inputStream;
     CarShopPrinter carShopPrinter;
     Options option;
 
-    public ConsoleCarShopController(CarShop carShop, InputStream inputStream, CarShopPrinter carShopPrinter) {
+    public ConsoleCarShopController(CarShopInterface carShop, InputStream inputStream, CarShopPrinter carShopPrinter) {
         this.carShop = carShop;
         this.inputStream = inputStream;
         this.carShopPrinter = carShopPrinter;
