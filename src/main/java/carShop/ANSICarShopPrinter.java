@@ -71,11 +71,8 @@ public class ANSICarShopPrinter implements CarShopPrinter {
     }
 
     public void printSalesManagerDeals(SalesManager salesManager) {
-        printStream.printf("%30s%20s     deals:\n", salesManager.getSurname(), salesManager.getName());
-        printStream.println(
-                "|           DATE|" +
-                "                                     SOLD CAR|"
-        );
+        printStream.printf(salesManager.getSurname() + " " + salesManager.getName() + " deals:\n");
+        printStream.println("|           DATE|                                     SOLD CAR|");
 
         for (Deal deal : salesManager.getDeals()) {
             printStream.printf(

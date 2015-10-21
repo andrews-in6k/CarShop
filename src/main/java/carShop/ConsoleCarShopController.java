@@ -101,21 +101,18 @@ public class ConsoleCarShopController implements CarShopController {
     private void buyingCar() {
         carShopPrinter.printChooseCarByNumber();
         outputAvailableCars();
-        int carIndex = inputStream.inputInteger() + 1;
+        int carIndex = inputStream.inputInteger() - 1;
 
         carShopPrinter.printChooseManagerByNumber();
         outputSalesManagers();
-        int managerIndex = inputStream.inputInteger() + 1;
+        int managerIndex = inputStream.inputInteger() - 1;
 
         carShopPrinter.printInputBuyingDate();
         LocalDate date = LocalDate.parse(inputStream.inputString());
 
-        carShop.getSalesManagers().get(managerIndex).addDeal(new Deal(
-                date,
-                carShop.getSalesManagers().get(managerIndex),
-                carShop.getCars().get(carIndex)
-        ));
-        carShop.removeCar(carShop.getCars().get(carIndex));
+        Deal deal = new Deal(date, carShop.getSalesManagers().get(managerIndex), carShop.getCars().get(carIndex));
+
+        carShop.addDeal(deal);
     }
 
     private void outputBestManager() {
@@ -128,15 +125,15 @@ public class ConsoleCarShopController implements CarShopController {
         SalesManager bestSalesManager = carShop.getSalesManagers().get(0);
         int maxDealsCount = 0;
         for (SalesManager salesManager : carShop.getSalesManagers()) {
-            int pretendentMaxDealsCount = 0;
+            int pretendingMaxDealsCount = 0;
             for (Deal deal : salesManager.getDeals()) {
                 if (deal.getDate().isAfter(startDate) || deal.getDate().isBefore(endDate)) {
-                    pretendentMaxDealsCount++;
+                    pretendingMaxDealsCount++;
                 }
             }
-            if (pretendentMaxDealsCount > maxDealsCount) {
+            if (pretendingMaxDealsCount > maxDealsCount) {
                 bestSalesManager = salesManager;
-                maxDealsCount = pretendentMaxDealsCount;
+                maxDealsCount = pretendingMaxDealsCount;
             }
         }
 

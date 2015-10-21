@@ -17,6 +17,8 @@ public class CarShop implements CarShopInterface{
 
     public void addDeal(Deal deal) {
         deals.add(deal);
+        deal.getSalesManager().addDeal(deal);
+        removeCar(deal.getSoldCar());
     }
 
     public void addCar(Car car) {
