@@ -10,4 +10,13 @@ public interface CarShopPrinter {
     void printSalesManagers(List<SalesManager> salesManagers);
     void printDeals(List<Deal> deals);
     void printSalesManagerDeals(SalesManager salesManager);
+
+    void printMainMenu();
+    void printInputBrand() ;
+    void printInputCarName();
+    void printInputCost();
+    void printInputManagerName();
+    void printInputManagerSurname();
+    void printInputStartDate();
+    void printInputEndDate();
 }

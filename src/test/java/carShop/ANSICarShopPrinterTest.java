@@ -40,7 +40,7 @@ public class ANSICarShopPrinterTest {
 
         assertThat(baos.toString(), is(
                 "Available cars:\n" +
-                "|               BRAND|           NAME|        COST($)|\n"
+                "|  #|               BRAND|           NAME|        COST($)|\n"
         ));
     }
 
@@ -53,9 +53,9 @@ public class ANSICarShopPrinterTest {
 
         assertThat(baos.toString(), is(
                 "Available cars:\n" +
-                "|               BRAND|           NAME|        COST($)|\n" +
-                "|                 BMW|             Z4|          50000|\n" +
-                "|                 BMW|             M3|          65000|\n"
+                "|  #|               BRAND|           NAME|        COST($)|\n" +
+                "|  1|                 BMW|             Z4|          50000|\n" +
+                "|  2|                 BMW|             M3|          65000|\n"
         ));
     }
 
@@ -67,7 +67,7 @@ public class ANSICarShopPrinterTest {
 
         assertThat(baos.toString(), is(
                 "Sales managers:\n" +
-                        "|                  SURNAME|                NAME|\n"
+                "|  #|                  SURNAME|                NAME|\n"
         ));
     }
 
@@ -81,9 +81,9 @@ public class ANSICarShopPrinterTest {
 
         assertThat(baos.toString(), is(
                 "Sales managers:\n" +
-                "|                  SURNAME|                NAME|\n" +
-                "|              Svirzevskiy|                Alex|\n" +
-                "|                   Jarmul|              Bogdan|\n"
+                "|  #|                  SURNAME|                NAME|\n" +
+                "|  1|              Svirzevskiy|                Alex|\n" +
+                "|  2|                   Jarmul|              Bogdan|\n"
         ));
     }
 

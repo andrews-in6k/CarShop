@@ -16,28 +16,36 @@ public class ANSICarShopPrinter implements CarShopPrinter {
 
     public void printAvailableCars(List<Car> cars) {
         printStream.println("Available cars:");
-        printStream.println("|               BRAND|           NAME|        COST($)|");
+        printStream.println("|  #|               BRAND|           NAME|        COST($)|");
 
+        int i = 1;
         for (Car car : cars) {
             printStream.printf(
-                    "|%20s|%15s|%15s|\n",
+                    "|%3d|%20s|%15s|%15s|\n",
+                    i,
                     car.getBrand(),
                     car.getName(),
                     car.getCost()
             );
+
+            i++;
         }
     }
 
     public void printSalesManagers(List<SalesManager> salesManagers) {
         printStream.println("Sales managers:");
-        printStream.println("|                  SURNAME|                NAME|");
+        printStream.println("|  #|                  SURNAME|                NAME|");
 
+        int i = 1;
         for (SalesManager salesManager : salesManagers) {
             printStream.printf(
-                    "|%25s|%20s|\n",
+                    "|%3d|%25s|%20s|\n",
+                    i,
                     salesManager.getSurname(),
                     salesManager.getName()
             );
+
+            i++;
         }
     }
 
@@ -78,5 +86,43 @@ public class ANSICarShopPrinter implements CarShopPrinter {
                     deal.getSoldCar().getCost()
             );
         }
+    }
+
+    public void printMainMenu() {
+        printStream.println("1 - output available cars");
+        printStream.println("2 - output managers");
+        printStream.println("3 - output list");
+        printStream.println("4 - add car");
+        printStream.println("5 - add manager");
+        printStream.println("6 - buy car");
+        printStream.println("7 - output best manager");
+    }
+
+    public void printInputBrand() {
+        printStream.println("Enter car brand:");
+    }
+
+    public void printInputCarName() {
+        printStream.println("Enter car name:");
+    }
+
+    public void printInputCost() {
+        printStream.println("Enter car cost:");
+    }
+
+    public void printInputManagerName() {
+        printStream.println("Enter manager name:");
+    }
+
+    public void printInputManagerSurname() {
+        printStream.println("Enter manager surname:");
+    }
+
+    public void printInputStartDate() {
+        printStream.println("Enter start date:");
+    }
+
+    public void printInputEndDate() {
+        printStream.println("Enter end date:");
     }
 }
