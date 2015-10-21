@@ -17,6 +17,9 @@ public interface CarShopPrinter {
     void printInputCost();
     void printInputManagerName();
     void printInputManagerSurname();
+    void printChooseCarByNumber();
+    void printChooseManagerByNumber();
+    void printInputBuyingDate();
     void printInputStartDate();
     void printInputEndDate();
 }

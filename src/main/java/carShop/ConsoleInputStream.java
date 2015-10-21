@@ -31,9 +31,21 @@ public class ConsoleInputStream implements InputStream{
                 return Options.BUY_CAR;
             case '7':
                 return Options.OUTPUT_BEST_MANAGER;
+            case 'e':
+                return Options.EXIT;
             default:
                 return null;
         }
 
+    }
+
+    @Override
+    public String inputString() {
+        return scanner.next();
+    }
+
+    @Override
+    public int inputInteger() {
+        return scanner.nextInt();
     }
 }

@@ -91,11 +91,12 @@ public class ANSICarShopPrinter implements CarShopPrinter {
     public void printMainMenu() {
         printStream.println("1 - output available cars");
         printStream.println("2 - output managers");
-        printStream.println("3 - output list");
+        printStream.println("3 - output deals");
         printStream.println("4 - add car");
         printStream.println("5 - add manager");
         printStream.println("6 - buy car");
         printStream.println("7 - output best manager");
+        printStream.println("e - exit");
     }
 
     public void printInputBrand() {
@@ -116,6 +117,18 @@ public class ANSICarShopPrinter implements CarShopPrinter {
 
     public void printInputManagerSurname() {
         printStream.println("Enter manager surname:");
+    }
+
+    public void printChooseCarByNumber() {
+        printStream.println("Choose car by number:");
+    }
+
+    public void printChooseManagerByNumber() {
+        printStream.println("Choose manager by number:");
+    }
+
+    public void printInputBuyingDate() {
+        printStream.println("Enter buying date:");
     }
 
     public void printInputStartDate() {

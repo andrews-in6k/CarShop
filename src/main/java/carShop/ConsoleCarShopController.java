@@ -1,5 +1,8 @@
 package carShop;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 /**
  * Created by anri on 20.10.15.
  */
@@ -17,18 +20,118 @@ public class ConsoleCarShopController implements CarShopController {
     }
 
     public void startManageCarShop() {
+        boolean isNotExit = true;
 
-        while (true){
+        while (isNotExit){
             carShopPrinter.printMainMenu();
             options = inputStream.chooseMainMenuItem();
 
             switch (options){
                 case OUTPUT_AVAILABLE_CARS:
-                    carShopPrinter.printAvailableCars(carShop.getCars());
+                    outputAvailableCars();
+                    break;
+                case OUTPUT_MANAGERS:
+                    outputSalesManagers();
+                    break;
+                case OUTPUT_DEALS:
+                    outputDeals();
+                    break;
+                case ADD_CAR:
+                    addCar();
+                    break;
+                case ADD_MANAGER:
+                    addManager();
+
+                    break;
+                case BUY_CAR:
+                    buyingCar();
+
+                    break;
+                case OUTPUT_BEST_MANAGER:
+                    outputBestManager();
+
+                    break;
+                case EXIT:
+                    isNotExit = false;
                     break;
             }
 
         }
 
+    }
+
+    private void outputAvailableCars() {
+        carShopPrinter.printAvailableCars(carShop.getCars());
+    }
+
+    private void outputSalesManagers() {
+        carShopPrinter.printSalesManagers(carShop.getSalesManagers());
+    }
+
+    private void outputDeals() {
+        carShopPrinter.printDeals(carShop.getDeals());
+    }
+
+    private void addCar() {
+        carShopPrinter.printInputBrand();
+        String brand = inputStream.inputString();
+
+        carShopPrinter.printInputCarName();
+        String carName = inputStream.inputString();
+
+        carShopPrinter.printInputCost();
+        int cost = inputStream.inputInteger();
+
+        carShop.addCar(new Car(brand, carName, cost));
+    }
+
+    private void addManager() {
+        carShopPrinter.printInputManagerName();
+        String name = inputStream.inputString();
+
+        carShopPrinter.printInputManagerSurname();
+        String surname = inputStream.inputString();
+
+        if (carShop.getSalesManagers().get(0).getSurname().equals("Default")) {
+            carShop.removeSalesManager(carShop.getSalesManagers().get(0));
+        }
+        carShop.addSalesManager(new SalesManager(name, surname));
+    }
+
+    private void buyingCar() {
+        carShopPrinter.printChooseCarByNumber();
+        outputAvailableCars();
+        int carIndex = inputStream.inputInteger();
+
+        carShopPrinter.printChooseManagerByNumber();
+        outputSalesManagers();
+        int managerIndex = inputStream.inputInteger();
+
+        carShopPrinter.printInputBuyingDate();
+        LocalDate date = LocalDate.parse(inputStream.inputString());
+
+        carShop.getSalesManagers().get(managerIndex).addDeal(new Deal(
+                date,
+                carShop.getSalesManagers().get(managerIndex),
+                carShop.getCars().get(carIndex)
+        ));
+        carShop.removeCar(carShop.getCars().get(carIndex));
+    }
+
+    private void outputBestManager() {
+        carShopPrinter.printInputStartDate();
+        LocalDate startDate = LocalDate.parse(inputStream.inputString());
+
+        carShopPrinter.printInputEndDate();
+        LocalDate endDate = LocalDate.parse(inputStream.inputString());
+
+        SalesManager bestSalesManager = carShop.getSalesManagers().get(0);
+        for (SalesManager salesManager : carShop.getSalesManagers()) {
+            if (salesManager.getDeals().size() > bestSalesManager.getDeals().size()) {
+                bestSalesManager = salesManager;
+            }
+        }
+
+        carShopPrinter.printSalesManagerDeals(bestSalesManager);
     }
 }

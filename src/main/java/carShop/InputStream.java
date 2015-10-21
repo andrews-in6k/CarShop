@@ -6,4 +6,7 @@ package carShop;
 public interface InputStream {
 
     Options chooseMainMenuItem();
+
+    String inputString();
+    int inputInteger();
 }
