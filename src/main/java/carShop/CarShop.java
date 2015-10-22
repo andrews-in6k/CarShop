@@ -13,19 +13,11 @@ public class CarShop implements CarShopInterface{
     private List<Deal> deals = new ArrayList<>();
 
     public CarShop() {
-        addSalesManager(new SalesManager("Manager", "Default"));
-    }
-
-    public boolean hasDefault() {
-        return getSalesManagers().get(0).getSurname().equals("Default");
+        salesManagers.add(new SalesManager("Manager", "Default"));
     }
 
     public boolean hasCars() {
-        if (getCars().isEmpty()) {
-            return false;
-        }
-
-        return true;
+        return !getCars().isEmpty();
     }
 
     public void addDeal(Deal deal) {
@@ -61,6 +53,8 @@ public class CarShop implements CarShopInterface{
     }
 
     public void addSalesManager(SalesManager salesManager) {
+        removeDefaultManager();
+
         salesManagers.add(salesManager);
     }
 
@@ -70,6 +64,16 @@ public class CarShop implements CarShopInterface{
 
     public void removeSalesManager(SalesManager salesManager) {
         salesManagers.remove(salesManager);
+    }
+
+    private void removeDefaultManager() {
+        if (hasDefault()) {
+            removeSalesManager(getSalesManagers().get(0));
+        }
+    }
+
+    private boolean hasDefault() {
+        return getSalesManagers().get(0).getSurname().equals("Default");
     }
 
     public List<Car> getCars() {

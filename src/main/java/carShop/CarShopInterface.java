@@ -7,8 +7,6 @@ import java.util.List;
  * Created by anri on 20.10.15.
  */
 public interface CarShopInterface {
-    boolean hasDefault();
-
     boolean hasCars();
 
     void addDeal(Deal deal);

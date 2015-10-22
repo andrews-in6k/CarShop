@@ -88,8 +88,6 @@ public class ConsoleCarShopController implements CarShopController {
     }
 
     private void addManager() {
-        removeDefaultManager();
-
         carShop.addSalesManager(new SalesManager(inputManagerName(), inputManagerSurname()));
     }
 
@@ -101,12 +99,6 @@ public class ConsoleCarShopController implements CarShopController {
     private String inputManagerSurname() {
         carShopPrinter.printInputManagerSurname();
         return inputStream.inputString();
-    }
-
-    private void removeDefaultManager() {
-        if (carShop.hasDefault()) {
-            carShop.removeSalesManager(carShop.getSalesManagers().get(0));
-        }
     }
 
     private void buyingCar() {

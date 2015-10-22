@@ -73,7 +73,6 @@ public class ANSICarShopPrinterTest {
 
     @Test
     public void testPrintSalesManagers() {
-        carShop.removeSalesManager(carShop.getSalesManagers().get(0));
         carShop.addSalesManager(new SalesManager("Alex", "Svirzevskiy"));
         carShop.addSalesManager(new SalesManager("Bogdan", "Jarmul"));
 
@@ -140,7 +139,6 @@ public class ANSICarShopPrinterTest {
 
         salesManager.addDeal(new Deal(date, salesManager, car));
 
-        carShop.removeSalesManager(carShop.getSalesManagers().get(0));
         carShop.addSalesManager(salesManager);
 
         ansiCarShopPrinter.printSalesManagerDeals(carShop.getSalesManagers().get(0));

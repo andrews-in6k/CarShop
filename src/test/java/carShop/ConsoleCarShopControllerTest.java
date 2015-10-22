@@ -135,7 +135,6 @@ public class ConsoleCarShopControllerTest {
         assertThat(controlInterfacesImplementer.getResultSet(), is(
                 "printMainMenu " +
                 "chooseMainMenuItem " +
-                "hasDefault " +
                 "printInputManagerName " +
                 "inputString " +
                 "printInputManagerSurname " +
