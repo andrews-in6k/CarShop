@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Created by employee on 10/21/15.
  */
-public class ControlInterfacesImplementer implements CarShopPrinter, InputStream, CarShopInterface{
+public class ControlInterfacesImplementer implements CarShopPrinter, CarShopInputStream, CarShopInterface{
 
     private String resultSet = "";
     private Options option = Options.EXIT;
@@ -44,6 +44,10 @@ public class ControlInterfacesImplementer implements CarShopPrinter, InputStream
 
     public void addDeal(Deal deal) {
         resultSet += "addDeal ";
+    }
+
+    public void buyingCar(LocalDate buyingDate, int inputIntegerManager, int inputIntegerCar) {
+        resultSet += "buyingCar ";
     }
 
     public SalesManager getBestSalesManager(LocalDate startDate, LocalDate endDate) {
@@ -86,7 +90,7 @@ public class ControlInterfacesImplementer implements CarShopPrinter, InputStream
         return deals;
     }
 
-    //ConsoleInputStream
+    //ConsoleCarShopInputStream
     public Options chooseMainMenuItem() {
         resultSet += "chooseMainMenuItem ";
 

@@ -26,6 +26,15 @@ public class CarShop implements CarShopInterface{
         removeCar(deal.getSoldCar());
     }
 
+    public void buyingCar(LocalDate buyingDate ,int inputIntegerManager, int inputIntegerCar) {
+        Deal deal = new Deal(
+                buyingDate,
+                getSalesManagers().get(inputIntegerManager),
+                getCars().get(inputIntegerCar));
+
+        addDeal(deal);
+    }
+
     public SalesManager getBestSalesManager(LocalDate startDate, LocalDate endDate) {
         SalesManager bestSalesManager = getSalesManagers().get(0);
         int maxDealsCount = 0;

@@ -12,11 +12,11 @@ public class Run {
         PrintStream printStream = new PrintStream(System.out);
         Scanner scanner = new Scanner(System.in);
 
-        InputStream inputStream = new ConsoleInputStream(scanner);
+        CarShopInputStream carShopInputStream = new ConsoleCarShopInputStream(scanner);
         CarShopPrinter carShopPrinter = new ANSICarShopPrinter(printStream);
 
         CarShop carShop = new CarShop();
-        CarShopController carShopController = new ConsoleCarShopController(carShop, inputStream, carShopPrinter);
+        CarShopController carShopController = new ConsoleCarShopController(carShop, carShopInputStream, carShopPrinter);
 
         carShopController.startManageCarShop();
     }

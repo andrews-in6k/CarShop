@@ -5,11 +5,11 @@ import java.util.Scanner;
 /**
  * Created by employee on 10/21/15.
  */
-public class ConsoleInputStream implements InputStream{
+public class ConsoleCarShopInputStream implements CarShopInputStream {
 
     private Scanner scanner;
 
-    public ConsoleInputStream(Scanner scanner) {
+    public ConsoleCarShopInputStream(Scanner scanner) {
         this.scanner = scanner;
     }
 

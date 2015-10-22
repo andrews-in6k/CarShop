@@ -4,8 +4,10 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.io.ByteArrayOutputStream;
+import java.io.OutputStream;
 import java.io.PrintStream;
 import java.time.LocalDate;
+import java.util.Collections;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
@@ -19,26 +21,21 @@ public class ANSICarShopPrinterTest {
     CarShop carShop;
 
     PrintStream printStream;
-    ByteArrayOutputStream baos;
+    OutputStream outputStream;
 
     @Before
     public void setUp() {
         carShop = new CarShop();
-        baos = new ByteArrayOutputStream();
-        printStream = new PrintStream(baos);
+        outputStream = new ByteArrayOutputStream();
+        printStream = new PrintStream(outputStream);
         ansiCarShopPrinter = new ANSICarShopPrinter(printStream);
-    }
-
-    @Test
-    public void testCreateANSICarShopPrinter() {
-        new ANSICarShopPrinterTest();
     }
 
     @Test
     public void testPrintAvailableCarsEmptyList() {
         ansiCarShopPrinter.printAvailableCars(carShop.getCars());
 
-        assertThat(baos.toString(), is(
+        assertThat(outputStream.toString(), is(
                 "Available cars:\n" +
                 "|  #|               BRAND|           NAME|        COST($)|\n"
         ));
@@ -51,7 +48,7 @@ public class ANSICarShopPrinterTest {
 
         ansiCarShopPrinter.printAvailableCars(carShop.getCars());
 
-        assertThat(baos.toString(), is(
+        assertThat(outputStream.toString(), is(
                 "Available cars:\n" +
                 "|  #|               BRAND|           NAME|        COST($)|\n" +
                 "|  1|                 BMW|             Z4|          50000|\n" +
@@ -61,11 +58,9 @@ public class ANSICarShopPrinterTest {
 
     @Test
     public void testPrintEmptySalesManagers() {
-        carShop.removeSalesManager(carShop.getSalesManagers().get(0));
+        ansiCarShopPrinter.printSalesManagers(Collections.emptyList());
 
-        ansiCarShopPrinter.printSalesManagers(carShop.getSalesManagers());
-
-        assertThat(baos.toString(), is(
+        assertThat(outputStream.toString(), is(
                 "Sales managers:\n" +
                 "|  #|                  SURNAME|                NAME|\n"
         ));
@@ -78,7 +73,7 @@ public class ANSICarShopPrinterTest {
 
         ansiCarShopPrinter.printSalesManagers(carShop.getSalesManagers());
 
-        assertThat(baos.toString(), is(
+        assertThat(outputStream.toString(), is(
                 "Sales managers:\n" +
                 "|  #|                  SURNAME|                NAME|\n" +
                 "|  1|              Svirzevskiy|                Alex|\n" +
@@ -90,7 +85,7 @@ public class ANSICarShopPrinterTest {
     public void testPrintEmptyDeals() {
         ansiCarShopPrinter.printDeals(carShop.getDeals());
 
-        assertThat(baos.toString(), is(
+        assertThat(outputStream.toString(), is(
                 "Deals:\n" +
                 "|           DATE|" +
                 "                                            MANAGER|" +
@@ -108,7 +103,7 @@ public class ANSICarShopPrinterTest {
 
         ansiCarShopPrinter.printDeals(carShop.getDeals());
 
-        assertThat(baos.toString(), is(
+        assertThat(outputStream.toString(), is(
                 "Deals:\n" +
                 "|           DATE|" +
                 "                                            MANAGER|" +
@@ -123,7 +118,7 @@ public class ANSICarShopPrinterTest {
     public void testPrintEmptySalesManagerDeals() {
         ansiCarShopPrinter.printSalesManagerDeals(carShop.getSalesManagers().get(0));
 
-        assertThat(baos.toString(), is(
+        assertThat(outputStream.toString(), is(
                 "Default Manager deals:\n" +
                 "|           DATE|" +
                 "                                     SOLD CAR|\n"
@@ -143,7 +138,7 @@ public class ANSICarShopPrinterTest {
 
         ansiCarShopPrinter.printSalesManagerDeals(carShop.getSalesManagers().get(0));
 
-        assertThat(baos.toString(), is(
+        assertThat(outputStream.toString(), is(
                 "Pupko Anton deals:\n" +
                 "|           DATE|" +
                 "                                     SOLD CAR|\n" +

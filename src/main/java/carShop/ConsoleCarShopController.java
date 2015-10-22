@@ -8,13 +8,13 @@ import java.time.LocalDate;
 public class ConsoleCarShopController implements CarShopController {
 
     CarShopInterface carShop;
-    InputStream inputStream;
+    CarShopInputStream carShopInputStream;
     CarShopPrinter carShopPrinter;
     Options option;
 
-    public ConsoleCarShopController(CarShopInterface carShop, InputStream inputStream, CarShopPrinter carShopPrinter) {
+    public ConsoleCarShopController(CarShopInterface carShop, CarShopInputStream carShopInputStream, CarShopPrinter carShopPrinter) {
         this.carShop = carShop;
-        this.inputStream = inputStream;
+        this.carShopInputStream = carShopInputStream;
         this.carShopPrinter = carShopPrinter;
     }
 
@@ -23,7 +23,7 @@ public class ConsoleCarShopController implements CarShopController {
 
         while (isNotExit){
             carShopPrinter.printMainMenu();
-            option = inputStream.chooseMainMenuItem();
+            option = carShopInputStream.chooseMainMenuItem();
 
             switch (option){
                 case OUTPUT_AVAILABLE_CARS:
@@ -74,17 +74,17 @@ public class ConsoleCarShopController implements CarShopController {
 
     private String inputCarBrand() {
         carShopPrinter.printInputBrand();
-        return inputStream.inputString();
+        return carShopInputStream.inputString();
     }
 
     private String inputCarName() {
         carShopPrinter.printInputCarName();
-        return inputStream.inputString();
+        return carShopInputStream.inputString();
     }
 
     private int inputCarCost() {
         carShopPrinter.printInputCost();
-        return inputStream.inputInteger();
+        return carShopInputStream.inputInteger();
     }
 
     private void addManager() {
@@ -93,45 +93,40 @@ public class ConsoleCarShopController implements CarShopController {
 
     private String inputManagerName() {
         carShopPrinter.printInputManagerName();
-        return inputStream.inputString();
+        return carShopInputStream.inputString();
     }
 
     private String inputManagerSurname() {
         carShopPrinter.printInputManagerSurname();
-        return inputStream.inputString();
+        return carShopInputStream.inputString();
     }
 
     private void buyingCar() {
         if (carShop.hasCars()) {
-            Deal deal = new Deal(
-                    inputBuyingDate(),
-                    carShop.getSalesManagers().get(chooseManagerNumber()),
-                    carShop.getCars().get(chooseCarNumber()));
-
-            carShop.addDeal(deal);
+            carShop.buyingCar(inputBuyingDate(), chooseManagerNumber(), chooseCarNumber());
         }
-    }
-
-    private int chooseCarNumber() {
-        carShopPrinter.printChooseCarByNumber();
-        outputAvailableCars();
-
-        int inputInteger = inputStream.inputInteger() - 1;
-
-        if ((inputInteger < 0) || (inputInteger >= carShop.getCars().size())) {
-            return 0;
-        }
-
-        return inputInteger;
     }
 
     private int chooseManagerNumber() {
         carShopPrinter.printChooseManagerByNumber();
         outputSalesManagers();
 
-        int inputInteger = inputStream.inputInteger() - 1;
+        int inputInteger = carShopInputStream.inputInteger() - 1;
 
         if ((inputInteger < 0) || (inputInteger >= carShop.getSalesManagers().size())) {
+            return 0;
+        }
+
+        return inputInteger;
+    }
+
+    private int chooseCarNumber() {
+        carShopPrinter.printChooseCarByNumber();
+        outputAvailableCars();
+
+        int inputInteger = carShopInputStream.inputInteger() - 1;
+
+        if ((inputInteger < 0) || (inputInteger >= carShop.getCars().size())) {
             return 0;
         }
 
@@ -159,7 +154,7 @@ public class ConsoleCarShopController implements CarShopController {
 
     private LocalDate getParsedDate() {
         try {
-            return LocalDate.parse(inputStream.inputString());
+            return LocalDate.parse(carShopInputStream.inputString());
         } catch (Exception e) {
             return LocalDate.now();
         }

@@ -21,10 +21,10 @@ public class ConsoleCarShopControllerTest {
         PrintStream printStream = new PrintStream(System.out);
         Scanner scanner = new Scanner(System.in);
 
-        InputStream inputStream = new ConsoleInputStream(scanner);
+        CarShopInputStream carShopInputStream = new ConsoleCarShopInputStream(scanner);
         CarShopPrinter carShopPrinter = new ANSICarShopPrinter(printStream);
 
-        new ConsoleCarShopController(new CarShop(), inputStream, carShopPrinter);
+        new ConsoleCarShopController(new CarShop(), carShopInputStream, carShopPrinter);
     }
 
     @Test
@@ -163,19 +163,17 @@ public class ConsoleCarShopControllerTest {
                 "hasCars " +
                 "printInputBuyingDate " +
                 "inputString " +
-                "getSalesManagers " +
                 "printChooseManagerByNumber " +
                 "getSalesManagers " +
                 "printSalesManagers " +
                 "inputInteger " +
                 "getSalesManagers " +
-                "getCars " +
                 "printChooseCarByNumber " +
                 "getCars " +
                 "printAvailableCars " +
                 "inputInteger " +
                 "getCars " +
-                "addDeal " +
+                "buyingCar " +
                 "printMainMenu " +
                 "chooseMainMenuItem "
         ));

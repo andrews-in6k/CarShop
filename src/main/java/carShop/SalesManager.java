@@ -31,4 +31,9 @@ public class SalesManager {
     public String getSurname() {
         return surname;
     }
+
+    @Override
+    public String toString() {
+        return String.format("SalesManager{%s %s}", name, surname);
+    }
 }

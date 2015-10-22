@@ -11,6 +11,8 @@ public interface CarShopInterface {
 
     void addDeal(Deal deal);
 
+    void buyingCar(LocalDate buyingDate, int inputIntegerManager, int inputIntegerCar);
+
     SalesManager getBestSalesManager(LocalDate startDate, LocalDate endDate);
 
     void addCar(Car car);
