@@ -46,6 +46,12 @@ public class ControlInterfacesImplementer implements CarShopPrinter, InputStream
         resultSet += "addDeal ";
     }
 
+    public SalesManager getBestSalesManager(LocalDate startDate, LocalDate endDate) {
+        resultSet += "getBestSalesManager ";
+
+        return null;
+    }
+
     public void addCar(Car car) {
         resultSet += "addCar ";
     }

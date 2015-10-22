@@ -1,5 +1,6 @@
 package carShop;
 
+import java.time.LocalDate;
 import java.util.List;
 
 /**
@@ -11,6 +12,8 @@ public interface CarShopInterface {
     boolean hasCars();
 
     void addDeal(Deal deal);
+
+    SalesManager getBestSalesManager(LocalDate startDate, LocalDate endDate);
 
     void addCar(Car car);
 

@@ -201,8 +201,7 @@ public class ConsoleCarShopControllerTest {
                 "inputString " +
                 "printInputEndDate " +
                 "inputString " +
-                "getSalesManagers " +
-                "getSalesManagers " +
+                "getBestSalesManager " +
                 "printSalesManagerDeals " +
                 "printMainMenu " +
                 "chooseMainMenuItem "

@@ -1,5 +1,6 @@
 package carShop;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,6 +32,28 @@ public class CarShop implements CarShopInterface{
         deals.add(deal);
         deal.getSalesManager().addDeal(deal);
         removeCar(deal.getSoldCar());
+    }
+
+    public SalesManager getBestSalesManager(LocalDate startDate, LocalDate endDate) {
+        SalesManager bestSalesManager = getSalesManagers().get(0);
+        int maxDealsCount = 0;
+
+        for (SalesManager salesManager : getSalesManagers()) {
+            int pretendingMaxDealsCount = 0;
+
+            for (Deal deal : salesManager.getDeals()) {
+                if (deal.getDate().isAfter(startDate) && deal.getDate().isBefore(endDate)) {
+                    pretendingMaxDealsCount++;
+                }
+            }
+
+            if (pretendingMaxDealsCount > maxDealsCount) {
+                bestSalesManager = salesManager;
+                maxDealsCount = pretendingMaxDealsCount;
+            }
+        }
+
+        return bestSalesManager;
     }
 
     public void addCar(Car car) {
