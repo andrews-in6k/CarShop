@@ -27,4 +27,9 @@ public class Deal {
     public LocalDate getDate() {
         return date;
     }
+
+    @Override
+    public String toString() {
+        return String.format("Deal{%s %s %s}", date.toString(), salesManager.getSurname(),soldCar.getName());
+    }
 }

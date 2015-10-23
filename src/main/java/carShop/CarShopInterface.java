@@ -9,9 +9,9 @@ import java.util.List;
 public interface CarShopInterface {
     boolean hasCars();
 
-    void addDeal(Deal deal);
-
     void buyingCar(LocalDate buyingDate, int inputIntegerManager, int inputIntegerCar);
+
+    void addDeal(Deal deal);
 
     SalesManager getBestSalesManager(LocalDate startDate, LocalDate endDate);
 

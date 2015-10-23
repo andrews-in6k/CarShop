@@ -20,12 +20,6 @@ public class CarShop implements CarShopInterface{
         return !getCars().isEmpty();
     }
 
-    public void addDeal(Deal deal) {
-        deals.add(deal);
-        deal.getSalesManager().addDeal(deal);
-        removeCar(deal.getSoldCar());
-    }
-
     public void buyingCar(LocalDate buyingDate ,int inputIntegerManager, int inputIntegerCar) {
         Deal deal = new Deal(
                 buyingDate,
@@ -33,6 +27,12 @@ public class CarShop implements CarShopInterface{
                 getCars().get(inputIntegerCar));
 
         addDeal(deal);
+    }
+
+    public void addDeal(Deal deal) {
+        deals.add(deal);
+        deal.getSalesManager().addDeal(deal);
+        removeCar(deal.getSoldCar());
     }
 
     public SalesManager getBestSalesManager(LocalDate startDate, LocalDate endDate) {
