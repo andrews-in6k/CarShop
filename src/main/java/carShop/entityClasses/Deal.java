@@ -1,7 +1,5 @@
 package carShop.entityClasses;
 
-import carShop.SalesManager;
-
 import javax.persistence.*;
 import java.util.Date;
 
