@@ -43,9 +43,9 @@
               <property name="configLocation" value="classpath:/hibernate.cfg.xml" />
               <property name="hibernateProperties">
                      <props>
-                         <prop key="show_sql">true</prop>
-                         <prop key="dialect">org.hibernate.dialect.MySQL5Dialect</prop>
-                         <prop key="useUnicode">true</prop>
+                            <prop key="hibernate.dialect">org.hibernate.dialect.OracleDialect</prop>
+                            <prop key="hibernate.show_sql">true</prop>
+                            <prop key="hibernate.hbm2ddl.auto">create</prop>
                      </props>
               </property>
        </bean>

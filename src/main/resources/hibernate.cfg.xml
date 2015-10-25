@@ -4,8 +4,10 @@
         "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
     <session-factory>
+        <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="show_sql">true</property>
         <mapping class="carShop.entityClasses.Deal"/>
         <mapping class="carShop.entityClasses.Car"/>
-        <mapping class="carShop.entityClasses.Manager"/>
+        <mapping class="carShop.entityClasses.Deal"/>
     </session-factory>
 </hibernate-configuration>
