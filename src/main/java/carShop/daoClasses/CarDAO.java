@@ -2,7 +2,11 @@ package carShop.daoClasses;
 
 import carShop.entityClasses.Car;
 import org.hibernate.Hibernate;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.cfg.AnnotationConfiguration;
+import org.hibernate.cfg.Configuration;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
 
 import java.util.List;
@@ -11,11 +15,19 @@ import java.util.List;
  */
 public class CarDAO extends HibernateDaoSupport implements CarDAOInterface{
 
-    SessionFactory sessionFactory;
+    @Autowired
+    private SessionFactory sessionFactory;
+    private static Session session;
+
+
+
+    public CarDAO() {
+        session = sessionFactory.openSession();
+    }
 
     @Override
     public List<Car> getCars() {
-        return sessionFactory.getCurrentSession().createQuery("from Car").list();
+        return session.createQuery("from Car").list();
     }
 
     @Override
