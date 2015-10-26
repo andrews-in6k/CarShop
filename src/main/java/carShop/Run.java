@@ -1,5 +1,7 @@
 package carShop;
 
+import carShop.service.CarShopService;
+
 import java.io.PrintStream;
 import java.util.Scanner;
 
@@ -15,7 +17,7 @@ public class Run {
         CarShopInputStream carShopInputStream = new ConsoleCarShopInputStream(scanner);
         CarShopPrinter carShopPrinter = new ANSICarShopPrinter(printStream);
 
-        CarShop carShop = new CarShop();
+        CarShopService carShop = new CarShopService();
         CarShopController carShopController = new ConsoleCarShopController(carShop, carShopInputStream, carShopPrinter);
 
         carShopController.startManageCarShop();

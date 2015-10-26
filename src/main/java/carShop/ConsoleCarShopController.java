@@ -1,5 +1,7 @@
 package carShop;
 
+import carShop.entity.Car;
+import carShop.entity.Manager;
 import carShop.service.CarShopServiceInterface;
 
 import java.time.LocalDate;
@@ -63,7 +65,7 @@ public class ConsoleCarShopController implements CarShopController {
     }
 
     private void outputSalesManagers() {
-        carShopPrinter.printSalesManagers(carShop.getSalesManagers());
+        carShopPrinter.printSalesManagers(carShop.getManagers());
     }
 
     private void outputDeals() {
@@ -71,7 +73,13 @@ public class ConsoleCarShopController implements CarShopController {
     }
 
     private void addCar() {
-        carShop.addCar(new Car(inputCarBrand(), inputCarName(), inputCarCost()));
+        Car car = new Car();
+
+        car.setBrand(inputCarBrand());
+        car.setName(inputCarName());
+        car.setCost(inputCarCost());
+
+        carShop.addCar(car);
     }
 
     private String inputCarBrand() {
@@ -90,7 +98,12 @@ public class ConsoleCarShopController implements CarShopController {
     }
 
     private void addManager() {
-        carShop.addSalesManager(new SalesManager(inputManagerName(), inputManagerSurname()));
+        Manager manager = new Manager();
+
+        manager.setFirstName(inputManagerName());
+        manager.setLastName(inputManagerSurname());
+
+        carShop.addManager(manager);
     }
 
     private String inputManagerName() {
@@ -115,7 +128,7 @@ public class ConsoleCarShopController implements CarShopController {
 
         int inputInteger = carShopInputStream.inputInteger() - 1;
 
-        if ((inputInteger < 0) || (inputInteger >= carShop.getSalesManagers().size())) {
+        if ((inputInteger < 0) || (inputInteger >= carShop.getManagers().size())) {
             return 0;
         }
 
@@ -141,7 +154,7 @@ public class ConsoleCarShopController implements CarShopController {
     }
 
     private void outputBestManager() {
-        carShopPrinter.printSalesManagerDeals(carShop.getBestSalesManager(inputStartDate(), inputEndDate()));
+        carShopPrinter.printSalesManagerDeals(carShop.getBestManager(inputStartDate(), inputEndDate()));
     }
 
     private LocalDate inputStartDate() {
