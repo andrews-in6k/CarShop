@@ -25,15 +25,17 @@ public class ANSICarShopPrinter implements CarShopPrinter {
 
         int i = 1;
         for (Car car : cars) {
-            printStream.printf(
-                    "|%3d|%20s|%15s|%15s|\n",
-                    i,
-                    car.getBrand(),
-                    car.getName(),
-                    car.getCost()
-            );
+            if (car.getDeal() == null) {
+                printStream.printf(
+                        "|%3d|%20s|%15s|%15s|\n",
+                        i,
+                        car.getBrand(),
+                        car.getName(),
+                        car.getCost()
+                );
 
-            i++;
+                i++;
+            }
         }
     }
 

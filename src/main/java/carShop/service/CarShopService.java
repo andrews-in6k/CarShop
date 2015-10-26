@@ -103,8 +103,8 @@ public class CarShopService implements CarShopServiceInterface{
 
     @Override
     public void addManager(Manager manager) {
-        if (managerDAO.getTableRows().get(0).equals(defaultManager)) {
-            removeManager(defaultManager);
+        if (managerDAO.getTableRows().get(0).getFirstName().equals("Default")) {
+            removeManager(managerDAO.getTableRows().get(0));
         }
 
         managerDAO.save(manager);
