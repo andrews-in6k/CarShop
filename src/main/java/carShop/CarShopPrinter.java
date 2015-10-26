@@ -1,5 +1,9 @@
 package carShop;
 
+import carShop.entity.Car;
+import carShop.entity.Deal;
+import carShop.entity.Manager;
+
 import java.util.List;
 
 /**
@@ -7,9 +11,9 @@ import java.util.List;
  */
 public interface CarShopPrinter {
     void printAvailableCars(List<Car> cars);
-    void printSalesManagers(List<SalesManager> salesManagers);
+    void printSalesManagers(List<Manager> salesManagers);
     void printDeals(List<Deal> deals);
-    void printSalesManagerDeals(SalesManager salesManager);
+    void printSalesManagerDeals(Manager manager);
 
     void printMainMenu();
     void printInputBrand() ;

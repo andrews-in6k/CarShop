@@ -1,6 +1,11 @@
 package carShop;
 
+import carShop.entity.Car;
+import carShop.entity.Deal;
+import carShop.entity.Manager;
+
 import java.io.PrintStream;
+import java.time.ZoneId;
 import java.util.List;
 
 /**
@@ -32,17 +37,17 @@ public class ANSICarShopPrinter implements CarShopPrinter {
         }
     }
 
-    public void printSalesManagers(List<SalesManager> salesManagers) {
+    public void printSalesManagers(List<Manager> managers) {
         printStream.println("Sales managers:");
         printStream.println("|  #|                  SURNAME|                NAME|");
 
         int i = 1;
-        for (SalesManager salesManager : salesManagers) {
+        for (Manager manager : managers) {
             printStream.printf(
                     "|%3d|%25s|%20s|\n",
                     i,
-                    salesManager.getSurname(),
-                    salesManager.getName()
+                    manager.getLastName(),
+                    manager.getFirstName()
             );
 
             i++;
@@ -58,11 +63,13 @@ public class ANSICarShopPrinter implements CarShopPrinter {
         );
 
         for (Deal deal : deals) {
+
+
             printStream.printf(
                     "|%15s|%30s|%20s|%17s|%16s|%11d$|\n",
-                    deal.getDate().toString(),
-                    deal.getSalesManager().getSurname(),
-                    deal.getSalesManager().getName(),
+                    deal.getBuyingDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate().toString(),
+                    deal.getManager().getLastName(),
+                    deal.getManager().getFirstName(),
                     deal.getSoldCar().getBrand(),
                     deal.getSoldCar().getName(),
                     deal.getSoldCar().getCost()
@@ -70,14 +77,14 @@ public class ANSICarShopPrinter implements CarShopPrinter {
         }
     }
 
-    public void printSalesManagerDeals(SalesManager salesManager) {
-        printStream.printf(salesManager.getSurname() + " " + salesManager.getName() + " deals:\n");
+    public void printSalesManagerDeals(Manager manager) {
+        printStream.printf(manager.getLastName() + " " + manager.getFirstName() + " deals:\n");
         printStream.println("|           DATE|                                     SOLD CAR|");
 
-        for (Deal deal : salesManager.getDeals()) {
+        for (Deal deal : manager.getDeals()) {
             printStream.printf(
                     "|%15s|%17s%16s%11d$|\n",
-                    deal.getDate().toString(),
+                    deal.getBuyingDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate().toString(),
                     deal.getSoldCar().getBrand(),
                     deal.getSoldCar().getName(),
                     deal.getSoldCar().getCost()
