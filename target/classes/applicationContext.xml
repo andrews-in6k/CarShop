@@ -44,6 +44,7 @@
                 <prop key="dialect">org.hibernate.dialect.MySQL5Dialect</prop>
                 <prop key="hbm2ddl.auto">create</prop>
                 <prop key="useUnicode">true</prop>
+                <prop key="hibernate.id.new_generator_mappings">false</prop>
             </props>
         </property>
     </bean>
@@ -55,6 +56,8 @@
 
     <tx:annotation-driven proxy-target-class="true" transaction-manager="transactionManager"/>
 
-    <bean id="dataDao" class="carShop.dao.CarDAO"/>
+    <bean id="dataDaoCar" class="carShop.dao.CarDAO"/>
+    <bean id="dataDaoDeal" class="carShop.dao.DealDAO"/>
+    <bean id="dataDaoManager" class="carShop.dao.ManagerDAO"/>
 
 </beans>

@@ -1,19 +1,19 @@
 package carShop.dao;
 
-import carShop.entity.Car;
+import carShop.entity.Deal;
 
 import java.util.List;
 
 /**
- * Created by employee on 10/23/15.
+ * Created by employee on 10/26/15.
  */
-public class CarDAO extends DAO {
+public class DealDAO extends DAO {
 
     @Override
     @SuppressWarnings("unchecked")
-    public List<Car> getTableRows() {
+    public List<Deal> getTableRows(){
         return sessionFactory.getCurrentSession()
-                .createCriteria(Car.class)
+                .createCriteria(Deal.class)
                 .list();
     }
 

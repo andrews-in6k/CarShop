@@ -114,7 +114,7 @@ public class ConsoleCarShopControllerTest {
                 "inputString " +
                 "printInputCost " +
                 "inputInteger " +
-                "addCar " +
+                "saveCar " +
                 "printMainMenu " +
                 "chooseMainMenuItem "
         ));

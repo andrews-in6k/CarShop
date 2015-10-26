@@ -57,7 +57,7 @@ public class ControlInterfacesImplementer implements CarShopPrinter, CarShopInpu
     }
 
     public void addCar(Car car) {
-        resultSet += "addCar ";
+        resultSet += "saveCar ";
     }
 
     public void addSalesManager(SalesManager salesManager) {
@@ -65,7 +65,7 @@ public class ControlInterfacesImplementer implements CarShopPrinter, CarShopInpu
     }
 
     public void removeCar(Car car) {
-        resultSet += "removeCar ";
+        resultSet += "deleteCar ";
     }
 
     public void removeSalesManager(SalesManager salesManager) {

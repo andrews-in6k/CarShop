@@ -17,7 +17,7 @@ public class Deal {
     private Date buyingDate;
 
     @OneToOne
-    @JoinColumn(name = "car_id")
+    @JoinColumn(name = "sold_car_id")
     private Car soldCar;
 
     @ManyToOne
