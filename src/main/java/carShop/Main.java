@@ -1,6 +1,6 @@
 package carShop;
 
-import carShop.daoClasses.CarDAO;
+import carShop.dao.CarDAO;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
@@ -12,6 +12,7 @@ public class Main {
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(
                 new String[] { "applicationContext.xml" }, true);
         CarDAO carDAO = (CarDAO) context.getBean("dataDao");
+//        CarDAO carDAO = new CarDAO();
         System.out.println(carDAO.getCars().get(0));
     }
 }

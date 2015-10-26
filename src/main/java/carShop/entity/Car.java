@@ -1,4 +1,4 @@
-package carShop.entityClasses;
+package carShop.entity;
 
 import javax.persistence.*;
 

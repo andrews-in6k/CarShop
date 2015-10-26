@@ -1,4 +1,4 @@
-package carShop.entityClasses;
+package carShop.entity;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -17,11 +17,11 @@ public class Deal {
     private Date buyingDate;
 
     @OneToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "car_id")
     private Car soldCar;
 
     @ManyToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "manager_id")
     private Manager manager;
 
     public int getId() {
