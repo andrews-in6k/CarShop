@@ -1,5 +1,7 @@
 package carShop;
 
+import carShop.service.CarShopServiceInterface;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -7,7 +9,7 @@ import java.util.List;
 /**
  * Created by employee on 10/21/15.
  */
-public class ControlInterfacesImplementer implements CarShopPrinter, CarShopInputStream, CarShopInterface{
+public class ControlInterfacesImplementer implements CarShopPrinter, CarShopInputStream, CarShopServiceInterface {
 
     private String resultSet = "";
     private Options option = Options.EXIT;
@@ -29,7 +31,7 @@ public class ControlInterfacesImplementer implements CarShopPrinter, CarShopInpu
         return resultSet;
     }
 
-    //CarShopInterface
+    //CarShopServiceInterface
     public boolean hasDefault(){
         resultSet += "hasDefault ";
 

@@ -1,4 +1,8 @@
-package carShop;
+package carShop.service;
+
+import carShop.Car;
+import carShop.Deal;
+import carShop.SalesManager;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -6,7 +10,7 @@ import java.util.List;
 /**
  * Created by anri on 20.10.15.
  */
-public interface CarShopInterface {
+public interface CarShopServiceInterface {
     boolean hasCars();
 
     void buyingCar(LocalDate buyingDate, int inputIntegerManager, int inputIntegerCar);

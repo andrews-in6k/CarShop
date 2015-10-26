@@ -1,5 +1,7 @@
 package carShop;
 
+import carShop.service.CarShopServiceInterface;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -7,7 +9,7 @@ import java.util.List;
 /**
  * Created by employee on 10/20/15.
  */
-public class CarShop implements CarShopInterface{
+public class CarShop implements CarShopServiceInterface {
     private List<Car> cars = new ArrayList<>();
     private List<SalesManager> salesManagers = new ArrayList<>();
     private List<Deal> deals = new ArrayList<>();

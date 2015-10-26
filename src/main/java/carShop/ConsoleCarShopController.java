@@ -1,5 +1,7 @@
 package carShop;
 
+import carShop.service.CarShopServiceInterface;
+
 import java.time.LocalDate;
 
 /**
@@ -7,12 +9,12 @@ import java.time.LocalDate;
  */
 public class ConsoleCarShopController implements CarShopController {
 
-    CarShopInterface carShop;
+    CarShopServiceInterface carShop;
     CarShopInputStream carShopInputStream;
     CarShopPrinter carShopPrinter;
     Options option;
 
-    public ConsoleCarShopController(CarShopInterface carShop, CarShopInputStream carShopInputStream, CarShopPrinter carShopPrinter) {
+    public ConsoleCarShopController(CarShopServiceInterface carShop, CarShopInputStream carShopInputStream, CarShopPrinter carShopPrinter) {
         this.carShop = carShop;
         this.carShopInputStream = carShopInputStream;
         this.carShopPrinter = carShopPrinter;
