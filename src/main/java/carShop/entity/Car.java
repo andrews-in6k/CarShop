@@ -18,6 +18,10 @@ public class Car {
 
     private int cost;
 
+    @OneToOne
+    @JoinColumn(name = "deal_id")
+    private Deal deal;
+
     public int getId() {
         return id;
     }
@@ -48,5 +52,13 @@ public class Car {
 
     public void setCost(int cost) {
         this.cost = cost;
+    }
+
+    public Deal getDeal() {
+        return deal;
+    }
+
+    public void setDeal(Deal deal) {
+        this.deal = deal;
     }
 }
