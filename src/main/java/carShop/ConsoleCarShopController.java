@@ -16,7 +16,9 @@ public class ConsoleCarShopController implements CarShopController {
     CarShopPrinter carShopPrinter;
     Options option;
 
-    public ConsoleCarShopController(CarShopServiceInterface carShop, CarShopInputStream carShopInputStream, CarShopPrinter carShopPrinter) {
+    public ConsoleCarShopController(CarShopServiceInterface carShop,
+                                    CarShopInputStream carShopInputStream,
+                                    CarShopPrinter carShopPrinter) {
         this.carShop = carShop;
         this.carShopInputStream = carShopInputStream;
         this.carShopPrinter = carShopPrinter;
