@@ -1,4 +1,4 @@
-package carShop.entity;
+package carShop.core.entity;
 
 import javax.persistence.*;
 
@@ -18,8 +18,7 @@ public class Car {
 
     private int cost;
 
-    @OneToOne
-    @JoinColumn(name = "deal_id")
+    @OneToOne(mappedBy = "soldCar")
     private Deal deal;
 
     public int getId() {

@@ -1,4 +1,4 @@
-package carShop.dao;
+package carShop.core.dao;
 
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;

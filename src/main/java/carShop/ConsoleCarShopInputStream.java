@@ -28,8 +28,12 @@ public class ConsoleCarShopInputStream implements CarShopInputStream {
             case '5':
                 return Options.ADD_MANAGER;
             case '6':
-                return Options.BUY_CAR;
+                return Options.REMOVE_CAR;
             case '7':
+                return Options.REMOVE_MANAGER;
+            case 'b':
+                return Options.BUY_CAR;
+            case 'o':
                 return Options.OUTPUT_BEST_MANAGER;
             case 'e':
                 return Options.EXIT;

@@ -1,8 +1,8 @@
 package carShop.service;
 
-import carShop.entity.Car;
-import carShop.entity.Deal;
-import carShop.entity.Manager;
+import carShop.core.entity.Car;
+import carShop.core.entity.Deal;
+import carShop.core.entity.Manager;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -28,6 +28,12 @@ public interface CarShopServiceInterface {
     void removeCar(Car car);
 
     void removeManager(Manager salesManager);
+
+    void removeDeal(Deal deal);
+
+    void removeCarByNumber(int number);
+
+    void removeManagerByNumber(int number);
 
     List<Car> getCars();
 

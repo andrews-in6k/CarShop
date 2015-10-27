@@ -1,7 +1,7 @@
 package carShop;
 
-import carShop.entity.Car;
-import carShop.entity.Manager;
+import carShop.core.entity.Car;
+import carShop.core.entity.Manager;
 import carShop.service.CarShopServiceInterface;
 
 import java.time.LocalDate;
@@ -44,6 +44,14 @@ public class ConsoleCarShopController implements CarShopController {
                     break;
                 case ADD_MANAGER:
                     addManager();
+                    break;
+                case REMOVE_CAR:
+                    carShopPrinter.printChooseCarByNumber();
+                    carShop.removeCarByNumber(chooseCarNumber());
+                    break;
+                case REMOVE_MANAGER:
+                    carShopPrinter.printChooseManagerByNumber();
+                    carShop.removeManagerByNumber(chooseManagerNumber());
                     break;
                 case BUY_CAR:
                     buyingCar();
@@ -122,27 +130,27 @@ public class ConsoleCarShopController implements CarShopController {
         }
     }
 
-    private int chooseManagerNumber() {
-        carShopPrinter.printChooseManagerByNumber();
-        outputSalesManagers();
+    private int chooseCarNumber() {
+        carShopPrinter.printChooseCarByNumber();
+        outputAvailableCars();
 
-        int inputInteger = carShopInputStream.inputInteger() - 1;
+        int inputInteger = carShopInputStream.inputInteger();
 
-        if ((inputInteger < 0) || (inputInteger >= carShop.getManagers().size())) {
-            return 0;
+        if ((inputInteger < 1) || (inputInteger > carShop.getCars().size())) {
+            return 1;
         }
 
         return inputInteger;
     }
 
-    private int chooseCarNumber() {
-        carShopPrinter.printChooseCarByNumber();
-        outputAvailableCars();
+    private int chooseManagerNumber() {
+        carShopPrinter.printChooseManagerByNumber();
+        outputSalesManagers();
 
-        int inputInteger = carShopInputStream.inputInteger() - 1;
+        int inputInteger = carShopInputStream.inputInteger();
 
-        if ((inputInteger < 0) || (inputInteger >= carShop.getCars().size())) {
-            return 0;
+        if ((inputInteger < 1) || (inputInteger > carShop.getManagers().size())) {
+            return 1;
         }
 
         return inputInteger;

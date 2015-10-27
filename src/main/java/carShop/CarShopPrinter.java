@@ -1,8 +1,8 @@
 package carShop;
 
-import carShop.entity.Car;
-import carShop.entity.Deal;
-import carShop.entity.Manager;
+import carShop.core.entity.Car;
+import carShop.core.entity.Deal;
+import carShop.core.entity.Manager;
 
 import java.util.List;
 

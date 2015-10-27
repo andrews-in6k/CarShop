@@ -1,6 +1,6 @@
-package carShop.dao;
+package carShop.core.dao;
 
-import carShop.entity.Car;
+import carShop.core.entity.Car;
 
 import java.util.List;
 

@@ -1,11 +1,11 @@
 package carShop.service;
 
-import carShop.entity.Car;
-import carShop.entity.Manager;
-import carShop.dao.CarDAO;
-import carShop.dao.DealDAO;
-import carShop.dao.ManagerDAO;
-import carShop.entity.Deal;
+import carShop.core.entity.Car;
+import carShop.core.entity.Manager;
+import carShop.core.dao.CarDAO;
+import carShop.core.dao.DealDAO;
+import carShop.core.dao.ManagerDAO;
+import carShop.core.entity.Deal;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.time.LocalDate;
@@ -17,7 +17,6 @@ import java.util.List;
  * Created by employee on 10/26/15.
  */
 public class CarShopService implements CarShopServiceInterface{
-    private Manager defaultManager;
 
     private CarDAO carDAO;
     private DealDAO dealDAO;
@@ -29,24 +28,26 @@ public class CarShopService implements CarShopServiceInterface{
         carDAO = (CarDAO) context.getBean("dataDaoCar");
         dealDAO = (DealDAO) context.getBean("dataDaoDeal");
         managerDAO = (ManagerDAO) context.getBean("dataDaoManager");
-
-        if (managerDAO.getTableRows().size() == 0) {
-            defaultManager = new Manager();
-
-            defaultManager.setFirstName("Default");
-            defaultManager.setLastName("Manager");
-
-            managerDAO.save(defaultManager);
-        }
     }
 
     @Override
     public void buyingCar(LocalDate buyingDate, int inputIntegerManager, int inputIntegerCar) {
         Deal deal = new Deal();
 
+        Car buyingCar = carDAO.getTableRows().get(0);
+        int notSoldCarIndex = 0;
+        for (Car car : carDAO.getTableRows()) {
+            if (notSoldCarIndex == (inputIntegerCar - 1)) {
+                buyingCar = car;
+            }
+            if (car.getDeal() == null) {
+                notSoldCarIndex++;
+            }
+        }
+
         deal.setBuyingDate(Date.from(buyingDate.atStartOfDay(ZoneId.systemDefault()).toInstant()));
-        deal.setManager(managerDAO.getTableRows().get(inputIntegerManager));
-        deal.setSoldCar(carDAO.getTableRows().get(inputIntegerCar));
+        deal.setManager(managerDAO.getTableRows().get(inputIntegerManager - 1));
+        deal.setSoldCar(buyingCar);
 
         addDeal(deal);
     }
@@ -103,10 +104,6 @@ public class CarShopService implements CarShopServiceInterface{
 
     @Override
     public void addManager(Manager manager) {
-        if (managerDAO.getTableRows().get(0).getFirstName().equals("Default")) {
-            removeManager(managerDAO.getTableRows().get(0));
-        }
-
         managerDAO.save(manager);
     }
 
@@ -117,7 +114,30 @@ public class CarShopService implements CarShopServiceInterface{
 
     @Override
     public void removeManager(Manager manager) {
+        for (Deal deal : manager.getDeals()){
+            removeDeal(deal);
+        }
+
         managerDAO.delete(manager);
+    }
+
+    @Override
+    public void removeDeal(Deal deal) {
+        Car car = deal.getSoldCar();
+
+        dealDAO.delete(deal);
+
+        removeCar(car);
+    }
+
+    @Override
+    public void removeCarByNumber(int number) {
+        removeCar(carDAO.getTableRows().get(number - 1));
+    }
+
+    @Override
+    public void removeManagerByNumber(int number) {
+        removeManager(managerDAO.getTableRows().get(number - 1));
     }
 
     @Override

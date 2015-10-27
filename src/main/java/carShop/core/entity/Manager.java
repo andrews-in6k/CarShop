@@ -1,4 +1,4 @@
-package carShop.entity;
+package carShop.core.entity;
 
 import javax.persistence.*;
 import java.util.ArrayList;

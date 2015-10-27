@@ -37,7 +37,7 @@
     <bean id="sessionFactory"
           class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
-        <property name="packagesToScan" value="carShop.entity"/>
+        <property name="packagesToScan" value="carShop.core.entity"/>
         <property name="hibernateProperties">
             <props>
                 <prop key="show_sql">true</prop>
@@ -56,8 +56,8 @@
 
     <tx:annotation-driven proxy-target-class="true" transaction-manager="transactionManager"/>
 
-    <bean id="dataDaoCar" class="carShop.dao.CarDAO"/>
-    <bean id="dataDaoDeal" class="carShop.dao.DealDAO"/>
-    <bean id="dataDaoManager" class="carShop.dao.ManagerDAO"/>
+    <bean id="dataDaoCar" class="carShop.core.dao.CarDAO"/>
+    <bean id="dataDaoDeal" class="carShop.core.dao.DealDAO"/>
+    <bean id="dataDaoManager" class="carShop.core.dao.ManagerDAO"/>
 
 </beans>
