@@ -61,7 +61,7 @@ public class ANSICarShopPrinter implements CarShopPrinter {
         printStream.println(
                 "|           DATE|" +
                 "                                           MANAGER|" +
-                "                                       SOLD CAR|"
+                "                                          SOLD CAR|"
         );
 
         for (Deal deal : deals) {
@@ -78,15 +78,13 @@ public class ANSICarShopPrinter implements CarShopPrinter {
 
     public void printManagerDeals(Manager manager) {
         printStream.printf(manager.getLastName() + " " + manager.getFirstName() + " deals:\n");
-        printStream.println("|           DATE|                                     SOLD CAR|");
+        printStream.println("|           DATE|                                      SOLD CAR|");
 
         for (Deal deal : manager.getDeals()) {
             printStream.printf(
-                    "|%15s|%17s%16s%11d$|\n",
+                    "|%15s|%45s$|\n",
                     deal.getBuyingDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate().toString(),
-                    deal.getSoldCar().getBrand(),
-                    deal.getSoldCar().getName(),
-                    deal.getSoldCar().getCost()
+                    deal.getSoldCar().getBrand() + " " + deal.getSoldCar().getName() + " " + deal.getSoldCar().getCost()
             );
         }
     }
@@ -142,5 +140,9 @@ public class ANSICarShopPrinter implements CarShopPrinter {
 
     public void printInputEndDate() {
         printStream.println("Enter end date(yyyy-mm-dd):");
+    }
+
+    public void printWrongSymbol() {
+        printStream.println("Not available symbol");
     }
 }

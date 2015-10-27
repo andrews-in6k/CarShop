@@ -13,5 +13,6 @@ public enum Options {
     REMOVE_MANAGER,
     BUY_CAR,
     OUTPUT_BEST_MANAGER,
-    EXIT
+    EXIT,
+    OTHER
 }

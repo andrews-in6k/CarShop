@@ -26,4 +26,5 @@ public interface CarShopPrinter {
     void printInputBuyingDate();
     void printInputStartDate();
     void printInputEndDate();
+    void printWrongSymbol();
 }

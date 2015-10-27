@@ -38,7 +38,7 @@ public class ConsoleCarShopInputStream implements CarShopInputStream {
             case 'e':
                 return Options.EXIT;
             default:
-                return null;
+                return Options.OTHER;
         }
 
     }

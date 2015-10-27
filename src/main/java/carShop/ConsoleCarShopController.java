@@ -49,17 +49,19 @@ public class ConsoleCarShopController implements CarShopController {
                     buyingCar();
                     break;
                 case REMOVE_CAR:
-                removeCarByNumber();
-                break;
+                    removeCarByNumber();
+                    break;
                 case REMOVE_MANAGER:
-                removeManagerByNumber();
-                break;
+                    removeManagerByNumber();
+                    break;
                 case OUTPUT_BEST_MANAGER:
                     outputBestManager();
                     break;
                 case EXIT:
                     isNotExit = false;
                     break;
+                case OTHER:
+                    carShopPrinter.printWrongSymbol();
             }
 
         }
