@@ -35,18 +35,18 @@ public class CarShopService implements CarShopServiceInterface{
         Deal deal = new Deal();
 
         deal.setBuyingDate(Date.from(buyingDate.atStartOfDay(ZoneId.systemDefault()).toInstant()));
-        deal.setManager(managerDAO.getTableRows().get(inputIntegerManager - 1));
-        deal.setSoldCar(getAvailableCarByNumber(inputIntegerCar));
+        deal.setManager(managerDAO.getTableRows().get(inputIntegerManager));
+        deal.setSoldCar(getAvailableCarByIndex(inputIntegerCar));
 
         addDeal(deal);
     }
 
-    private Car getAvailableCarByNumber(int inputIntegerCar) {
+    private Car getAvailableCarByIndex(int inputIntegerCar) {
         Car buyingCar = carDAO.getTableRows().get(0);
         int notSoldCarIndex = 0;
 
         for (Car car : carDAO.getTableRows()) {
-            if (notSoldCarIndex == (inputIntegerCar - 1)) {
+            if (notSoldCarIndex == (inputIntegerCar)) {
                 buyingCar = car;
             }
 
@@ -90,16 +90,10 @@ public class CarShopService implements CarShopServiceInterface{
     }
 
     @Override
-    public boolean hasSold(Car car) {
-        return car.getDeal() != null;
-    }
-
-    @Override
     public void addDeal(Deal deal) {
         dealDAO.save(deal);
 
         deal.getSoldCar().setDeal(deal);
-        deal.getManager().getDeals().add(deal);
 
         carDAO.update(deal.getSoldCar());
     }

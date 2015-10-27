@@ -60,7 +60,7 @@ public class ANSICarShopPrinter implements CarShopPrinter {
         printStream.println("Deals:");
         printStream.println(
                 "|           DATE|" +
-                "                                            MANAGER|" +
+                "                                           MANAGER|" +
                 "                                       SOLD CAR|"
         );
 
@@ -68,13 +68,10 @@ public class ANSICarShopPrinter implements CarShopPrinter {
 
 
             printStream.printf(
-                    "|%15s|%30s|%20s|%17s|%16s|%11d$|\n",
+                    "|%15s|%50s|%50s|\n",
                     deal.getBuyingDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate().toString(),
-                    deal.getManager().getLastName(),
-                    deal.getManager().getFirstName(),
-                    deal.getSoldCar().getBrand(),
-                    deal.getSoldCar().getName(),
-                    deal.getSoldCar().getCost()
+                    deal.getManager().getLastName() + " " + deal.getManager().getFirstName(),
+                    deal.getSoldCar().getBrand() + " " + deal.getSoldCar().getName()+ " " + deal.getSoldCar().getCost()
             );
         }
     }

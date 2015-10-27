@@ -142,10 +142,10 @@ public class ConsoleCarShopController implements CarShopController {
         carShopPrinter.printChooseCarByNumber();
         outputAvailableCars();
 
-        int inputInteger = carShopInputStream.inputInteger();
+        int inputInteger = carShopInputStream.inputInteger() - 1;
 
-        if ((inputInteger < 1) || (inputInteger > carShop.getCars().size())) {
-            return 1;
+        if ((inputInteger < 0) || (inputInteger >= carShop.getCars().size())) {
+            return 0;
         }
 
         return inputInteger;
@@ -155,10 +155,10 @@ public class ConsoleCarShopController implements CarShopController {
         carShopPrinter.printChooseManagerByNumber();
         outputSalesManagers();
 
-        int inputInteger = carShopInputStream.inputInteger();
+        int inputInteger = carShopInputStream.inputInteger() - 1;
 
-        if ((inputInteger < 1) || (inputInteger > carShop.getManagers().size())) {
-            return 1;
+        if ((inputInteger < 0) || (inputInteger >= carShop.getManagers().size())) {
+            return 0;
         }
 
         return inputInteger;

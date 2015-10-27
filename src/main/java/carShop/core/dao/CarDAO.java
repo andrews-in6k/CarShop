@@ -13,7 +13,7 @@ public class CarDAO extends DAO {
     @SuppressWarnings("unchecked")
     public List<Car> getTableRows() {
         return sessionFactory.getCurrentSession()
-                .createCriteria(Car.class)
+                .createQuery("from Car")
                 .list();
     }
 

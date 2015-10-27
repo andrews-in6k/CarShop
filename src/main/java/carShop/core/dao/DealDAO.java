@@ -13,7 +13,7 @@ public class DealDAO extends DAO {
     @SuppressWarnings("unchecked")
     public List<Deal> getTableRows(){
         return sessionFactory.getCurrentSession()
-                .createCriteria(Deal.class)
+                .createQuery("from Deal")
                 .list();
     }
 
