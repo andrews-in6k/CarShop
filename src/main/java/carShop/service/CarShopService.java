@@ -34,22 +34,28 @@ public class CarShopService implements CarShopServiceInterface{
     public void buyingCar(LocalDate buyingDate, int inputIntegerManager, int inputIntegerCar) {
         Deal deal = new Deal();
 
+        deal.setBuyingDate(Date.from(buyingDate.atStartOfDay(ZoneId.systemDefault()).toInstant()));
+        deal.setManager(managerDAO.getTableRows().get(inputIntegerManager - 1));
+        deal.setSoldCar(getAvailableCarByNumber(inputIntegerCar));
+
+        addDeal(deal);
+    }
+
+    private Car getAvailableCarByNumber(int inputIntegerCar) {
         Car buyingCar = carDAO.getTableRows().get(0);
         int notSoldCarIndex = 0;
+
         for (Car car : carDAO.getTableRows()) {
             if (notSoldCarIndex == (inputIntegerCar - 1)) {
                 buyingCar = car;
             }
+
             if (car.getDeal() == null) {
                 notSoldCarIndex++;
             }
         }
 
-        deal.setBuyingDate(Date.from(buyingDate.atStartOfDay(ZoneId.systemDefault()).toInstant()));
-        deal.setManager(managerDAO.getTableRows().get(inputIntegerManager - 1));
-        deal.setSoldCar(buyingCar);
-
-        addDeal(deal);
+        return buyingCar;
     }
 
     @Override

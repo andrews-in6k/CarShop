@@ -45,17 +45,15 @@ public class ConsoleCarShopController implements CarShopController {
                 case ADD_MANAGER:
                     addManager();
                     break;
-                case REMOVE_CAR:
-                    carShopPrinter.printChooseCarByNumber();
-                    carShop.removeCarByNumber(chooseCarNumber());
-                    break;
-                case REMOVE_MANAGER:
-                    carShopPrinter.printChooseManagerByNumber();
-                    carShop.removeManagerByNumber(chooseManagerNumber());
-                    break;
                 case BUY_CAR:
                     buyingCar();
                     break;
+                case REMOVE_CAR:
+                removeCarByNumber();
+                break;
+                case REMOVE_MANAGER:
+                removeManagerByNumber();
+                break;
                 case OUTPUT_BEST_MANAGER:
                     outputBestManager();
                     break;
@@ -122,6 +120,16 @@ public class ConsoleCarShopController implements CarShopController {
     private String inputManagerSurname() {
         carShopPrinter.printInputManagerSurname();
         return carShopInputStream.inputString();
+    }
+
+    private void removeManagerByNumber() {
+        carShopPrinter.printChooseManagerByNumber();
+        carShop.removeManagerByNumber(chooseManagerNumber());
+    }
+
+    private void removeCarByNumber() {
+        carShopPrinter.printChooseCarByNumber();
+        carShop.removeCarByNumber(chooseCarNumber());
     }
 
     private void buyingCar() {
