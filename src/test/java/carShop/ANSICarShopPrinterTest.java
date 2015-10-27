@@ -116,7 +116,7 @@
 //
 //    @Test
 //    public void testPrintEmptySalesManagerDeals() {
-//        ansiCarShopPrinter.printSalesManagerDeals(carShop.getSalesManagers().get(0));
+//        ansiCarShopPrinter.printManagerDeals(carShop.getSalesManagers().get(0));
 //
 //        assertThat(outputStream.toString(), is(
 //                "Default Manager deals:\n" +
@@ -136,7 +136,7 @@
 //
 //        carShop.addSalesManager(salesManager);
 //
-//        ansiCarShopPrinter.printSalesManagerDeals(carShop.getSalesManagers().get(0));
+//        ansiCarShopPrinter.printManagerDeals(carShop.getSalesManagers().get(0));
 //
 //        assertThat(outputStream.toString(), is(
 //                "Pupko Anton deals:\n" +

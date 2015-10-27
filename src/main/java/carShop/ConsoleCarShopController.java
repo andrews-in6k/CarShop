@@ -162,7 +162,7 @@ public class ConsoleCarShopController implements CarShopController {
     }
 
     private void outputBestManager() {
-        carShopPrinter.printSalesManagerDeals(carShop.getBestManager(inputStartDate(), inputEndDate()));
+        carShopPrinter.printManagerDeals(carShop.getBestManager(inputStartDate(), inputEndDate()));
     }
 
     private LocalDate inputStartDate() {

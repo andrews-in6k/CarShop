@@ -199,7 +199,7 @@
 //                "printInputEndDate " +
 //                "inputString " +
 //                "getBestSalesManager " +
-//                "printSalesManagerDeals " +
+//                "printManagerDeals " +
 //                "printMainMenu " +
 //                "chooseMainMenuItem "
 //        ));

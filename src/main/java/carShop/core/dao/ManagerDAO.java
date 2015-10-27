@@ -13,7 +13,7 @@ public class ManagerDAO extends DAO {
     @SuppressWarnings("unchecked")
     public List<Manager> getTableRows(){
         return sessionFactory.getCurrentSession()
-                .createCriteria(Manager.class)
+                .createQuery("from Manager")
                 .list();
     }
 

@@ -93,8 +93,10 @@ public class CarShopService implements CarShopServiceInterface{
         dealDAO.save(deal);
 
         deal.getSoldCar().setDeal(deal);
+        deal.getManager().getDeals().add(deal);
 
         carDAO.update(deal.getSoldCar());
+        managerDAO.update(deal.getManager());
     }
 
     @Override

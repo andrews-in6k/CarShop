@@ -127,8 +127,8 @@
 //        resultSet += "printDeals ";
 //    }
 //
-//    public void printSalesManagerDeals(SalesManager salesManager) {
-//        resultSet += "printSalesManagerDeals ";
+//    public void printManagerDeals(SalesManager salesManager) {
+//        resultSet += "printManagerDeals ";
 //    }
 //
 //    public void printMainMenu() {
