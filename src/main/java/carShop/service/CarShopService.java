@@ -133,12 +133,12 @@ public class CarShopService implements CarShopServiceInterface{
 
     @Override
     public void removeCarByNumber(int number) {
-        removeCar(carDAO.getTableRows().get(number - 1));
+        removeCar(carDAO.getTableRows().get(number));
     }
 
     @Override
     public void removeManagerByNumber(int number) {
-        removeManager(managerDAO.getTableRows().get(number - 1));
+        removeManager(managerDAO.getTableRows().get(number));
     }
 
     @Override
