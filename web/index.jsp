@@ -11,6 +11,6 @@
     <title></title>
   </head>
   <body>
-    <a href="jsp/carShop.jsp">Car Shop</a>
+    <a href="shop">Car Shop</a>
   </body>
 </html>

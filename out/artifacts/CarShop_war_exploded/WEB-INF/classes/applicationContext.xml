@@ -12,20 +12,6 @@
 
     <context:annotation-config/>
 
-    <!--<aop:config>-->
-    <!--<aop:pointcut id="myPointcut"-->
-    <!--expression="execution(* carShop.*.*(..))" />-->
-    <!--<aop:advisor advice-ref="txAdvice" pointcut-ref="myPointcut" />-->
-    <!--</aop:config>-->
-
-    <!--<tx:advice id="txAdvice" transaction-manager="transactionManager">-->
-    <!--<tx:attributes>-->
-    <!--<tx:method name="get*" propagation="REQUIRED" read-only="true" />-->
-    <!--<tx:method name="remove*" propagation="REQUIRED" read-only="true" />-->
-    <!--<tx:method name="save*" propagation="REQUIRED" />-->
-    <!--</tx:attributes>-->
-    <!--</tx:advice>-->
-
     <bean id="dataSource"
           class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
@@ -60,4 +46,35 @@
     <bean id="dataDaoDeal" class="carShop.core.dao.DealDAO"/>
     <bean id="dataDaoManager" class="carShop.core.dao.ManagerDAO"/>
 
+    <!-- Run -->
+
+    <bean id="carShop" class="carShop.service.CarShopService">
+        <constructor-arg ref="dataDaoCar"/>
+        <constructor-arg ref="dataDaoDeal"/>
+        <constructor-arg ref="dataDaoManager"/>
+    </bean>
+
+    <bean id="systemIn" class="carShop.StreamFactory" factory-method="getInputStream" />
+    <bean id="systemOut" class="carShop.StreamFactory" factory-method="getPrintStream" />
+
+    <bean id="scanner" class="java.util.Scanner">
+        <constructor-arg ref="systemIn" />
+    </bean>
+    <bean id="printStream" class="java.io.PrintStream">
+        <constructor-arg ref="systemOut" />
+    </bean>
+
+    <bean id="carShopInputStream" class="carShop.ConsoleCarShopInputStream">
+        <constructor-arg ref="scanner" />
+    </bean>
+
+    <bean id="ansiPrinter" class="carShop.ANSICarShopPrinter">
+        <constructor-arg ref="printStream" />
+    </bean>
+
+    <bean id="carShopController" class="carShop.ConsoleCarShopController">
+        <constructor-arg ref="carShop" />
+        <constructor-arg ref="carShopInputStream" />
+        <constructor-arg ref="ansiPrinter" />
+    </bean>
 </beans>
