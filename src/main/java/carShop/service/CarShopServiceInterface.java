@@ -29,9 +29,9 @@ public interface CarShopServiceInterface {
 
     void removeDeal(Deal deal);
 
-    void removeCarByNumber(int number);
+    void removeCarByIndex(int number);
 
-    void removeManagerByNumber(int number);
+    void removeManagerByIndex(int number);
 
     List<Car> getCars();
 

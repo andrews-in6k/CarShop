@@ -132,12 +132,12 @@ public class CarShopService implements CarShopServiceInterface{
     }
 
     @Override
-    public void removeCarByNumber(int number) {
+    public void removeCarByIndex(int number) {
         removeCar(getAvailableCarByIndex(number));
     }
 
     @Override
-    public void removeManagerByNumber(int number) {
+    public void removeManagerByIndex(int number) {
         removeManager(managerDAO.getTableRows().get(number));
     }
 

@@ -128,12 +128,12 @@ public class ConsoleCarShopController implements CarShopController {
 
     private void removeManagerByNumber() {
         carShopPrinter.printChooseManagerByNumber();
-        carShop.removeManagerByNumber(chooseManagerNumber());
+        carShop.removeManagerByIndex(chooseManagerNumber());
     }
 
     private void removeCarByNumber() {
         carShopPrinter.printChooseCarByNumber();
-        carShop.removeCarByNumber(chooseCarNumber());
+        carShop.removeCarByIndex(chooseCarNumber());
     }
 
     private void buyingCar() {
