@@ -8,7 +8,9 @@ import carShop.core.dao.ManagerDAO;
 import carShop.core.entity.Deal;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import java.time.Duration;
 import java.time.LocalDate;
+import java.time.Period;
 import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
@@ -22,34 +24,34 @@ public class CarShopService implements CarShopServiceInterface{
     private DealDAO dealDAO;
     private ManagerDAO managerDAO;
 
-    public CarShopService() {
-        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(
-                new String[] { "applicationContext.xml" }, true);
-        carDAO = (CarDAO) context.getBean("dataDaoCar");
-        dealDAO = (DealDAO) context.getBean("dataDaoDeal");
-        managerDAO = (ManagerDAO) context.getBean("dataDaoManager");
+    public CarShopService(CarDAO carDAO, DealDAO dealDAO, ManagerDAO managerDAO) {
+        this.carDAO = carDAO;
+        this.dealDAO = dealDAO;
+        this.managerDAO = managerDAO;
     }
 
     @Override
-    public void buyingCar(LocalDate buyingDate, int inputIntegerManager, int inputIntegerCar) {
+    public void buyingCar(LocalDate buyingDate, int managerIndex, int carIndex) {
         Deal deal = new Deal();
 
+        //TODO Date -> LocalDate
         deal.setBuyingDate(Date.from(buyingDate.atStartOfDay(ZoneId.systemDefault()).toInstant()));
-        deal.setManager(managerDAO.getTableRows().get(inputIntegerManager));
-        deal.setSoldCar(getAvailableCarByIndex(inputIntegerCar));
+        deal.setManager(managerDAO.getTableRows().get(managerIndex));
+        deal.setSoldCar(getAvailableCarByIndex(carIndex));
 
         addDeal(deal);
     }
 
-    private Car getAvailableCarByIndex(int inputIntegerCar) {
+    private Car getAvailableCarByIndex(int carIndex) {
         Car buyingCar = carDAO.getTableRows().get(0);
         int notSoldCarIndex = 0;
 
         for (Car car : carDAO.getTableRows()) {
-            if (notSoldCarIndex == (inputIntegerCar)) {
+            if (notSoldCarIndex == carIndex) {
                 buyingCar = car;
             }
 
+            //TODO method isSold
             if (car.getDeal() == null) {
                 notSoldCarIndex++;
             }

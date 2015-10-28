@@ -48,6 +48,14 @@
             <version>5.1.9</version>
         </dependency>
 
+        <!-- WEB -->
+
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <version>3.0-alpha-1</version>
+        </dependency>
+
         <!-- tests -->
         <dependency>
             <groupId>junit</groupId>

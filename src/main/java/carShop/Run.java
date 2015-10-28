@@ -9,9 +9,10 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class Run {
 
     public static void main(String[] args) {
-        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("initConfig.xml");
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
         CarShopController carShopController = (CarShopController)applicationContext.getBean("carShopController");
 
         carShopController.startManageCarShop();
     }
+
 }
