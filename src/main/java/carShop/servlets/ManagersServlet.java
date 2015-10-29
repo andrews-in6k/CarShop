@@ -31,6 +31,10 @@ public class ManagersServlet extends HttpServlet {
             carShopService.removeManagerById(Integer.parseInt(req.getParameter("managerId")));
         }
 
+        if (req.getParameter("deals") != null) {
+            req.setAttribute("dealsManagerId", Integer.parseInt(req.getParameter("deals")));
+        }
+
         req.setAttribute("managers", carShopService.getManagers());
 
         req.getRequestDispatcher("jsp/managers.jsp").forward(req, resp);

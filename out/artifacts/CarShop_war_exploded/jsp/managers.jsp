@@ -1,5 +1,7 @@
 <%@ page import="carShop.core.entity.Manager" %>
 <%@ page import="java.util.List" %>
+<%@ page import="carShop.core.entity.Deal" %>
+<%@ page import="java.time.ZoneId" %>
 <%--
   Created by IntelliJ IDEA.
   User: employee
@@ -20,10 +22,23 @@
       <tr>
         <td><%=manager.getFirstName()%></td>
         <td><%=manager.getLastName()%></td>
-        <td>Deals</td>
+        <td><a href="?deals=<%=manager.getId()%>">Deals</a></td>
         <td><a href="?managerId=<%=manager.getId()%>"><img src="images/icon-delete.gif" alt="del"></a></td>
+
+        <%if (request.getAttribute("dealsManagerId") != null &&
+              request.getAttribute("dealsManagerId").equals(manager.getId())) {%>
+          <%for (Deal deal : manager.getDeals()) {%>
+            <tr>
+              <td><%=deal.getBuyingDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate().toString()%></td>
+              <td><%=deal.getSoldCar().getBrand()%></td>
+              <td><%=deal.getSoldCar().getName()%></td>
+              <td><%=deal.getSoldCar().getCost()%>$</td>
+            </tr>
+          <%}%>
+        <%}%>
       </tr>
     <%}%>
+
   </table>
 
   <br>
@@ -37,6 +52,10 @@
 
       <input type="submit" name="addManager" value="Add">
     </form>
+  </div>
+
+  <div align="center">
+    <a href="index.jsp">to general</a>
   </div>
 </body>
 </html>

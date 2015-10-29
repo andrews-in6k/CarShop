@@ -26,6 +26,7 @@
           </tr>
         <%}%>
       <%}%>
+
     </table>
 
     <br>
@@ -41,6 +42,10 @@
 
         <input type="submit" name="addCar" value="Add">
       </form>
+    </div>
+
+    <div align="center">
+      <a href="index.jsp">to general</a>
     </div>
   </body>
 </html>
