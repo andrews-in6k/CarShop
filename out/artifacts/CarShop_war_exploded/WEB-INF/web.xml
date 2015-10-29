@@ -14,12 +14,12 @@
     </listener>
 
     <servlet>
-        <servlet-name>carShopServlet</servlet-name>
-        <servlet-class>carShop.servlets.CarShopServlet</servlet-class>
+        <servlet-name>carServlet</servlet-name>
+        <servlet-class>carShop.servlets.CarsServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>carShopServlet</servlet-name>
-        <url-pattern>/shop</url-pattern>
+        <servlet-name>carServlet</servlet-name>
+        <url-pattern>/cars</url-pattern>
     </servlet-mapping>
 </web-app>

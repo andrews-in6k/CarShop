@@ -8,9 +8,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
   <head>
-    <title></title>
+    <title>CarShop General</title>
   </head>
   <body>
-    <a href="shop">Car Shop</a>
+    <a href="cars">1. Cars</a>
   </body>
 </html>

@@ -11,9 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * Created by employee on 10/28/15.
+ * Created by employee on 10/29/15.
  */
-public class CarShopServlet extends HttpServlet{
+public class CarsServlet extends HttpServlet{
 
     CarShopService carShopService;
 
@@ -25,9 +25,9 @@ public class CarShopServlet extends HttpServlet{
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setAttribute("Brand", carShopService.getCars().get(0).getBrand());
+        req.setAttribute("cars", carShopService.getCars());
 
-        req.getRequestDispatcher("jsp/carShop.jsp").forward(req, resp);
+        req.getRequestDispatcher("jsp/cars.jsp").forward(req, resp);
     }
 
     @Override
