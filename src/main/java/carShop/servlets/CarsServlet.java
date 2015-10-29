@@ -1,5 +1,6 @@
 package carShop.servlets;
 
+import carShop.core.entity.Car;
 import carShop.service.CarShopService;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
@@ -32,6 +33,20 @@ public class CarsServlet extends HttpServlet{
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        Car car = new Car();
 
+        if (!req.getParameter("textFieldBrand").equals("") &&
+                !req.getParameter("textFieldName").equals("") &&
+                !req.getParameter("textFieldCost").equals("")) {
+            car.setBrand(req.getParameter("textFieldBrand"));
+            car.setName(req.getParameter("textFieldName"));
+            car.setCost(Integer.parseInt(req.getParameter("textFieldCost")));
+
+            carShopService.addCar(car);
+        }
+
+        req.setAttribute("cars", carShopService.getCars());
+
+        req.getRequestDispatcher("jsp/cars.jsp").forward(req, resp);
     }
 }

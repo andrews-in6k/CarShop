@@ -13,7 +13,7 @@
     <title>Cars</title>
 </head>
   <body>
-    <table border="1">
+    <table border="1" align="center">
       <%for (Car car : (List<Car>)request.getAttribute("cars")) {%>
         <tr>
           <td><%=car.getBrand()%></td>
@@ -23,5 +23,18 @@
       <%}%>
     </table>
 
+    <br>
+
+    <div align="center">
+      <form method="post" action="cars">
+        <label for="tfBrand">Brand</label>
+        <input type="text" name="textFieldBrand" id="tfBrand">
+        <label for="tfName">Name</label>
+        <input type="text" name="textFieldName" id="tfName">
+        <label for="tfCost">Cost</label>
+        <input type="text" name="textFieldCost" id="tfCost">
+        <input type="submit" name="add" value="Add">
+      </form>
+    </div>
   </body>
 </html>
