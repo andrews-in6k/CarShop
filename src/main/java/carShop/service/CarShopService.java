@@ -1,20 +1,13 @@
 package carShop.service;
 
-import carShop.CarShopController;
-import carShop.core.entity.Car;
-import carShop.core.entity.Manager;
 import carShop.core.dao.CarDAO;
 import carShop.core.dao.DealDAO;
 import carShop.core.dao.ManagerDAO;
+import carShop.core.entity.Car;
 import carShop.core.entity.Deal;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.web.context.WebApplicationContext;
-import org.springframework.web.context.support.WebApplicationContextUtils;
+import carShop.core.entity.Manager;
 
-import java.time.Duration;
 import java.time.LocalDate;
-import java.time.Period;
 import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
