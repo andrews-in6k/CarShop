@@ -54,8 +54,8 @@
         <constructor-arg ref="dataDaoManager"/>
     </bean>
 
-    <bean id="systemIn" class="carShop.StreamFactory" factory-method="getInputStream" />
-    <bean id="systemOut" class="carShop.StreamFactory" factory-method="getPrintStream" />
+    <bean id="systemIn" class="carShop.trash.StreamFactory" factory-method="getInputStream" />
+    <bean id="systemOut" class="carShop.trash.StreamFactory" factory-method="getPrintStream" />
 
     <bean id="scanner" class="java.util.Scanner">
         <constructor-arg ref="systemIn" />
@@ -64,15 +64,15 @@
         <constructor-arg ref="systemOut" />
     </bean>
 
-    <bean id="carShopInputStream" class="carShop.ConsoleCarShopInputStream">
+    <bean id="carShopInputStream" class="carShop.trash.ConsoleCarShopInputStream">
         <constructor-arg ref="scanner" />
     </bean>
 
-    <bean id="ansiPrinter" class="carShop.ANSICarShopPrinter">
+    <bean id="ansiPrinter" class="carShop.trash.ANSICarShopPrinter">
         <constructor-arg ref="printStream" />
     </bean>
 
-    <bean id="carShopController" class="carShop.ConsoleCarShopController">
+    <bean id="carShopController" class="carShop.trash.ConsoleCarShopController">
         <constructor-arg ref="carShop" />
         <constructor-arg ref="carShopInputStream" />
         <constructor-arg ref="ansiPrinter" />

@@ -1,5 +1,6 @@
 package carShop.core.dao;
 
+import carShop.core.entity.Car;
 import carShop.core.entity.Manager;
 
 import java.util.List;
@@ -17,4 +18,7 @@ public class ManagerDAO extends DAO {
                 .list();
     }
 
+    public Manager getManagerById(int id) {
+        return sessionFactory.getCurrentSession().get(Manager.class, id);
+    }
 }

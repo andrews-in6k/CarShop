@@ -162,4 +162,8 @@ public class CarShopService implements CarShopServiceInterface{
     public void removeCarById(int id) {
         removeCar(carDAO.getCarById(id));
     }
+
+    public void removeManagerById(int id) {
+        removeManager(managerDAO.getManagerById(id));
+    }
 }

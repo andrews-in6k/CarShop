@@ -22,4 +22,14 @@
         <servlet-name>carServlet</servlet-name>
         <url-pattern>/cars</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>managerServlet</servlet-name>
+        <servlet-class>carShop.servlets.ManagersServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>managerServlet</servlet-name>
+        <url-pattern>/managers</url-pattern>
+    </servlet-mapping>
 </web-app>

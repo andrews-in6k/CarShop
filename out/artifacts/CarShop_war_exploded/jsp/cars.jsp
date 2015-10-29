@@ -14,7 +14,7 @@
 </head>
   <body>
     <table border="1" align="center">
-      <th colspan="4">Available cars</th>
+      <th colspan="3">Available cars</th>
 
       <%for (Car car : (List<Car>)request.getAttribute("cars")) {%>
         <%if (car.getDeal() == null) {%>
@@ -22,7 +22,7 @@
             <td><%=car.getBrand()%></td>
             <td><%=car.getName()%></td>
             <td><%=car.getCost()%></td>
-            <td><a href="?carId=<%=car.getId()%>"><img src="images/icon-delete.gif" alt="del"></a> </td>
+            <td><a href="?carId=<%=car.getId()%>"><img src="images/icon-delete.gif" alt="del"></a></td>
           </tr>
         <%}%>
       <%}%>
@@ -38,7 +38,8 @@
         <input type="text" name="textFieldName" id="tfName">
         <label for="tfCost">Cost</label>
         <input type="text" name="textFieldCost" id="tfCost">
-        <input type="submit" name="add" value="Add">
+
+        <input type="submit" name="addCar" value="Add">
       </form>
     </div>
   </body>
