@@ -154,4 +154,12 @@ public class CarShopService implements CarShopServiceInterface{
     public List<Manager> getManagers() {
         return managerDAO.getTableRows();
     }
+
+    //******************************************************************************************************************
+    //NEW METHODS
+    //******************************************************************************************************************
+
+    public void removeCarById(int id) {
+        removeCar(carDAO.getCarById(id));
+    }
 }

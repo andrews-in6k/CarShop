@@ -1,4 +1,4 @@
-package carShop;
+package carShop.trash;
 
 import java.util.Scanner;
 

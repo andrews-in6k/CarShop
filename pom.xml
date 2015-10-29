@@ -90,7 +90,7 @@
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>carShop.Run</mainClass>
+                    <mainClass>carShop.trash.Run</mainClass>
                 </configuration>
             </plugin>
         </plugins>

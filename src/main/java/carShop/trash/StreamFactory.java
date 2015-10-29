@@ -1,4 +1,4 @@
-package carShop;
+package carShop.trash;
 
 import java.io.InputStream;
 import java.io.PrintStream;

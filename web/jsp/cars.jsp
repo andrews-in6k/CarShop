@@ -14,12 +14,17 @@
 </head>
   <body>
     <table border="1" align="center">
+      <th colspan="4">Available cars</th>
+
       <%for (Car car : (List<Car>)request.getAttribute("cars")) {%>
-        <tr>
-          <td><%=car.getBrand()%></td>
-          <td><%=car.getName()%></td>
-          <td><%=car.getCost()%></td>
-        </tr>
+        <%if (car.getDeal() == null) {%>
+          <tr>
+            <td><%=car.getBrand()%></td>
+            <td><%=car.getName()%></td>
+            <td><%=car.getCost()%></td>
+            <td><a href="?carId=<%=car.getId()%>"><img src="images/icon-delete.gif" alt="del"></a> </td>
+          </tr>
+        <%}%>
       <%}%>
     </table>
 

@@ -26,6 +26,10 @@ public class CarsServlet extends HttpServlet{
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        if (req.getParameter("carId") != null) {
+            carShopService.removeCarById(Integer.parseInt(req.getParameter("carId")));
+        }
+
         req.setAttribute("cars", carShopService.getCars());
 
         req.getRequestDispatcher("jsp/cars.jsp").forward(req, resp);

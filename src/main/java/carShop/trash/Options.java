@@ -1,4 +1,4 @@
-package carShop;
+package carShop.trash;
 
 /**
  * Created by employee on 10/21/15.

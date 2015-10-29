@@ -1,5 +1,6 @@
 package carShop.core.dao;
 
+import carShop.core.entity.Car;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
@@ -28,4 +29,6 @@ public abstract class DAO {
     public void update(Object object){
         sessionFactory.getCurrentSession().saveOrUpdate(object);
     }
+
+    //TODO Generic types
 }

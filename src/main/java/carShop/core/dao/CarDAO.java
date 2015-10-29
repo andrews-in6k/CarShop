@@ -17,4 +17,7 @@ public class CarDAO extends DAO {
                 .list();
     }
 
+    public Car getCarById(int id) {
+        return sessionFactory.getCurrentSession().get(Car.class, id);
+    }
 }
