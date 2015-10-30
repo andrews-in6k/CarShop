@@ -45,4 +45,15 @@
         <servlet-name>buyingServlet</servlet-name>
         <url-pattern>/buyingcar</url-pattern>
     </servlet-mapping>
+
+    <!-- Best manager -->
+    <servlet>
+        <servlet-name>bestManagerServlet</servlet-name>
+        <servlet-class>carShop.servlets.BestManagerServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>bestManagerServlet</servlet-name>
+        <url-pattern>/bestmanager</url-pattern>
+    </servlet-mapping>
 </web-app>

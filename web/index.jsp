@@ -25,7 +25,7 @@
       </tr>
       <th>Statistic</th>
       <tr>
-        <td><a href="">1. Best manager</a></td>
+        <td><a href="bestmanager">1. Best manager</a></td>
       </tr>
     </table>
 
