@@ -183,6 +183,18 @@ public class CarShopService implements CarShopServiceInterface{
         return false;
     }
 
+    public Manager getBestManager (String startDate, String endDate) {
+        if (!startDate.equals("") && !endDate.equals("")) {
+            Manager manager;
+
+            manager = getBestManager(LocalDate.parse(startDate), LocalDate.parse(endDate));
+
+            return manager;
+        }
+
+        return null;
+    }
+
     public void addCar(String brand, String name, String cost) {
         if (!brand.equals("") && !name.equals("") && !cost.equals("")) {
             Car car = new Car();

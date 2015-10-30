@@ -1,6 +1,5 @@
 package carShop.servlets;
 
-import carShop.core.entity.Deal;
 import carShop.core.entity.Manager;
 import carShop.service.CarShopService;
 import org.springframework.web.context.WebApplicationContext;
@@ -11,9 +10,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 
 /**
  * Created by employee on 10/30/15.
@@ -36,14 +32,12 @@ public class BestManagerServlet extends HttpServlet{
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        if (!req.getParameter("startDate").equals("") && !req.getParameter("endDate").equals("")) {
-            Manager manager;
+        String startDate = req.getParameter("startDate");
+        String endDate = req.getParameter("endDate");
 
-            manager = carShopService.getBestManager(
-                    LocalDate.parse(req.getParameter("startDate")),
-                    LocalDate.parse(req.getParameter("endDate"))
-            );
+        Manager manager = carShopService.getBestManager(startDate, endDate);
 
+        if (manager != null) {
             req.setAttribute("bestManager", manager);
         }
 
