@@ -37,17 +37,12 @@ public class CarsServlet extends HttpServlet{
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Car car = new Car();
 
-        if (!req.getParameter("textFieldBrand").equals("") &&
-                !req.getParameter("textFieldName").equals("") &&
-                !req.getParameter("textFieldCost").equals("")) {
-            car.setBrand(req.getParameter("textFieldBrand"));
-            car.setName(req.getParameter("textFieldName"));
-            car.setCost(Integer.parseInt(req.getParameter("textFieldCost")));
+        String brand = req.getParameter("textFieldBrand");
+        String name = req.getParameter("textFieldName");
+        String cost = req.getParameter("textFieldCost");
 
-            carShopService.addCar(car);
-        }
+        carShopService.addCar(brand, name, cost);
 
         req.setAttribute("cars", carShopService.getCars());
 

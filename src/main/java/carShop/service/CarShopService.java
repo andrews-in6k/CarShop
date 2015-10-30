@@ -159,6 +159,29 @@ public class CarShopService implements CarShopServiceInterface{
     //NEW METHODS
     //******************************************************************************************************************
 
+    public void addCar(String brand, String name, String cost) {
+        if (!brand.equals("") && !name.equals("") && !cost.equals("")) {
+            Car car = new Car();
+
+            car.setBrand(brand);
+            car.setName(name);
+            car.setCost(Integer.parseInt(cost));
+
+            addCar(car);
+        }
+    }
+
+    public void addManager(String firstName, String lastName) {
+        if (!firstName.equals("") && !lastName.equals("")) {
+            Manager manager = new Manager();
+
+            manager.setFirstName(firstName);
+            manager.setLastName(lastName);
+
+            addManager(manager);
+        }
+    }
+
     public Car getCarById(int id) {
         return carDAO.getCarById(id);
     }

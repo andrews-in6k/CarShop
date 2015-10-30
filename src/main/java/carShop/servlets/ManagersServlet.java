@@ -42,15 +42,11 @@ public class ManagersServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Manager manager = new Manager();
 
-        if (!req.getParameter("textFieldFirstName").equals("") &&
-                !req.getParameter("textFieldLastName").equals("")) {
-            manager.setFirstName(req.getParameter("textFieldFirstName"));
-            manager.setLastName(req.getParameter("textFieldLastName"));
+        String firstName = req.getParameter("textFieldFirstName");
+        String lastName = req.getParameter("textFieldLastName");
 
-            carShopService.addManager(manager);
-        }
+        carShopService.addManager(firstName, lastName);
 
         req.setAttribute("managers", carShopService.getManagers());
 
