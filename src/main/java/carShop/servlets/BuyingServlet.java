@@ -39,22 +39,12 @@ public class BuyingServlet extends HttpServlet{
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        if (!req.getParameter("buyingDate").equals("")) {
-            if ((req.getParameter("carSelect") != null) && (req.getParameter("managerSelect") != null)) {
-                Deal deal = new Deal();
+        String buyingDate = req.getParameter("buyingDate");
+        String carSelect = req.getParameter("carSelect");
+        String managerSelect = req.getParameter("managerSelect");
 
-                deal.setSoldCar(carShopService.getCarById(Integer.parseInt(req.getParameter("carSelect"))));
-                deal.setManager(carShopService.getManagerById(Integer.parseInt(req.getParameter("managerSelect"))));
-                try {
-                    deal.setBuyingDate(new SimpleDateFormat("yyyy-MM-dd").parse(req.getParameter("buyingDate")));
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
-
-                carShopService.addDeal(deal);
-
-                req.setAttribute("isBuy", "true");
-            }
+        if (carShopService.buyingCar(buyingDate, carSelect, managerSelect)) {
+            req.setAttribute("isBuy", "true");
         }
 
         req.setAttribute("cars", carShopService.getCars());

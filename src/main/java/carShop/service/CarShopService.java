@@ -7,6 +7,8 @@ import carShop.core.entity.Car;
 import carShop.core.entity.Deal;
 import carShop.core.entity.Manager;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
@@ -158,6 +160,28 @@ public class CarShopService implements CarShopServiceInterface{
     //******************************************************************************************************************
     //NEW METHODS
     //******************************************************************************************************************
+
+    public boolean buyingCar(String buyingDate, String carSelect, String managerSelect){
+        if (!buyingDate.equals("")) {
+            if ((carSelect != null) && (managerSelect != null)) {
+                Deal deal = new Deal();
+
+                deal.setSoldCar(getCarById(Integer.parseInt(carSelect)));
+                deal.setManager(getManagerById(Integer.parseInt(managerSelect)));
+                try {
+                    deal.setBuyingDate(new SimpleDateFormat("yyyy-MM-dd").parse(buyingDate));
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+
+                addDeal(deal);
+
+                return true;
+            }
+        }
+
+        return false;
+    }
 
     public void addCar(String brand, String name, String cost) {
         if (!brand.equals("") && !name.equals("") && !cost.equals("")) {
