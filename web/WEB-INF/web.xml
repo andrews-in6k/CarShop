@@ -13,23 +13,36 @@
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
 
+    <!-- Cars -->
     <servlet>
-        <servlet-name>carServlet</servlet-name>
+        <servlet-name>carsServlet</servlet-name>
         <servlet-class>carShop.servlets.CarsServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>carServlet</servlet-name>
+        <servlet-name>carsServlet</servlet-name>
         <url-pattern>/cars</url-pattern>
     </servlet-mapping>
 
+    <!-- Managers -->
     <servlet>
-        <servlet-name>managerServlet</servlet-name>
+        <servlet-name>managersServlet</servlet-name>
         <servlet-class>carShop.servlets.ManagersServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>managerServlet</servlet-name>
+        <servlet-name>managersServlet</servlet-name>
         <url-pattern>/managers</url-pattern>
+    </servlet-mapping>
+
+    <!-- Buying car -->
+    <servlet>
+        <servlet-name>buyingServlet</servlet-name>
+        <servlet-class>carShop.servlets.BuyingServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>buyingServlet</servlet-name>
+        <url-pattern>/buyingcar</url-pattern>
     </servlet-mapping>
 </web-app>

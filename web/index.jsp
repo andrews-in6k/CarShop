@@ -11,13 +11,21 @@
     <title>CarShop General</title>
   </head>
   <body>
-    <table>
+    <table border="1">
       <th>Manage</th>
       <tr>
         <td><a href="cars">1. Cars</a></td>
       </tr>
       <tr>
         <td><a href="managers">2. Managers</a></td>
+      </tr>
+      <th>For customers</th>
+      <tr>
+        <td><a href="buyingcar">1. Buy the car</a></td>
+      </tr>
+      <th>Statistic</th>
+      <tr>
+        <td><a href="">1. Best manager</a></td>
       </tr>
     </table>
 
