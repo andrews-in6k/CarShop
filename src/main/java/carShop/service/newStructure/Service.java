@@ -1,5 +1,8 @@
 package carShop.service.newStructure;
 
+import carShop.core.dao.CarDAO;
+import carShop.core.dao.DealDAO;
+import carShop.core.dao.ManagerDAO;
 import carShop.core.entity.Car;
 import carShop.core.entity.Deal;
 import carShop.core.entity.Manager;
@@ -9,20 +12,86 @@ import java.util.List;
 /**
  * Created by employee on 10/30/15.
  */
-public interface Service {
-    void addCar(Car car);
-    void addManager(Manager manager);
-    void addDeal(Deal deal);
+public abstract class Service implements ServiceInterface{
+    private CarDAO carDAO;
+    private DealDAO dealDAO;
+    private ManagerDAO managerDAO;
 
-    void removeCar(Car car);
-    void removeManager(Manager manager);
-    void removeDeal(Deal deal);
+    public Service(CarDAO carDAO, DealDAO dealDAO, ManagerDAO managerDAO) {
+        this.carDAO = carDAO;
+        this.dealDAO = dealDAO;
+        this.managerDAO = managerDAO;
+    }
+    
+    @Override
+    public void addCar(Car car) {
+        carDAO.save(car);
+    }
 
-    List<Car> getCars();
-    List<Manager> getManagers();
-    List<Deal> getDeals();
+    @Override
+    public void addManager(Manager manager) {
+        managerDAO.save(manager);
+    }
 
-    Car getCarById();
-    Manager getManagerById();
-    Deal getDealById();
+    @Override
+    public void addDeal(Deal deal) {
+        dealDAO.save(deal);
+
+        deal.getSoldCar().setDeal(deal);
+
+        carDAO.update(deal.getSoldCar());
+    }
+
+    @Override
+    public void removeCar(Car car) {
+        carDAO.delete(car);
+    }
+
+    @Override
+    public void removeManager(Manager manager) {
+        for (Deal deal : manager.getDeals()){
+            removeDeal(deal);
+        }
+
+        managerDAO.delete(manager);
+    }
+
+    @Override
+    public void removeDeal(Deal deal) {
+        Car car = deal.getSoldCar();
+
+        dealDAO.delete(deal);
+
+        removeCar(car);
+    }
+
+    @Override
+    public List<Car> getCars() {
+        return carDAO.getTableRows();
+    }
+
+    @Override
+    public List<Manager> getManagers() {
+        return managerDAO.getTableRows();
+    }
+
+    @Override
+    public List<Deal> getDeals() {
+        return dealDAO.getTableRows();
+    }
+
+    @Override
+    public Car getCarById(int id) {
+        return carDAO.getCarById(id);
+    }
+
+    @Override
+    public Manager getManagerById(int id) {
+        return managerDAO.getManagerById(id);
+    }
+    
+    @Override
+    public Deal getDealById(int id) {
+        return dealDAO.getDealById(id);
+    }
 }

@@ -1,6 +1,7 @@
 package carShop.core.dao;
 
 import carShop.core.entity.Deal;
+import carShop.core.entity.Manager;
 
 import java.util.List;
 
@@ -17,4 +18,7 @@ public class DealDAO extends DAO {
                 .list();
     }
 
+    public Deal getDealById(int id) {
+        return sessionFactory.getCurrentSession().get(Deal.class, id);
+    }
 }
