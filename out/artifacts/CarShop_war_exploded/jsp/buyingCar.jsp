@@ -27,6 +27,7 @@
 
         <label for="managerSelect">Select manager</label>
         <select name="managerSelect" id="managerSelect">
+          <option value="" contenteditable="true"></option>
           <%for (Manager manager : (List<Manager>)request.getAttribute("managers")) {%>
             <option value="<%=manager.getId()%>"><%=manager.getFirstName()%> <%=manager.getLastName()%></option>
           <%}%>
