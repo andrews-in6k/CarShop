@@ -13,6 +13,8 @@ import java.util.List;
 public interface CarShopServiceInterface {
     boolean hasCars();
 
+    boolean isAvailableCar(Car car);
+
     void buyingCar(LocalDate buyingDate, int inputIntegerManager, int inputIntegerCar);
 
     void addDeal(Deal deal);

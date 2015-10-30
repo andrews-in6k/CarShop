@@ -30,6 +30,11 @@ public class CarShopService implements CarShopServiceInterface{
     }
 
     @Override
+    public boolean isAvailableCar(Car car) {
+        return car.getDeal() == null;
+    }
+
+    @Override
     public void buyingCar(LocalDate buyingDate, int managerIndex, int carIndex) {
         Deal deal = new Deal();
 
@@ -50,8 +55,7 @@ public class CarShopService implements CarShopServiceInterface{
                 buyingCar = car;
             }
 
-            //TODO method isSold
-            if (car.getDeal() == null) {
+            if (isAvailableCar(car)) {
                 notSoldCarIndex++;
             }
         }
