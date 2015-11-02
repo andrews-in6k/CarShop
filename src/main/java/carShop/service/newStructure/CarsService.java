@@ -33,6 +33,6 @@ public class CarsService implements CarsServiceInterface{
 
     @Override
     public Car getCarById(int id) {
-        return carDAO.getCarById(id);
+        return carDAO.getById(id);
     }
 }

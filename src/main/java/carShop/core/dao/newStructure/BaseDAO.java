@@ -30,7 +30,7 @@ public abstract class BaseDAO<T> implements BaseDAOInterfase<T>{
     @SuppressWarnings("unchecked")
     public List<T> getTableRows(){
         return sessionFactory.getCurrentSession()
-                .createQuery("from " + type)
+                .createQuery("from " + type.getSimpleName())
                 .list();
     }
 

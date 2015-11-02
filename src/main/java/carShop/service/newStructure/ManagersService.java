@@ -40,6 +40,6 @@ public class ManagersService implements ManagersServiceInterface{
 
     @Override
     public Manager getManagerById(int id) {
-        return managerDAO.getManagerById(id);
+        return managerDAO.getById(id);
     }
 }

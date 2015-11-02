@@ -40,6 +40,6 @@ public class DealsService implements DealsServiceInterface{
 
     @Override
     public Deal getDealById(int id) {
-        return dealDAO.getDealById(id);
+        return dealDAO.getById(id);
     }
 }
