@@ -22,11 +22,6 @@ public class CarsService implements CarsServiceInterface{
     }
 
     @Override
-    public void updateCar(Car car) {
-        carDAO.update(car);
-    }
-
-    @Override
     public void removeCar(Car car) {
         carDAO.delete(car);
     }
