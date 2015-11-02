@@ -39,7 +39,7 @@ public class CarShopService implements CarShopServiceInterface{
         Deal deal = new Deal();
 
         //TODO Date -> LocalDate
-        deal.setBuyingDate(Date.from(buyingDate.atStartOfDay(ZoneId.systemDefault()).toInstant()));
+        deal.setBuyingDate(buyingDate);
         deal.setManager(managerDAO.getTableRows().get(managerIndex));
         deal.setSoldCar(getAvailableCarByIndex(carIndex));
 
@@ -73,7 +73,7 @@ public class CarShopService implements CarShopServiceInterface{
 
             for (Deal deal : manager.getDeals()) {
                 LocalDate buyingDate;
-                buyingDate = deal.getBuyingDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+                buyingDate = deal.getBuyingDate();
 
                 if (buyingDate.isAfter(startDate) && buyingDate.isBefore(endDate)) {
                     pretendingMaxDealsCount++;
@@ -168,11 +168,7 @@ public class CarShopService implements CarShopServiceInterface{
 
                 deal.setSoldCar(getCarById(Integer.parseInt(carSelect)));
                 deal.setManager(getManagerById(Integer.parseInt(managerSelect)));
-                try {
-                    deal.setBuyingDate(new SimpleDateFormat("yyyy-MM-dd").parse(buyingDate));
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
+                deal.setBuyingDate(LocalDate.parse(buyingDate));
 
                 addDeal(deal);
 

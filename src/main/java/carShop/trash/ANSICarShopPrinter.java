@@ -69,7 +69,7 @@ public class ANSICarShopPrinter implements CarShopPrinter {
 
             printStream.printf(
                     "|%15s|%50s|%49s$|\n",
-                    deal.getBuyingDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate().toString(),
+                    deal.getBuyingDate().toString(),
                     deal.getManager().getLastName() + " " + deal.getManager().getFirstName(),
                     deal.getSoldCar().getBrand() + " " + deal.getSoldCar().getName()+ " " + deal.getSoldCar().getCost()
             );
@@ -83,7 +83,7 @@ public class ANSICarShopPrinter implements CarShopPrinter {
         for (Deal deal : manager.getDeals()) {
             printStream.printf(
                     "|%15s|%45s$|\n",
-                    deal.getBuyingDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate().toString(),
+                    deal.getBuyingDate().toString(),
                     deal.getSoldCar().getBrand() + " " + deal.getSoldCar().getName() + " " + deal.getSoldCar().getCost()
             );
         }

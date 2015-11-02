@@ -29,7 +29,7 @@
               request.getAttribute("dealsManagerId").equals(manager.getId())) {%>
           <%for (Deal deal : manager.getDeals()) {%>
             <tr>
-              <td><%=deal.getBuyingDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate().toString()%></td>
+              <td><%=deal.getBuyingDate().toString()%></td>
               <td><%=deal.getSoldCar().getBrand()%></td>
               <td><%=deal.getSoldCar().getName()%></td>
               <td><%=deal.getSoldCar().getCost()%>$</td>
