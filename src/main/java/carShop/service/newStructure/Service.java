@@ -12,20 +12,30 @@ import java.util.List;
 /**
  * Created by employee on 10/30/15.
  */
-public abstract class Service implements ServiceInterface{
-    private CarDAO carDAO;
+public class Service implements ServiceInterface{
+    private CarsService carsService;
     private DealDAO dealDAO;
     private ManagerDAO managerDAO;
 
-    public Service(CarDAO carDAO, DealDAO dealDAO, ManagerDAO managerDAO) {
-        this.carDAO = carDAO;
+    public Service(CarsService carsService, DealDAO dealDAO, ManagerDAO managerDAO) {
+        this.carsService = carsService;
         this.dealDAO = dealDAO;
         this.managerDAO = managerDAO;
     }
-    
+
+    @Override
+    public void buyingCar() {
+
+    }
+
+    @Override
+    public Manager getBestManager() {
+        return null;
+    }
+
     @Override
     public void addCar(Car car) {
-        carDAO.save(car);
+        carsService.addCar(car);
     }
 
     @Override
@@ -39,12 +49,12 @@ public abstract class Service implements ServiceInterface{
 
         deal.getSoldCar().setDeal(deal);
 
-        carDAO.update(deal.getSoldCar());
+        carsService.updateCar(deal.getSoldCar());
     }
 
     @Override
     public void removeCar(Car car) {
-        carDAO.delete(car);
+        carsService.removeCar(car);
     }
 
     @Override
@@ -67,7 +77,7 @@ public abstract class Service implements ServiceInterface{
 
     @Override
     public List<Car> getCars() {
-        return carDAO.getTableRows();
+        return carsService.getCars();
     }
 
     @Override
@@ -82,14 +92,14 @@ public abstract class Service implements ServiceInterface{
 
     @Override
     public Car getCarById(int id) {
-        return carDAO.getCarById(id);
+        return carsService.getCarById(id);
     }
 
     @Override
     public Manager getManagerById(int id) {
         return managerDAO.getManagerById(id);
     }
-    
+
     @Override
     public Deal getDealById(int id) {
         return dealDAO.getDealById(id);

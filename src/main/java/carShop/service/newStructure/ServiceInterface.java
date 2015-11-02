@@ -10,6 +10,10 @@ import java.util.List;
  * Created by employee on 10/30/15.
  */
 public interface ServiceInterface {
+
+    void buyingCar();
+    Manager getBestManager();
+
     void addCar(Car car);
     void addManager(Manager manager);
     void addDeal(Deal deal);
