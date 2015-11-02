@@ -1,6 +1,7 @@
 package carShop.service.newStructure;
 
 import carShop.core.dao.DealDAO;
+import carShop.core.entity.Car;
 import carShop.core.entity.Deal;
 
 import java.util.List;
@@ -11,9 +12,11 @@ import java.util.List;
 public class DealsService implements DealsServiceInterface{
 
     private DealDAO dealDAO;
+    private CarsService carsService;
 
-    public DealsService(DealDAO dealDAO) {
+    public DealsService(DealDAO dealDAO, CarsService carsService) {
         this.dealDAO = dealDAO;
+        this.carsService = carsService;
     }
 
     @Override
@@ -23,7 +26,11 @@ public class DealsService implements DealsServiceInterface{
 
     @Override
     public void removeDeal(Deal deal) {
+        Car car = deal.getSoldCar();
+
         dealDAO.delete(deal);
+
+        carsService.removeCar(car);
     }
 
     @Override

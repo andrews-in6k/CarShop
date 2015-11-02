@@ -55,20 +55,12 @@ public class Service implements ServiceInterface{
 
     @Override
     public void removeManager(Manager manager) {
-        for (Deal deal : manager.getDeals()){
-            removeDeal(deal);
-        }
-
         managersService.removeManager(manager);
     }
 
     @Override
     public void removeDeal(Deal deal) {
-        Car car = deal.getSoldCar();
-
         dealsService.removeDeal(deal);
-
-        removeCar(car);
     }
 
     @Override
