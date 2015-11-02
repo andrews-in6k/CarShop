@@ -1,6 +1,9 @@
 package carShop.servlets;
 
+import carShop.core.entity.Deal;
 import carShop.service.CarShopService;
+import carShop.service.newStructure.Service;
+import carShop.service.newStructure.ServiceInterface;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
@@ -9,18 +12,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.time.LocalDate;
 
 /**
  * Created by employee on 10/30/15.
  */
 public class BuyingServlet extends HttpServlet{
 
-    CarShopService carShopService;
+    ServiceInterface carShopService;
 
     @Override
     public void init() throws ServletException {
         WebApplicationContext ctx = WebApplicationContextUtils.getRequiredWebApplicationContext(getServletContext());
-        carShopService = (CarShopService) ctx.getBean("carShop");
+        carShopService = (Service) ctx.getBean("service");
     }
 
     @Override
@@ -39,8 +43,17 @@ public class BuyingServlet extends HttpServlet{
         String carSelect = req.getParameter("carSelect");
         String managerSelect = req.getParameter("managerSelect");
 
-        if (carShopService.buyingCar(buyingDate, carSelect, managerSelect)) {
-            req.setAttribute("isBuy", "true");
+        if (!buyingDate.equals("")) {
+            if ((carSelect != null) && (managerSelect != null)) {
+
+                carShopService.buyingCar(
+                        LocalDate.parse(buyingDate),
+                        Integer.parseInt(carSelect),
+                        Integer.parseInt(managerSelect)
+                );
+
+                req.setAttribute("isBuy", "true");
+            }
         }
 
         req.setAttribute("cars", carShopService.getCars());

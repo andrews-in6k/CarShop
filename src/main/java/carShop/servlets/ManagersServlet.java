@@ -3,6 +3,8 @@ package carShop.servlets;
 import carShop.core.entity.Car;
 import carShop.core.entity.Manager;
 import carShop.service.CarShopService;
+import carShop.service.newStructure.Service;
+import carShop.service.newStructure.ServiceInterface;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
@@ -17,18 +19,19 @@ import java.io.IOException;
  */
 public class ManagersServlet extends HttpServlet {
 
-    CarShopService carShopService;
+    ServiceInterface carShopService;
 
     @Override
     public void init() throws ServletException {
         WebApplicationContext ctx = WebApplicationContextUtils.getRequiredWebApplicationContext(getServletContext());
-        carShopService = (CarShopService) ctx.getBean("carShop");
+        carShopService = (Service) ctx.getBean("service");
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         if (req.getParameter("managerId") != null) {
-            carShopService.removeManagerById(Integer.parseInt(req.getParameter("managerId")));
+            Manager manager = carShopService.getManagerById(Integer.parseInt(req.getParameter("managerId")));
+            carShopService.removeManager(manager);
         }
 
         if (req.getParameter("deals") != null) {
@@ -46,7 +49,14 @@ public class ManagersServlet extends HttpServlet {
         String firstName = req.getParameter("textFieldFirstName");
         String lastName = req.getParameter("textFieldLastName");
 
-        carShopService.addManager(firstName, lastName);
+        if (!firstName.equals("") && !lastName.equals("")) {
+            Manager manager = new Manager();
+
+            manager.setFirstName(firstName);
+            manager.setLastName(lastName);
+
+            carShopService.addManager(manager);
+        }
 
         req.setAttribute("managers", carShopService.getManagers());
 

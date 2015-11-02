@@ -11,11 +11,14 @@ import java.util.List;
  * Created by employee on 10/30/15.
  */
 public class Service implements ServiceInterface{
-    private CarsService carsService;
-    private ManagersService managersService;
-    private DealsService dealsService;
+    private CarsServiceInterface carsService;
+    private ManagersServiceInterface managersService;
+    private DealsServiceInterface dealsService;
 
-    public Service(CarsService carsService, ManagersService managersService, DealsService dealsService) {
+    public Service(
+            CarsServiceInterface carsService,
+            ManagersServiceInterface managersService,
+            DealsServiceInterface dealsService) {
         this.carsService = carsService;
         this.managersService = managersService;
         this.dealsService = dealsService;

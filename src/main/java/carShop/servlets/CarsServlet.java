@@ -2,6 +2,8 @@ package carShop.servlets;
 
 import carShop.core.entity.Car;
 import carShop.service.CarShopService;
+import carShop.service.newStructure.Service;
+import carShop.service.newStructure.ServiceInterface;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
@@ -16,18 +18,19 @@ import java.io.IOException;
  */
 public class CarsServlet extends HttpServlet{
 
-    CarShopService carShopService;
+    ServiceInterface carShopService;
 
     @Override
     public void init() throws ServletException {
         WebApplicationContext ctx = WebApplicationContextUtils.getRequiredWebApplicationContext(getServletContext());
-        carShopService = (CarShopService) ctx.getBean("carShop");
+        carShopService = (Service) ctx.getBean("service");
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         if (req.getParameter("carId") != null) {
-            carShopService.removeCarById(Integer.parseInt(req.getParameter("carId")));
+            Car car = carShopService.getCarById(Integer.parseInt(req.getParameter("carId")));
+            carShopService.removeCar(car);
         }
 
         req.setAttribute("cars", carShopService.getCars());
@@ -42,7 +45,15 @@ public class CarsServlet extends HttpServlet{
         String name = req.getParameter("textFieldName");
         String cost = req.getParameter("textFieldCost");
 
-        carShopService.addCar(brand, name, cost);
+        if (!brand.equals("") && !name.equals("") && !cost.equals("")) {
+            Car car = new Car();
+
+            car.setBrand(brand);
+            car.setName(name);
+            car.setCost(Integer.parseInt(cost));
+
+            carShopService.addCar(car);
+        }
 
         req.setAttribute("cars", carShopService.getCars());
 

@@ -2,6 +2,8 @@ package carShop.servlets;
 
 import carShop.core.entity.Manager;
 import carShop.service.CarShopService;
+import carShop.service.newStructure.Service;
+import carShop.service.newStructure.ServiceInterface;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
@@ -10,17 +12,18 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.time.LocalDate;
 
 /**
  * Created by employee on 10/30/15.
  */
 public class BestManagerServlet extends HttpServlet{
-    CarShopService carShopService;
+    ServiceInterface carShopService;
 
     @Override
     public void init() throws ServletException {
         WebApplicationContext ctx = WebApplicationContextUtils.getRequiredWebApplicationContext(getServletContext());
-        carShopService = (CarShopService) ctx.getBean("carShop");
+        carShopService = (Service) ctx.getBean("service");
     }
 
     @Override
@@ -35,10 +38,12 @@ public class BestManagerServlet extends HttpServlet{
         String startDate = req.getParameter("startDate");
         String endDate = req.getParameter("endDate");
 
-        Manager manager = carShopService.getBestManager(startDate, endDate);
+        if (!startDate.equals("") && !endDate.equals("")) {
+            Manager manager = carShopService.getBestManager(LocalDate.parse(startDate), LocalDate.parse(endDate));
 
-        if (manager != null) {
-            req.setAttribute("bestManager", manager);
+            if (manager != null) {
+                req.setAttribute("bestManager", manager);
+            }
         }
 
         req.getRequestDispatcher("jsp/bestManager.jsp").forward(req, resp);
