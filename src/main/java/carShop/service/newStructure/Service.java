@@ -15,12 +15,12 @@ import java.util.List;
 public class Service implements ServiceInterface{
     private CarsService carsService;
     private ManagersService managersService;
-    private DealDAO dealDAO;
+    private DealsService dealsService;
 
-    public Service(CarsService carsService, ManagersService managersService, DealDAO dealDAO) {
+    public Service(CarsService carsService, ManagersService managersService, DealsService dealsService) {
         this.carsService = carsService;
         this.managersService = managersService;
-        this.dealDAO = dealDAO;
+        this.dealsService = dealsService;
     }
 
     @Override
@@ -45,11 +45,7 @@ public class Service implements ServiceInterface{
 
     @Override
     public void addDeal(Deal deal) {
-        dealDAO.save(deal);
-
-        deal.getSoldCar().setDeal(deal);
-
-        carsService.updateCar(deal.getSoldCar());
+        dealsService.addDeal(deal);
     }
 
     @Override
@@ -70,7 +66,7 @@ public class Service implements ServiceInterface{
     public void removeDeal(Deal deal) {
         Car car = deal.getSoldCar();
 
-        dealDAO.delete(deal);
+        dealsService.removeDeal(deal);
 
         removeCar(car);
     }
@@ -87,7 +83,7 @@ public class Service implements ServiceInterface{
 
     @Override
     public List<Deal> getDeals() {
-        return dealDAO.getTableRows();
+        return dealsService.getDeals();
     }
 
     @Override
@@ -102,6 +98,6 @@ public class Service implements ServiceInterface{
 
     @Override
     public Deal getDealById(int id) {
-        return dealDAO.getDealById(id);
+        return dealsService.getDealById(id);
     }
 }
