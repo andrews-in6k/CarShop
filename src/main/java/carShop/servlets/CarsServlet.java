@@ -1,7 +1,6 @@
 package carShop.servlets;
 
 import carShop.core.entity.Car;
-import carShop.service.CarShopService;
 import carShop.service.newStructure.Service;
 import carShop.service.newStructure.ServiceInterface;
 import org.springframework.web.context.WebApplicationContext;
@@ -16,16 +15,7 @@ import java.io.IOException;
 /**
  * Created by employee on 10/29/15.
  */
-public class CarsServlet extends HttpServlet{
-
-    ServiceInterface carShopService;
-
-    @Override
-    public void init() throws ServletException {
-        WebApplicationContext ctx = WebApplicationContextUtils.getRequiredWebApplicationContext(getServletContext());
-        carShopService = (Service) ctx.getBean("service");
-    }
-
+public class CarsServlet extends BaseServlet{
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         if (req.getParameter("carId") != null) {

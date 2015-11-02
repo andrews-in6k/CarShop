@@ -1,4 +1,4 @@
-package carShop.service;
+package carShop.service.trash;
 
 import carShop.core.dao.CarDAO;
 import carShop.core.dao.DealDAO;
@@ -7,11 +7,7 @@ import carShop.core.entity.Car;
 import carShop.core.entity.Deal;
 import carShop.core.entity.Manager;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.ZoneId;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -157,76 +153,4 @@ public class CarShopService implements CarShopServiceInterface{
         return managerDAO.getTableRows();
     }
 
-    //******************************************************************************************************************
-    //NEW METHODS
-    //******************************************************************************************************************
-
-    public boolean buyingCar(String buyingDate, String carSelect, String managerSelect){
-        if (!buyingDate.equals("")) {
-            if ((carSelect != null) && (managerSelect != null)) {
-                Deal deal = new Deal();
-
-                deal.setBuyingDate(LocalDate.parse(buyingDate));
-                deal.setSoldCar(getCarById(Integer.parseInt(carSelect)));
-                deal.setManager(getManagerById(Integer.parseInt(managerSelect)));
-
-                addDeal(deal);
-
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    public Manager getBestManager (String startDate, String endDate) {
-        if (!startDate.equals("") && !endDate.equals("")) {
-            Manager manager;
-
-            manager = getBestManager(LocalDate.parse(startDate), LocalDate.parse(endDate));
-
-            return manager;
-        }
-
-        return null;
-    }
-
-    public void addCar(String brand, String name, String cost) {
-        if (!brand.equals("") && !name.equals("") && !cost.equals("")) {
-            Car car = new Car();
-
-            car.setBrand(brand);
-            car.setName(name);
-            car.setCost(Integer.parseInt(cost));
-
-            addCar(car);
-        }
-    }
-
-    public void addManager(String firstName, String lastName) {
-        if (!firstName.equals("") && !lastName.equals("")) {
-            Manager manager = new Manager();
-
-            manager.setFirstName(firstName);
-            manager.setLastName(lastName);
-
-            addManager(manager);
-        }
-    }
-
-    public Car getCarById(int id) {
-        return carDAO.getCarById(id);
-    }
-
-    public Manager getManagerById(int id) {
-        return managerDAO.getManagerById(id);
-    }
-
-    public void removeCarById(int id) {
-        removeCar(getCarById(id));
-    }
-
-    public void removeManagerById(int id) {
-        removeManager(getManagerById(id));
-    }
 }

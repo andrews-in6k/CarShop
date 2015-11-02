@@ -1,4 +1,4 @@
-package carShop.service;
+package carShop.service.trash;
 
 import carShop.core.entity.Car;
 import carShop.core.entity.Deal;

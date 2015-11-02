@@ -48,7 +48,7 @@
 
     <!-- Run -->
 
-    <bean id="carShop" class="carShop.service.CarShopService">
+    <bean id="carShop" class="carShop.service.trash.CarShopService">
         <constructor-arg ref="dataDaoCar"/>
         <constructor-arg ref="dataDaoDeal"/>
         <constructor-arg ref="dataDaoManager"/>

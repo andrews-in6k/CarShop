@@ -2,7 +2,7 @@ package carShop.trash;
 
 import carShop.core.entity.Car;
 import carShop.core.entity.Manager;
-import carShop.service.CarShopServiceInterface;
+import carShop.service.trash.CarShopServiceInterface;
 
 import java.time.LocalDate;
 

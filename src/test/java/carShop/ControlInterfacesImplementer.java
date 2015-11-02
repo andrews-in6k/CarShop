@@ -1,6 +1,6 @@
 //package carShop;
 //
-//import carShop.service.CarShopServiceInterface;
+//import carShop.service.trash.CarShopServiceInterface;
 //
 //import java.time.LocalDate;
 //import java.util.ArrayList;
