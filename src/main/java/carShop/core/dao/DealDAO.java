@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * Created by employee on 10/26/15.
  */
-public class DealDAO extends DAO {
+public class DealDAO extends DAO{
 
     @Override
     @SuppressWarnings("unchecked")
