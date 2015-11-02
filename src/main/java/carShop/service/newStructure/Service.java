@@ -14,13 +14,13 @@ import java.util.List;
  */
 public class Service implements ServiceInterface{
     private CarsService carsService;
+    private ManagersService managersService;
     private DealDAO dealDAO;
-    private ManagerDAO managerDAO;
 
-    public Service(CarsService carsService, DealDAO dealDAO, ManagerDAO managerDAO) {
+    public Service(CarsService carsService, ManagersService managersService, DealDAO dealDAO) {
         this.carsService = carsService;
+        this.managersService = managersService;
         this.dealDAO = dealDAO;
-        this.managerDAO = managerDAO;
     }
 
     @Override
@@ -40,7 +40,7 @@ public class Service implements ServiceInterface{
 
     @Override
     public void addManager(Manager manager) {
-        managerDAO.save(manager);
+        managersService.addManager(manager);
     }
 
     @Override
@@ -63,7 +63,7 @@ public class Service implements ServiceInterface{
             removeDeal(deal);
         }
 
-        managerDAO.delete(manager);
+        managersService.removeManager(manager);
     }
 
     @Override
@@ -82,7 +82,7 @@ public class Service implements ServiceInterface{
 
     @Override
     public List<Manager> getManagers() {
-        return managerDAO.getTableRows();
+        return managersService.getManagers();
     }
 
     @Override
@@ -97,7 +97,7 @@ public class Service implements ServiceInterface{
 
     @Override
     public Manager getManagerById(int id) {
-        return managerDAO.getManagerById(id);
+        return managersService.getManagerById(id);
     }
 
     @Override
