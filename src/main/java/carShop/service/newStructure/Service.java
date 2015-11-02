@@ -1,12 +1,10 @@
 package carShop.service.newStructure;
 
-import carShop.core.dao.CarDAO;
-import carShop.core.dao.DealDAO;
-import carShop.core.dao.ManagerDAO;
 import carShop.core.entity.Car;
 import carShop.core.entity.Deal;
 import carShop.core.entity.Manager;
 
+import java.time.LocalDate;
 import java.util.List;
 
 /**
@@ -24,13 +22,44 @@ public class Service implements ServiceInterface{
     }
 
     @Override
-    public void buyingCar() {
+    public void buyingCar(LocalDate localDate, int carId, int managerId) {
+        Deal deal = new Deal();
 
+        deal.setBuyingDate(localDate);
+        deal.setSoldCar(getCarById(carId));
+        deal.setManager(getManagerById(managerId));
+
+        addDeal(deal);
     }
 
     @Override
-    public Manager getBestManager() {
-        return null;
+    public Manager getBestManager(LocalDate startDate, LocalDate endDate) {
+        if (managersService.getManagers().size() != 0) {
+            Manager bestSalesManager = managersService.getManagers().get(0);
+            int maxDealsCount = 0;
+
+            for (Manager manager : managersService.getManagers()) {
+                int pretendingMaxDealsCount = 0;
+
+                for (Deal deal : manager.getDeals()) {
+                    LocalDate buyingDate;
+                    buyingDate = deal.getBuyingDate();
+
+                    if (buyingDate.isAfter(startDate) && buyingDate.isBefore(endDate)) {
+                        pretendingMaxDealsCount++;
+                    }
+                }
+
+                if (pretendingMaxDealsCount > maxDealsCount) {
+                    bestSalesManager = manager;
+                    maxDealsCount = pretendingMaxDealsCount;
+                }
+            }
+
+            return bestSalesManager;
+        } else {
+            return null;
+        }
     }
 
     @Override

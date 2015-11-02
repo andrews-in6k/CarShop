@@ -166,9 +166,9 @@ public class CarShopService implements CarShopServiceInterface{
             if ((carSelect != null) && (managerSelect != null)) {
                 Deal deal = new Deal();
 
+                deal.setBuyingDate(LocalDate.parse(buyingDate));
                 deal.setSoldCar(getCarById(Integer.parseInt(carSelect)));
                 deal.setManager(getManagerById(Integer.parseInt(managerSelect)));
-                deal.setBuyingDate(LocalDate.parse(buyingDate));
 
                 addDeal(deal);
 
