@@ -1,4 +1,4 @@
-package carShop.core.dao.newStructure;
+package carShop.core.dao;
 
 import java.util.List;
 

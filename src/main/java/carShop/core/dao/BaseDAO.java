@@ -1,4 +1,4 @@
-package carShop.core.dao.newStructure;
+package carShop.core.dao;
 
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +19,7 @@ public abstract class BaseDAO<T> implements BaseDAOInterfase<T>{
 
     private Class<T> type;
 
+    @SuppressWarnings("unchecked")
     public BaseDAO() {
         Type t = getClass().getGenericSuperclass();
         ParameterizedType pt = (ParameterizedType) t;
