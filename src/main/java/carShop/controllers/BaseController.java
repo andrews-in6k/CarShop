@@ -11,17 +11,21 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * Created by employee on 11/3/15.
  */
 @Controller
+@RequestMapping("/cars")
 public class BaseController {
-    ServiceInterface carShopService;
 
     @Autowired
-    BaseController(ServiceInterface carShopService) {
-        this.carShopService = carShopService;
+    ServiceInterface carShopService;
+
+    @RequestMapping(method = RequestMethod.GET)
+    public String printCars(ModelMap model) {
+        model.addAttribute("cars", carShopService.getCars());
+        return "cars";
     }
 
-    @RequestMapping(value = "/test", method = RequestMethod.GET)
-    public String printWelcome(ModelMap model) {
-        model.addAttribute("cars", carShopService.getCars());
+    @RequestMapping(value = "/delete", method = RequestMethod.POST)
+    public String deleteCar() {
+
         return "cars";
     }
 }
