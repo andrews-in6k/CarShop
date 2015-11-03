@@ -4,56 +4,73 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
 
-    <context-param>
-        <param-name>contextConfigLocation</param-name>
-        <param-value>classpath:applicationContext.xml</param-value>
-    </context-param>
-
-    <listener>
-        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-    </listener>
-
-    <!-- Cars -->
     <servlet>
-        <servlet-name>carsServlet</servlet-name>
-        <servlet-class>carShop.servlets.CarsServlet</servlet-class>
+        <servlet-name>dispatcher</servlet-name>
+        <servlet-class>
+            org.springframework.web.servlet.DispatcherServlet
+        </servlet-class>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>/WEB-INF/dispatcher-servlet.xml</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>carsServlet</servlet-name>
-        <url-pattern>/cars</url-pattern>
+        <servlet-name>dispatcher</servlet-name>
+        <url-pattern>/</url-pattern>
     </servlet-mapping>
+    
+    <!--<context-param>-->
+    <!--<param-name>contextConfigLocation</param-name>-->
+    <!--<param-value>classpath:applicationContext.xml</param-value>-->
+    <!--</context-param>-->
 
-    <!-- Managers -->
-    <servlet>
-        <servlet-name>managersServlet</servlet-name>
-        <servlet-class>carShop.servlets.ManagersServlet</servlet-class>
-    </servlet>
+    <!--<listener>-->
+        <!--<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>-->
+    <!--</listener>-->
 
-    <servlet-mapping>
-        <servlet-name>managersServlet</servlet-name>
-        <url-pattern>/managers</url-pattern>
-    </servlet-mapping>
+    <!--&lt;!&ndash; Cars &ndash;&gt;-->
+    <!--<servlet>-->
+        <!--<servlet-name>carsServlet</servlet-name>-->
+        <!--<servlet-class>carShop.servlets.CarsServlet</servlet-class>-->
+    <!--</servlet>-->
 
-    <!-- Buying car -->
-    <servlet>
-        <servlet-name>buyingServlet</servlet-name>
-        <servlet-class>carShop.servlets.BuyingServlet</servlet-class>
-    </servlet>
+    <!--<servlet-mapping>-->
+        <!--<servlet-name>carsServlet</servlet-name>-->
+        <!--<url-pattern>/cars</url-pattern>-->
+    <!--</servlet-mapping>-->
 
-    <servlet-mapping>
-        <servlet-name>buyingServlet</servlet-name>
-        <url-pattern>/buyingcar</url-pattern>
-    </servlet-mapping>
+    <!--&lt;!&ndash; Managers &ndash;&gt;-->
+    <!--<servlet>-->
+        <!--<servlet-name>managersServlet</servlet-name>-->
+        <!--<servlet-class>carShop.servlets.ManagersServlet</servlet-class>-->
+    <!--</servlet>-->
 
-    <!-- Best manager -->
-    <servlet>
-        <servlet-name>bestManagerServlet</servlet-name>
-        <servlet-class>carShop.servlets.BestManagerServlet</servlet-class>
-    </servlet>
+    <!--<servlet-mapping>-->
+        <!--<servlet-name>managersServlet</servlet-name>-->
+        <!--<url-pattern>/managers</url-pattern>-->
+    <!--</servlet-mapping>-->
 
-    <servlet-mapping>
-        <servlet-name>bestManagerServlet</servlet-name>
-        <url-pattern>/bestmanager</url-pattern>
-    </servlet-mapping>
+    <!--&lt;!&ndash; Buying car &ndash;&gt;-->
+    <!--<servlet>-->
+        <!--<servlet-name>buyingServlet</servlet-name>-->
+        <!--<servlet-class>carShop.servlets.BuyingServlet</servlet-class>-->
+    <!--</servlet>-->
+
+    <!--<servlet-mapping>-->
+        <!--<servlet-name>buyingServlet</servlet-name>-->
+        <!--<url-pattern>/buyingcar</url-pattern>-->
+    <!--</servlet-mapping>-->
+
+    <!--&lt;!&ndash; Best manager &ndash;&gt;-->
+    <!--<servlet>-->
+        <!--<servlet-name>bestManagerServlet</servlet-name>-->
+        <!--<servlet-class>carShop.servlets.BestManagerServlet</servlet-class>-->
+    <!--</servlet>-->
+
+    <!--<servlet-mapping>-->
+        <!--<servlet-name>bestManagerServlet</servlet-name>-->
+        <!--<url-pattern>/bestmanager</url-pattern>-->
+    <!--</servlet-mapping>-->
 </web-app>

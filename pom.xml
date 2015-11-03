@@ -13,12 +13,10 @@
     </properties>
 
     <dependencies>
-
-        <!-- DI -->
-
+        <!-- Spring MVC -->
         <dependency>
             <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
+            <artifactId>spring-webmvc</artifactId>
             <version>${spring-framework.version}</version>
         </dependency>
 
