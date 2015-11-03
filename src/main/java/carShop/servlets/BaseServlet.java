@@ -1,8 +1,7 @@
 package carShop.servlets;
 
-import carShop.core.entity.Manager;
-import carShop.service.newStructure.Service;
-import carShop.service.newStructure.ServiceInterface;
+import carShop.service.Service;
+import carShop.service.ServiceInterface;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 

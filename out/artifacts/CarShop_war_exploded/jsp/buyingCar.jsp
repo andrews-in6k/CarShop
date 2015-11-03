@@ -1,6 +1,6 @@
-<%@ page import="carShop.core.entity.Car" %>
+<%@ page import="carShopService.core.entity.Car" %>
 <%@ page import="java.util.List" %>
-<%@ page import="carShop.core.entity.Manager" %>
+<%@ page import="carShopService.core.entity.Manager" %>
 <%--
   Created by IntelliJ IDEA.
   User: employee

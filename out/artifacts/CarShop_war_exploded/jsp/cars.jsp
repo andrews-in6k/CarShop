@@ -1,4 +1,4 @@
-<%@ page import="carShop.core.entity.Car" %>
+<%@ page import="carShopService.core.entity.Car" %>
 <%@ page import="java.util.List" %>
 <%--
   Created by IntelliJ IDEA.

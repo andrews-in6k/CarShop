@@ -1,6 +1,6 @@
-<%@ page import="carShop.core.entity.Manager" %>
+<%@ page import="carShopService.core.entity.Manager" %>
 <%@ page import="java.util.List" %>
-<%@ page import="carShop.core.entity.Deal" %>
+<%@ page import="carShopService.core.entity.Deal" %>
 <%@ page import="java.time.ZoneId" %>
 <%--
   Created by IntelliJ IDEA.

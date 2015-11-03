@@ -46,16 +46,32 @@
     <bean id="dataDaoDeal" class="carShop.core.dao.DealDAO"/>
     <bean id="dataDaoManager" class="carShop.core.dao.ManagerDAO"/>
 
-    <!-- Run -->
+    <!-- Service -->
 
-    <bean id="carShop" class="carShop.service.trash.CarShopService">
-        <constructor-arg ref="dataDaoCar"/>
-        <constructor-arg ref="dataDaoDeal"/>
-        <constructor-arg ref="dataDaoManager"/>
+    <bean id="service" class="carShop.service.Service">
+        <constructor-arg ref="carsService"/>
+        <constructor-arg ref="managersService"/>
+        <constructor-arg ref="dealsService"/>
     </bean>
 
-    <bean id="systemIn" class="carShop.trash.StreamFactory" factory-method="getInputStream" />
-    <bean id="systemOut" class="carShop.trash.StreamFactory" factory-method="getPrintStream" />
+    <bean id="carsService" class="carShop.service.CarsService">
+        <constructor-arg ref="dataDaoCar"/>
+    </bean>
+
+    <bean id="managersService" class="carShop.service.ManagersService">
+        <constructor-arg ref="dataDaoManager"/>
+        <constructor-arg ref="dealsService"/>
+    </bean>
+
+    <bean id="dealsService" class="carShop.service.DealsService">
+        <constructor-arg ref="dataDaoDeal"/>
+        <constructor-arg ref="carsService"/>
+    </bean>
+
+    <!-- Run -->
+
+    <bean id="systemIn" class="carShop.consoleCarShopHandlers.StreamFactory" factory-method="getInputStream" />
+    <bean id="systemOut" class="carShop.consoleCarShopHandlers.StreamFactory" factory-method="getPrintStream" />
 
     <bean id="scanner" class="java.util.Scanner">
         <constructor-arg ref="systemIn" />
@@ -64,39 +80,17 @@
         <constructor-arg ref="systemOut" />
     </bean>
 
-    <bean id="carShopInputStream" class="carShop.trash.ConsoleCarShopInputStream">
+    <bean id="carShopInputStream" class="carShop.consoleCarShopHandlers.ConsoleCarShopInputStream">
         <constructor-arg ref="scanner" />
     </bean>
 
-    <bean id="ansiPrinter" class="carShop.trash.ANSICarShopPrinter">
+    <bean id="ansiPrinter" class="carShop.consoleCarShopHandlers.ANSICarShopPrinter">
         <constructor-arg ref="printStream" />
     </bean>
 
-    <bean id="carShopController" class="carShop.trash.ConsoleCarShopController">
-        <constructor-arg ref="carShop" />
+    <bean id="carShopController" class="carShop.consoleCarShopHandlers.ConsoleCarShopController">
+        <constructor-arg ref="service" />
         <constructor-arg ref="carShopInputStream" />
         <constructor-arg ref="ansiPrinter" />
-    </bean>
-
-    <!-- WEB -->
-
-    <bean id="carsService" class="carShop.service.newStructure.CarsService">
-        <constructor-arg ref="dataDaoCar"/>
-    </bean>
-
-    <bean id="managersService" class="carShop.service.newStructure.ManagersService">
-        <constructor-arg ref="dataDaoManager"/>
-        <constructor-arg ref="dealsService"/>
-    </bean>
-
-    <bean id="dealsService" class="carShop.service.newStructure.DealsService">
-        <constructor-arg ref="dataDaoDeal"/>
-        <constructor-arg ref="carsService"/>
-    </bean>
-
-    <bean id="service" class="carShop.service.newStructure.Service">
-        <constructor-arg ref="carsService"/>
-        <constructor-arg ref="managersService"/>
-        <constructor-arg ref="dealsService"/>
     </bean>
 </beans>

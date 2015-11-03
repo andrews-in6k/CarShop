@@ -17,7 +17,7 @@
 
     <servlet>
         <servlet-name>baseServlet</servlet-name>
-        <servlet-class>carShop.servlets.BaseServlet</servlet-class>
+        <servlet-class>carShopService.servlets.BaseServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -28,7 +28,7 @@
     <!-- Cars -->
     <servlet>
         <servlet-name>carsServlet</servlet-name>
-        <servlet-class>carShop.servlets.CarsServlet</servlet-class>
+        <servlet-class>carShopService.servlets.CarsServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -39,7 +39,7 @@
     <!-- Managers -->
     <servlet>
         <servlet-name>managersServlet</servlet-name>
-        <servlet-class>carShop.servlets.ManagersServlet</servlet-class>
+        <servlet-class>carShopService.servlets.ManagersServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -50,7 +50,7 @@
     <!-- Buying car -->
     <servlet>
         <servlet-name>buyingServlet</servlet-name>
-        <servlet-class>carShop.servlets.BuyingServlet</servlet-class>
+        <servlet-class>carShopService.servlets.BuyingServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -61,7 +61,7 @@
     <!-- Best manager -->
     <servlet>
         <servlet-name>bestManagerServlet</servlet-name>
-        <servlet-class>carShop.servlets.BestManagerServlet</servlet-class>
+        <servlet-class>carShopService.servlets.BestManagerServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
