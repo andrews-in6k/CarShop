@@ -23,9 +23,4 @@ public class BaseServlet extends HttpServlet{
         WebApplicationContext ctx = WebApplicationContextUtils.getRequiredWebApplicationContext(getServletContext());
         carShopService = (Service) ctx.getBean("service");
     }
-
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("index.jsp").forward(req, resp);
-    }
 }

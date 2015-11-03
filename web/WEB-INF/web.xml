@@ -13,18 +13,6 @@
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
 
-    <!-- Base -->
-
-    <servlet>
-        <servlet-name>baseServlet</servlet-name>
-        <servlet-class>carShop.servlets.BaseServlet</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>baseServlet</servlet-name>
-        <url-pattern>/</url-pattern>
-    </servlet-mapping>
-
     <!-- Cars -->
     <servlet>
         <servlet-name>carsServlet</servlet-name>
