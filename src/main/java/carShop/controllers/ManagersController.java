@@ -35,14 +35,14 @@ public class ManagersController {
         return "managers";
     }
 
-    @RequestMapping(value = "/delete/{managerId}", method = RequestMethod.GET)
+    @RequestMapping(value = "/{managerId}", method = RequestMethod.GET)
     public String deleteManager(@PathVariable int managerId) {
         carShopService.removeManagerById(managerId);
 
         return "redirect:/managers";
     }
 
-    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    @RequestMapping(method = RequestMethod.POST)
     public String addManager(
             @RequestParam("textFieldFirstName") String firstName,
             @RequestParam("textFieldLastName") String lastName

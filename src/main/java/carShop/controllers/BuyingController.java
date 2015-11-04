@@ -35,7 +35,7 @@ public class BuyingController {
         return "buyingCar";
     }
 
-    @RequestMapping(value = "/buy/car", method = RequestMethod.POST)
+    @RequestMapping(method = RequestMethod.POST)
     public String buyCar(
             @RequestParam("buyingDate") String buyingDate,
             @RequestParam("carSelect") String carSelect,

@@ -23,7 +23,7 @@
         <td><%=manager.getFirstName()%></td>
         <td><%=manager.getLastName()%></td>
         <td><a href="/managers/deals/<%=manager.getId()%>">Deals</a></td>
-        <td><a href="/managers/delete/<%=manager.getId()%>"><img src="images/icon-delete.gif" alt="del"></a></td>
+        <td><a href="/managers/<%=manager.getId()%>"><img src="images/icon-delete.gif" alt="del"></a></td>
 
         <%if (request.getAttribute("dealsManagerId") != null &&
               request.getAttribute("dealsManagerId").equals(manager.getId())) {%>
@@ -44,7 +44,7 @@
   <br>
 
   <div align="center">
-    <form method="post" action="managers/add">
+    <form method="post" action="managers">
       <label for="tfFirstName">Name</label>
       <input type="text" name="textFieldFirstName" id="tfFirstName">
       <label for="tfLastName">Surname</label>

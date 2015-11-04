@@ -15,7 +15,7 @@
   </head>
   <body>
     <div align="center">
-      <form method="post" action="buyingcar/buy/car">
+      <form method="post" action="buyingcar">
         <label for="carSelect">Select car</label>
         <select name="carSelect" id="carSelect">
           <%for (Car car : (List<Car>)request.getAttribute("cars")) {%>
