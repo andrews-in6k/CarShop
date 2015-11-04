@@ -19,6 +19,9 @@
       <tr>
         <td><a href="managers">2. Managers</a></td>
       </tr>
+      <tr>
+        <td><a href="deals">3. Deals</a> </td>
+      </tr>
       <th>For customers</th>
       <tr>
         <td><a href="buyingcar">1. Buy the car</a></td>
