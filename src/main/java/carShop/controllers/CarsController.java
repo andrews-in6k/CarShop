@@ -15,19 +15,19 @@ import org.springframework.web.bind.annotation.RequestParam;
  */
 @Controller
 @RequestMapping("/cars")
-public class BaseController {
+public class CarsController {
 
     @Autowired
     ServiceInterface carShopService;
 
     @RequestMapping(method = RequestMethod.GET)
-    public String printCars(ModelMap model) {
+    public String outputCars(ModelMap model) {
         model.addAttribute("cars", carShopService.getCars());
         return "cars";
     }
 
     @RequestMapping(value = "/delete/{carId}", method = RequestMethod.GET)
-    public String deleteCar(@PathVariable int carId, ModelMap model) {
+    public String deleteCar(@PathVariable int carId) {
         carShopService.removeCarById(carId);
 
         return "redirect:/cars";
@@ -37,8 +37,8 @@ public class BaseController {
     public String addCar(
             @RequestParam("textFieldBrand") String brand,
             @RequestParam("textFieldName") String name,
-            @RequestParam("textFieldCost") String cost,
-            ModelMap model) {
+            @RequestParam("textFieldCost") String cost
+            ) {
         if (!brand.equals("") && !name.equals("") && !cost.equals("")) {
             Car car = new Car();
 
