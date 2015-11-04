@@ -16,11 +16,11 @@
 <body>
   <div align="center">
     <form method="post" action="bestmanager">
-      <label for="start">Start date(yyyy-mm-dd)</label>
-      <input type="text" name="startDate" id="start">
+      <label for="start">Start date</label>
+      <input type="date" name="startDate" id="start">
 
-      <label for="end">End date(yyyy-mm-dd)</label>
-      <input type="text" name="endDate" id="end">
+      <label for="end">End date</label>
+      <input type="date" name="endDate" id="end">
 
       <input type="submit" name="show" value="Show">
     </form>

@@ -32,8 +32,8 @@
           <%}%>
         </select>
 
-        <label for="buyingDate">Buying date(yyyy-mm-dd)</label>
-        <input type="text" name="buyingDate" id="buyingDate">
+        <label for="buyingDate">Buying date</label>
+        <input type="date" name="buyingDate" id="buyingDate">
 
         <input type="submit" name="Buy" value="Buy">
       </form>

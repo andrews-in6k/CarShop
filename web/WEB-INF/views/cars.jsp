@@ -39,7 +39,7 @@
         <label for="tfName">Name</label>
         <input type="text" name="textFieldName" id="tfName">
         <label for="tfCost">Cost</label>
-        <input type="text" name="textFieldCost" id="tfCost">
+        <input type="number" name="textFieldCost" id="tfCost">
 
         <input type="submit" name="addCar" value="Add">
       </form>
