@@ -44,7 +44,7 @@
     <%}%>
 
     <div align="center">
-      <a href="index.jsp">to general</a>
+      <a href="/">to general</a>
     </div>
   </body>
 </html>
