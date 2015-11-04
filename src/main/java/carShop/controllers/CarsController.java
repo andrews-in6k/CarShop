@@ -26,7 +26,7 @@ public class CarsController {
         return "cars";
     }
 
-    @RequestMapping(value = "/{carId}", method = RequestMethod.GET)
+    @RequestMapping(value = "/{carId}/delete", method = RequestMethod.GET)
     public String deleteCar(@PathVariable int carId) {
         carShopService.removeCarById(carId);
 

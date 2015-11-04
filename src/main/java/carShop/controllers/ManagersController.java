@@ -27,7 +27,7 @@ public class ManagersController {
         return "managers";
     }
 
-    @RequestMapping(value = "/deals/{managerId}", method = RequestMethod.GET)
+    @RequestMapping(value = "/{managerId}/deals", method = RequestMethod.GET)
     public String showManagerDeals(@PathVariable int managerId, ModelMap model) {
         model.addAttribute("managers", carShopService.getManagers());
         model.addAttribute("dealsManagerId", managerId);
@@ -35,7 +35,7 @@ public class ManagersController {
         return "managers";
     }
 
-    @RequestMapping(value = "/{managerId}", method = RequestMethod.GET)
+    @RequestMapping(value = "/{managerId}/delete", method = RequestMethod.GET)
     public String deleteManager(@PathVariable int managerId) {
         carShopService.removeManagerById(managerId);
 
