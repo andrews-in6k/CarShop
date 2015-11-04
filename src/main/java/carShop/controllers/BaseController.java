@@ -30,9 +30,7 @@ public class BaseController {
     public String deleteCar(@PathVariable int carId, ModelMap model) {
         carShopService.removeCarById(carId);
 
-        model.addAttribute("cars", carShopService.getCars());
-
-        return "cars";
+        return "redirect:/cars";
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
@@ -51,8 +49,6 @@ public class BaseController {
             carShopService.addCar(car);
         }
 
-        model.addAttribute("cars", carShopService.getCars());
-
-        return "cars";
+        return "redirect:/cars";
     }
 }

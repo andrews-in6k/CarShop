@@ -22,7 +22,7 @@
             <td><%=car.getBrand()%></td>
             <td><%=car.getName()%></td>
             <td><%=car.getCost()%></td>
-            <td><a href="/cars/delete/<%=car.getId()%>"><img src="images/icon-delete.gif" alt="del"></a></td>
+            <td><a href="cars/delete/<%=car.getId()%>"><img src="images/icon-delete.gif" alt="del"></a></td>
           </tr>
         <%}%>
       <%}%>
@@ -32,7 +32,7 @@
     <br>
 
     <div align="center">
-      <form method="post" action="/cars/add">
+      <form method="post" action="cars/add">
         <label for="tfBrand">Brand</label>
         <input type="text" name="textFieldBrand" id="tfBrand">
         <label for="tfName">Name</label>
