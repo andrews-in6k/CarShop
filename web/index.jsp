@@ -11,7 +11,7 @@
     <title>CarShop General</title>
   </head>
   <body>
-    <table border="1">
+    <table border="1" align="center">
       <th>Manage</th>
       <tr>
         <td><a href="cars">1. Cars</a></td>
