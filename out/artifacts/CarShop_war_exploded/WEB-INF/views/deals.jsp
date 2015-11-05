@@ -10,9 +10,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Deals</title>
+  <title>Deals</title>
+  <link rel="stylesheet" type="text/css" href="/resources/styles/style.css">
 </head>
-<body>
+<body id="framebody">
   <table border="1" align="center">
     <th colspan="3">Deals</th>
 
@@ -28,9 +29,5 @@
     <%}%>
 
   </table>
-
-  <div align="center">
-    <a href="/">to general</a>
-  </div>
 </body>
 </html>

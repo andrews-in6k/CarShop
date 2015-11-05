@@ -16,16 +16,12 @@ import java.time.LocalDate;
  */
 @Controller
 @RequestMapping("/buyingcar")
-public class BuyingController extends BaseController{
-    private boolean isBought = false;
+public class BuyingController{
+    @Autowired
+    ServiceInterface carShopService;
 
     @RequestMapping(method = RequestMethod.GET)
     public String showVariants(ModelMap model) {
-        if (isBought){
-            model.addAttribute("isBought", true);
-            isBought = false;
-        }
-
         model.addAttribute("cars", carShopService.getCars());
         model.addAttribute("managers", carShopService.getManagers());
 
@@ -36,7 +32,8 @@ public class BuyingController extends BaseController{
     public String buyCar(
             @RequestParam("buyingDate") String buyingDate,
             @RequestParam("carSelect") String carSelect,
-            @RequestParam("managerSelect") String managerSelect
+            @RequestParam("managerSelect") String managerSelect,
+            ModelMap model
     ){
         if (!buyingDate.equals("")) {
             if ((carSelect != null) && (managerSelect != null)) {
@@ -47,10 +44,13 @@ public class BuyingController extends BaseController{
                         Integer.parseInt(managerSelect)
                 );
 
-                isBought = true;
+                model.addAttribute("isBought", true);
             }
         }
 
-        return "redirect:/buyingcar";
+        model.addAttribute("cars", carShopService.getCars());
+        model.addAttribute("managers", carShopService.getManagers());
+
+        return "buyingCar";
     }
 }

@@ -1,0 +1,21 @@
+#menu{
+    float : left;
+    width: 15%;
+}
+#framediv{
+    float: left;
+    width: 80%;
+}
+#framebody{
+    background-color: white;
+}
+body{
+    background-color: white;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+a:hover{
+    color: blue;
+}

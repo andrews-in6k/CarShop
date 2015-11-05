@@ -11,10 +11,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
   <head>
-      <title>Buy The Car</title>
+    <title>Buy The Car</title>
+    <link rel="stylesheet" type="text/css" href="/resources/styles/style.css">
   </head>
-  <body>
+  <body id="framebody">
     <div align="center">
+      <h3>Buying car</h3>
       <form method="post" action="buyingcar">
         <label for="carSelect">Select car</label>
         <select name="carSelect" id="carSelect">
@@ -32,7 +34,7 @@
           <%}%>
         </select>
 
-        <label for="buyingDate">Buying date</label>
+        <label for="buyingDate">Buying date(yyyy-mm-dd)</label>
         <input type="date" name="buyingDate" id="buyingDate">
 
         <input type="submit" name="Buy" value="Buy">
@@ -42,9 +44,5 @@
     <% if (request.getAttribute("isBought") != null) {%>
       <h4 align="center" style="color : red">You have a car</h4>
     <%}%>
-
-    <div align="center">
-      <a href="/">to general</a>
-    </div>
   </body>
 </html>

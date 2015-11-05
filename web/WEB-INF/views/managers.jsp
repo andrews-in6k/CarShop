@@ -13,9 +13,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Managers</title>
+  <title>Managers</title>
+  <link rel="stylesheet" type="text/css" href="/resources/styles/style.css">
 </head>
-<body>
+<body id="framebody">
   <table border="1" align="center">
     <th colspan="3">Managers</th>
 
@@ -24,16 +25,13 @@
         <td><%=manager.getFirstName()%></td>
         <td><%=manager.getLastName()%></td>
         <td><a href="/managers/<%=manager.getId()%>/deals">Deals</a></td>
-        <td>
-          <form method="post" action="managers/<%=manager.getId()%>">
-            <input type="hidden" name="_method" value="DELETE">
-            <input type="image" src="resources/images/icon-delete.gif" alt="del">
-          </form>
-        </td>
-        <%--<td><a href="/managers/<%=manager.getId()%>/delete"><img src="resources/images/icon-delete.gif" alt="del"></a></td>--%>
+        <form method="post" action="/managers/<%=manager.getId()%>">
+          <input type="hidden" name="_method" value="DELETE">
+          <td><input type="image" src="/resources/images/icon-delete.gif" alt="del"></td>
+        </form>
 
-        <%if ((request.getSession().getAttribute("dealsManagerId") != null) &&
-          ((int)request.getSession().getAttribute("dealsManagerId") == manager.getId())) {%>
+        <%if ((request.getAttribute("dealsManagerId") != null) &&
+          request.getAttribute("dealsManagerId").equals(manager.getId())) {%>
           <%for (Deal deal : manager.getDeals()) {%>
             <tr>
               <td><%=deal.getBuyingDate().toString()%></td>
@@ -51,7 +49,7 @@
 
 
   <div align="center">
-    <form method="post" action="managers">
+    <form method="post" action="/managers">
       <label for="firstName">Name</label>
       <input type="text" name="firstName" id="firstName">
       <label for="lastName">Surname</label>
@@ -59,10 +57,6 @@
 
       <input type="submit" name="addManager" value="Add">
     </form>
-  </div>
-
-  <div align="center">
-    <a href="/">to general</a>
   </div>
 </body>
 </html>

@@ -11,15 +11,17 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Best Manager</title>
+  <title>Best Manager</title>
+  <link rel="stylesheet" type="text/css" href="/resources/styles/style.css">
 </head>
-<body>
+<body id="framebody">
   <div align="center">
+    <h3>Best manager</h3>
     <form method="post" action="bestmanager">
-      <label for="start">Start date</label>
+      <label for="start">Start date(yyyy-mm-dd)</label>
       <input type="date" name="startDate" id="start">
 
-      <label for="end">End date</label>
+      <label for="end">End date(yyyy-mm-dd)</label>
       <input type="date" name="endDate" id="end">
 
       <input type="submit" name="show" value="Show">
@@ -47,8 +49,5 @@
       <%}%>
     </table>
   <%}%>
-  <div align="center">
-    <a href="/">to general</a>
-  </div>
 </body>
 </html>

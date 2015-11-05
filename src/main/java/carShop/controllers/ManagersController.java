@@ -17,7 +17,10 @@ import javax.servlet.http.HttpServletRequest;
  */
 @Controller
 @RequestMapping("/managers")
-public class ManagersController extends BaseController{
+public class ManagersController{
+    @Autowired
+    ServiceInterface carShopService;
+
     @RequestMapping(method = RequestMethod.GET)
     public String outputManagers(ModelMap model) {
         model.addAttribute("managers", carShopService.getManagers());
@@ -26,10 +29,11 @@ public class ManagersController extends BaseController{
     }
 
     @RequestMapping(value = "/{managerId}/deals", method = RequestMethod.GET)
-    public String showManagerDeals(@PathVariable int managerId, HttpServletRequest request) {
-        request.getSession().setAttribute("dealsManagerId", managerId);
+    public String showManagerDeals(@PathVariable int managerId, ModelMap model) {
+        model.addAttribute("managers", carShopService.getManagers());
+        model.addAttribute("dealsManagerId", managerId);
 
-        return "redirect:/managers";
+        return "managers";
     }
 
     @RequestMapping(value = "/{managerId}", method = RequestMethod.DELETE)

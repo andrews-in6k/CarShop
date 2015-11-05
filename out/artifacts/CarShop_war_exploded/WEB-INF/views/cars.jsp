@@ -11,9 +11,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Cars</title>
+  <title>Cars</title>
+  <link rel="stylesheet" type="text/css" href="/resources/styles/style.css">
 </head>
-  <body>
+  <body id="framebody">
     <table border="1" align="center">
       <th colspan="3">Available cars</th>
 
@@ -23,7 +24,10 @@
             <td><%=car.getBrand()%></td>
             <td><%=car.getName()%></td>
             <td><%=car.getCost()%></td>
-            <td><a href="cars/<%=car.getId()%>/delete"><img src="resources/images/icon-delete.gif" alt="del"></a></td>
+            <form method="post" action="cars/<%=car.getId()%>">
+              <input type="hidden" name="_method" value="DELETE">
+              <td><input type="image" src="/resources/images/icon-delete.gif" alt="del"></td>
+            </form>
           </tr>
         <%}%>
       <%}%>
@@ -43,10 +47,6 @@
 
         <input type="submit" name="addCar" value="Add">
       </form>
-    </div>
-
-    <div align="center">
-      <a href="/">to general</a>
     </div>
   </body>
 </html>

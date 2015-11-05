@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestParam;
  */
 @Controller
 @RequestMapping("/cars")
-public class CarsController extends BaseController{
+public class CarsController{
+    @Autowired
+    ServiceInterface carShopService;
 
     @RequestMapping(method = RequestMethod.GET)
     public String outputCars(ModelMap model) {
@@ -23,7 +25,7 @@ public class CarsController extends BaseController{
         return "cars";
     }
 
-    @RequestMapping(value = "/{carId}/delete", method = RequestMethod.GET)
+    @RequestMapping(value = "/{carId}", method = RequestMethod.DELETE)
     public String deleteCar(@PathVariable int carId) {
         carShopService.removeCarById(carId);
 
