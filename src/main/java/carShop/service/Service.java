@@ -38,31 +38,40 @@ public class Service implements ServiceInterface{
     @Override
     public Manager getBestManager(LocalDate startDate, LocalDate endDate) {
         if (managersService.getManagers().size() != 0) {
-            Manager bestSalesManager = managersService.getManagers().get(0);
-            int maxDealsCount = 0;
-
-            for (Manager manager : managersService.getManagers()) {
-                int pretendingMaxDealsCount = 0;
-
-                for (Deal deal : manager.getDeals()) {
-                    LocalDate buyingDate;
-                    buyingDate = deal.getBuyingDate();
-
-                    if (buyingDate.isAfter(startDate) && buyingDate.isBefore(endDate)) {
-                        pretendingMaxDealsCount++;
-                    }
-                }
-
-                if (pretendingMaxDealsCount > maxDealsCount) {
-                    bestSalesManager = manager;
-                    maxDealsCount = pretendingMaxDealsCount;
-                }
-            }
-
-            return bestSalesManager;
+            return calculateBestManager(startDate, endDate);
         } else {
             return null;
         }
+    }
+
+    protected Manager calculateBestManager(LocalDate startDate, LocalDate endDate) {
+        Manager bestSalesManager = managersService.getManagers().get(0);
+        int maxDealsCount = 0;
+
+        for (Manager manager : managersService.getManagers()) {
+            int pretendingManagerDealsCount = getPretendingManagerDealsCount(startDate, endDate, manager);
+
+            if (pretendingManagerDealsCount > maxDealsCount) {
+                bestSalesManager = manager;
+                maxDealsCount = pretendingManagerDealsCount;
+            }
+        }
+
+        return bestSalesManager;
+    }
+
+    protected int getPretendingManagerDealsCount(LocalDate startDate, LocalDate endDate, Manager manager) {
+        int pretendingManagerDealsCount = 0;
+
+        for (Deal deal : manager.getDeals()) {
+            LocalDate buyingDate;
+            buyingDate = deal.getBuyingDate();
+
+            if (buyingDate.isAfter(startDate) && buyingDate.isBefore(endDate)) {
+                pretendingManagerDealsCount++;
+            }
+        }
+        return pretendingManagerDealsCount;
     }
 
     @Override
