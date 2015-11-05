@@ -19,3 +19,6 @@ a{
 a:hover{
     color: blue;
 }
+li{
+    list-style-type: none;
+}
