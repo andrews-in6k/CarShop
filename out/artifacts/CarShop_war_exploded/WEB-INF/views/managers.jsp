@@ -2,6 +2,7 @@
 <%@ page import="java.util.List" %>
 <%@ page import="carShop.core.entity.Deal" %>
 <%@ page import="java.time.ZoneId" %>
+<%@ page import="java.util.Objects" %>
 <%--
   Created by IntelliJ IDEA.
   User: employee
@@ -25,8 +26,8 @@
         <td><a href="/managers/<%=manager.getId()%>/deals">Deals</a></td>
         <td><a href="/managers/<%=manager.getId()%>/delete"><img src="resources/images/icon-delete.gif" alt="del"></a></td>
 
-        <%if (request.getAttribute("dealsManagerId") != null &&
-              request.getAttribute("dealsManagerId").equals(manager.getId())) {%>
+        <%if ((request.getSession().getAttribute("dealsManagerId") != null) &&
+          ((int)request.getSession().getAttribute("dealsManagerId") == manager.getId())) {%>
           <%for (Deal deal : manager.getDeals()) {%>
             <tr>
               <td><%=deal.getBuyingDate().toString()%></td>

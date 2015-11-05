@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpServletRequest;
+
 /**
  * Created by employee on 11/4/15.
  */
@@ -28,11 +30,10 @@ public class ManagersController {
     }
 
     @RequestMapping(value = "/{managerId}/deals", method = RequestMethod.GET)
-    public String showManagerDeals(@PathVariable int managerId, ModelMap model) {
-        model.addAttribute("managers", carShopService.getManagers());
-        model.addAttribute("dealsManagerId", managerId);
+    public String showManagerDeals(@PathVariable int managerId, HttpServletRequest request) {
+        request.getSession().setAttribute("dealsManagerId", managerId);
 
-        return "managers";
+        return "redirect:/managers";
     }
 
     @RequestMapping(value = "/{managerId}/delete", method = RequestMethod.GET)
