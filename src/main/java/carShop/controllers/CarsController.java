@@ -15,10 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  */
 @Controller
 @RequestMapping("/cars")
-public class CarsController {
-
-    @Autowired
-    ServiceInterface carShopService;
+public class CarsController extends BaseController{
 
     @RequestMapping(method = RequestMethod.GET)
     public String outputCars(ModelMap model) {

@@ -16,10 +16,7 @@ import java.time.LocalDate;
  */
 @Controller
 @RequestMapping("/buyingcar")
-public class BuyingController {
-    @Autowired
-    ServiceInterface carShopService;
-
+public class BuyingController extends BaseController{
     private boolean isBought = false;
 
     @RequestMapping(method = RequestMethod.GET)

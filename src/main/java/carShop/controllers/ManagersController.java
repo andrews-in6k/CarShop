@@ -17,11 +17,7 @@ import javax.servlet.http.HttpServletRequest;
  */
 @Controller
 @RequestMapping("/managers")
-public class ManagersController {
-
-    @Autowired
-    ServiceInterface carShopService;
-
+public class ManagersController extends BaseController{
     @RequestMapping(method = RequestMethod.GET)
     public String outputManagers(ModelMap model) {
         model.addAttribute("managers", carShopService.getManagers());

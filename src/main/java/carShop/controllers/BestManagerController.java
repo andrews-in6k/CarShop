@@ -16,10 +16,7 @@ import java.time.LocalDate;
  */
 @Controller
 @RequestMapping("/bestmanager")
-public class BestManagerController {
-    @Autowired
-    ServiceInterface carShopService;
-
+public class BestManagerController extends BaseController{
     @RequestMapping(method = RequestMethod.GET)
     public String outputBestManager() {
 

@@ -12,10 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  */
 @Controller
 @RequestMapping("/deals")
-public class DealsController {
-    @Autowired
-    ServiceInterface carShopService;
-
+public class DealsController extends BaseController{
     @RequestMapping(method = RequestMethod.GET)
     public String outputDeals(ModelMap model) {
         model.addAttribute("deals", carShopService.getDeals());
