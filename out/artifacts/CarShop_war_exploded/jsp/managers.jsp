@@ -23,7 +23,7 @@
         <td><%=manager.getFirstName()%></td>
         <td><%=manager.getLastName()%></td>
         <td><a href="?deals=<%=manager.getId()%>">Deals</a></td>
-        <td><a href="?managerId=<%=manager.getId()%>"><img src="images/icon-delete.gif" alt="del"></a></td>
+        <td><a href="?managerId=<%=manager.getId()%>"><img src="resources/images/icon-delete.gif" alt="del"></a></td>
 
         <%if (request.getAttribute("dealsManagerId") != null &&
               request.getAttribute("dealsManagerId").equals(manager.getId())) {%>

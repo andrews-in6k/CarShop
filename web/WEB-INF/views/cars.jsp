@@ -23,7 +23,7 @@
             <td><%=car.getBrand()%></td>
             <td><%=car.getName()%></td>
             <td><%=car.getCost()%></td>
-            <td><a href="cars/<%=car.getId()%>/delete"><img src="images/icon-delete.gif" alt="del"></a></td>
+            <td><a href="cars/<%=car.getId()%>/delete"><img src="resources/images/icon-delete.gif" alt="del"></a></td>
           </tr>
         <%}%>
       <%}%>
