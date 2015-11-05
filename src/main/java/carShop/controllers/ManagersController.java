@@ -32,7 +32,7 @@ public class ManagersController extends BaseController{
         return "redirect:/managers";
     }
 
-    @RequestMapping(value = "/{managerId}/delete", method = RequestMethod.GET)
+    @RequestMapping(value = "/{managerId}", method = RequestMethod.DELETE)
     public String deleteManager(@PathVariable int managerId) {
         carShopService.removeManagerById(managerId);
 

@@ -24,7 +24,13 @@
         <td><%=manager.getFirstName()%></td>
         <td><%=manager.getLastName()%></td>
         <td><a href="/managers/<%=manager.getId()%>/deals">Deals</a></td>
-        <td><a href="/managers/<%=manager.getId()%>/delete"><img src="resources/images/icon-delete.gif" alt="del"></a></td>
+        <td>
+          <form method="post" action="managers/<%=manager.getId()%>">
+            <input type="hidden" name="_method" value="DELETE">
+            <input type="image" src="resources/images/icon-delete.gif" alt="del">
+          </form>
+        </td>
+        <%--<td><a href="/managers/<%=manager.getId()%>/delete"><img src="resources/images/icon-delete.gif" alt="del"></a></td>--%>
 
         <%if ((request.getSession().getAttribute("dealsManagerId") != null) &&
           ((int)request.getSession().getAttribute("dealsManagerId") == manager.getId())) {%>
