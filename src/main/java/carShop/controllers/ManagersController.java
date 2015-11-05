@@ -40,18 +40,8 @@ public class ManagersController extends BaseController{
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public String addManager(
-            @RequestParam("textFieldFirstName") String firstName,
-            @RequestParam("textFieldLastName") String lastName
-    ) {
-        if (!firstName.equals("") && !lastName.equals("")) {
-            Manager manager = new Manager();
-
-            manager.setFirstName(firstName);
-            manager.setLastName(lastName);
-
-            carShopService.addManager(manager);
-        }
+    public String addManager(Manager manager) {
+        carShopService.addManager(manager);
 
         return "redirect:/managers";
     }

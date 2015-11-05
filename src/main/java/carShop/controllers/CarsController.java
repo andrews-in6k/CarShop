@@ -31,20 +31,8 @@ public class CarsController extends BaseController{
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public String addCar(
-            @RequestParam("textFieldBrand") String brand,
-            @RequestParam("textFieldName") String name,
-            @RequestParam("textFieldCost") String cost
-            ) {
-        if (!brand.equals("") && !name.equals("") && !cost.equals("")) {
-            Car car = new Car();
-
-            car.setBrand(brand);
-            car.setName(name);
-            car.setCost(Integer.parseInt(cost));
-
-            carShopService.addCar(car);
-        }
+    public String addCar(Car car) {
+        carShopService.addCar(car);
 
         return "redirect:/cars";
     }

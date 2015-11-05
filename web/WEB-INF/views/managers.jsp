@@ -43,12 +43,13 @@
 
   <br>
 
+
   <div align="center">
     <form method="post" action="managers">
-      <label for="tfFirstName">Name</label>
-      <input type="text" name="textFieldFirstName" id="tfFirstName">
-      <label for="tfLastName">Surname</label>
-      <input type="text" name="textFieldLastName" id="tfLastName">
+      <label for="firstName">Name</label>
+      <input type="text" name="firstName" id="firstName">
+      <label for="lastName">Surname</label>
+      <input type="text" name="lastName" id="lastName">
 
       <input type="submit" name="addManager" value="Add">
     </form>

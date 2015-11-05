@@ -34,12 +34,12 @@
 
     <div align="center">
       <form method="post" action="cars">
-        <label for="tfBrand">Brand</label>
-        <input type="text" name="textFieldBrand" id="tfBrand">
-        <label for="tfName">Name</label>
-        <input type="text" name="textFieldName" id="tfName">
-        <label for="tfCost">Cost</label>
-        <input type="number" name="textFieldCost" id="tfCost">
+        <label for="brand">Brand</label>
+        <input type="text" name="brand" id="brand">
+        <label for="name">Name</label>
+        <input type="text" name="name" id="name">
+        <label for="cost">Cost</label>
+        <input type="number" name="cost" id="cost">
 
         <input type="submit" name="addCar" value="Add">
       </form>
