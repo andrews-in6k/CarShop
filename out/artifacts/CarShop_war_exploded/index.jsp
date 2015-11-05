@@ -15,28 +15,30 @@
   <body>
     <div>
       <div id="menu">
-        <table border="1" align="center">
-          <th>Manage</th>
-          <tr>
-            <td><a href="cars" target="iframe">1. Cars</a></td>
-          </tr>
-          <tr>
-            <td><a href="managers" target="iframe">2. Managers</a></td>
-          </tr>
-          <tr>
-            <td><a href="deals" target="iframe">3. Deals</a> </td>
-          </tr>
-          <th>For customers</th>
-          <tr>
-            <td><a href="buyingcar" target="iframe">1. Buy the car</a></td>
-          </tr>
-          <th>Statistic</th>
-          <tr>
-            <td><a href="bestmanager" target="iframe">1. Best manager</a></td>
-          </tr>
-        </table>
+        <ul>
+          <li>
+            <h3>Manage</h3>
+            <ul>
+              <li><a href="cars" target="iframe">Cars</a></li>
+              <li><a href="managers" target="iframe">Managers</a></li>
+              <li><a href="deals" target="iframe">Deals</a></li>
+            </ul>
+          </li>
+          <li>
+            <h3>For customers</h3>
+            <ul>
+              <li><a href="buyingcar" target="iframe">Buy the car</a></li>
+            </ul>
+          </li>
+          <li>
+            <h3>Statistic</h3>
+            <ul>
+              <li><a href="bestmanager" target="iframe">Best manager</a></li>
+            </ul>
+          </li>
+        </ul>
       </div>
-
+      
       <div id="framediv">
         <iframe src="buyingcar" name="iframe" id="iframe" height="100%" width="100%"></iframe>
       </div>
