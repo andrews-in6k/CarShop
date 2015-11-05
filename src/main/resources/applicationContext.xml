@@ -12,28 +12,7 @@
 
     <context:annotation-config/>
 
-    <import resource="coreContext.xml"/>
-    <!-- Service -->
-
-    <bean id="service" class="carShop.service.Service">
-        <constructor-arg ref="carsService"/>
-        <constructor-arg ref="managersService"/>
-        <constructor-arg ref="dealsService"/>
-    </bean>
-
-    <bean id="carsService" class="carShop.service.CarsService">
-        <constructor-arg ref="dataDaoCar"/>
-    </bean>
-
-    <bean id="managersService" class="carShop.service.ManagersService">
-        <constructor-arg ref="dataDaoManager"/>
-        <constructor-arg ref="dealsService"/>
-    </bean>
-
-    <bean id="dealsService" class="carShop.service.DealsService">
-        <constructor-arg ref="dataDaoDeal"/>
-        <constructor-arg ref="carsService"/>
-    </bean>
+    <import resource="serviceContext.xml"/>
 
     <!-- Run -->
 
