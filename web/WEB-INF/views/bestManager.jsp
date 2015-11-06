@@ -20,21 +20,25 @@
 <body id="framebody">
   <div align="center">
     <h3>Best manager</h3>
-    <form method="post" action="bestmanager">
-      <label for="start">Start date(yyyy-mm-dd)</label>
-      <input type="date" name="startDate" id="start">
+    <form method="post" action="bestmanager" class="form-inline">
+      <div class="form-group">
+        <label for="start">Start date(yyyy-mm-dd)</label>
+        <input type="date" name="startDate" class="form-control" id="start">
+      </div>
 
-      <label for="end">End date(yyyy-mm-dd)</label>
-      <input type="date" name="endDate" id="end">
+      <div class="form-group">
+        <label for="end">End date(yyyy-mm-dd)</label>
+        <input type="date" name="endDate" class="form-control" id="end">
+      </div>
 
-      <input type="submit" name="show" value="Show">
+      <input type="submit" name="show" value="Show" class="btn btn-default">
     </form>
   </div>
 
   <%if (request.getAttribute("bestManager") != null) {
     Manager manager = (Manager) request.getAttribute("bestManager");
   %>
-    <table align="center" border="1">
+    <table align="center" border="1" class="table">
       <tr>
         <td><%=manager.getFirstName()%></td>
         <td><%=manager.getLastName()%></td>

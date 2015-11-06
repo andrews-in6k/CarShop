@@ -18,8 +18,8 @@
   <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
 </head>
   <body id="framebody">
-    <table border="1" align="center">
-      <th colspan="3">Available cars</th>
+    <table border="1" align="center" class="table">
+      <th colspan="4">Available cars</th>
 
       <%for (Car car : (List<Car>)request.getAttribute("cars")) {%>
         <%if (car.getDeal() == null) {%>
@@ -40,15 +40,23 @@
     <br>
 
     <div align="center">
-      <form method="post" action="cars">
-        <label for="brand">Brand</label>
-        <input type="text" name="brand" id="brand">
-        <label for="name">Name</label>
-        <input type="text" name="name" id="name">
-        <label for="cost">Cost</label>
-        <input type="number" name="cost" id="cost">
+      <form method="post" action="cars" class="form-inline">
+        <div class="form-group">
+          <label for="brand">Brand</label>
+          <input type="text" class="form-control" name="brand" id="brand" value="">
+        </div>
 
-        <input type="submit" name="addCar" value="Add">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" class="form-control" name="name" id="name" value="">
+        </div>
+
+        <div class="form-group">
+          <label for="cost">Cost</label>
+          <input type="number" class="form-control" name="cost" id="cost" value="0">
+        </div>
+
+        <input type="submit" name="addCar" value="Add" class="btn btn-default">
       </form>
     </div>
   </body>

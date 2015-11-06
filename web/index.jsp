@@ -17,9 +17,8 @@
     <script type="text/javascript" src="/resources/js/bootstrap.min.js"></script>
   </head>
   <body>
-
-    <div class="container-fluid">
-      <nav class="navbar navbar-default navbar-fixed">
+    <div class="container">
+      <nav class="navbar navbar-default">
         <div class="container-fluid">
 
           <div class="navbar-header">
@@ -59,7 +58,7 @@
         </div>
       </nav>
 
-      <div>
+      <div class="container-fluid" style="height: 700px">
         <iframe src="buyingcar" name="iframe" id="iframe" height="100%" width="100%"></iframe>
       </div>
     </div>

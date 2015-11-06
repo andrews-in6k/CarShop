@@ -17,7 +17,7 @@
   <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
 </head>
 <body id="framebody">
-  <table border="1" align="center">
+  <table border="1" align="center" class="table">
     <th colspan="3">Deals</th>
 
     <%for (Deal deal : (List<Deal>)request.getAttribute("deals")) {%>

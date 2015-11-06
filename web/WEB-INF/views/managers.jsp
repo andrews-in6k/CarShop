@@ -20,8 +20,8 @@
   <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
 </head>
 <body id="framebody">
-  <table border="1" align="center">
-    <th colspan="3">Managers</th>
+  <table border="1" align="center" class="table">
+    <th colspan="4">Managers</th>
 
     <%for (Manager manager : (List<Manager>)request.getAttribute("managers")) {%>
       <tr>
@@ -52,13 +52,18 @@
 
 
   <div align="center">
-    <form method="post" action="/managers">
-      <label for="firstName">Name</label>
-      <input type="text" name="firstName" id="firstName">
-      <label for="lastName">Surname</label>
-      <input type="text" name="lastName" id="lastName">
+    <form method="post" action="/managers" class="form-inline">
+      <div class="form-group">
+        <label for="firstName">Name</label>
+        <input type="text" name="firstName" class="form-control" id="firstName">
+      </div>
 
-      <input type="submit" name="addManager" value="Add">
+      <div class="form-group">
+        <label for="lastName">Surname</label>
+        <input type="text" name="lastName" class="form-control" id="lastName">
+      </div>
+
+      <input type="submit" name="addManager" value="Add" class="btn btn-default">
     </form>
   </div>
 </body>

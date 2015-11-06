@@ -20,9 +20,9 @@
   <body id="framebody">
     <div align="center">
       <h3>Buying car</h3>
-      <form method="post" action="buyingcar">
+      <form method="post" action="buyingcar" class="form-inline">
         <label for="carSelect">Select car</label>
-        <select name="carSelect" id="carSelect">
+        <select name="carSelect" id="carSelect" class="form-control">
           <%for (Car car : (List<Car>)request.getAttribute("cars")) {%>
             <%if (car.getDeal() == null) {%>
               <option value="<%=car.getId()%>"><%=car.getBrand()%> <%=car.getName()%> <%=car.getCost()%></option>
@@ -31,16 +31,18 @@
         </select>
 
         <label for="managerSelect">Select manager</label>
-        <select name="managerSelect" id="managerSelect">
+        <select name="managerSelect" id="managerSelect" class="form-control">
           <%for (Manager manager : (List<Manager>)request.getAttribute("managers")) {%>
             <option value="<%=manager.getId()%>"><%=manager.getFirstName()%> <%=manager.getLastName()%></option>
           <%}%>
         </select>
 
-        <label for="buyingDate">Buying date(yyyy-mm-dd)</label>
-        <input type="date" name="buyingDate" id="buyingDate">
+        <div class="form-group">
+          <label for="buyingDate">Buying date(yyyy-mm-dd)</label>
+          <input type="date" name="buyingDate" class="form-control" id="buyingDate">
+        </div>
 
-        <input type="submit" name="Buy" value="Buy">
+        <input type="submit" name="Buy" value="Buy" class="btn btn-default">
       </form>
     </div>
 
