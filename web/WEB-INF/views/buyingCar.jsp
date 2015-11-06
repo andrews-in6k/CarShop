@@ -16,6 +16,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Buy The Car</title>
     <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/resources/styles/style.css">
   </head>
   <body id="framebody">
     <div align="center">

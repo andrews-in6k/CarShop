@@ -7,16 +7,17 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
-<html>
+<html id="indexHtml">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>CarShop General</title>
     <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/resources/styles/style.css">
     <script src="https://code.jquery.com/jquery.js"></script>
     <script type="text/javascript" src="/resources/js/bootstrap.min.js"></script>
   </head>
-  <body>
+  <body id="indexBody" class="indexBody">
     <div class="container">
       <nav class="navbar navbar-default">
         <div class="container-fluid">
@@ -57,10 +58,10 @@
           </div>
         </div>
       </nav>
+    </div>
 
-      <div class="container-fluid" style="height: 700px">
-        <iframe src="buyingcar" name="iframe" id="iframe" height="100%" width="100%"></iframe>
-      </div>
+    <div id="frameContainer" class="container">
+      <iframe src="buyingcar" name="iframe" id="iframe" height="100%" width="100%"></iframe>
     </div>
   </body>
 </html>

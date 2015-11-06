@@ -16,17 +16,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Cars</title>
   <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/resources/styles/style.css">
 </head>
   <body id="framebody">
-    <table border="1" align="center" class="table">
+    <table align="center" class="table table-striped table-bordered">
       <th colspan="4">Available cars</th>
+
+      <tr>
+        <th>Brand</th>
+        <th>Name</th>
+        <th>Cost</th>
+      </tr>
 
       <%for (Car car : (List<Car>)request.getAttribute("cars")) {%>
         <%if (car.getDeal() == null) {%>
           <tr>
             <td><%=car.getBrand()%></td>
             <td><%=car.getName()%></td>
-            <td><%=car.getCost()%></td>
+            <td><%=car.getCost()%>$</td>
             <form method="post" action="cars/<%=car.getId()%>">
               <input type="hidden" name="_method" value="DELETE">
               <td><input type="image" src="/resources/images/icon-delete.gif" alt="del"></td>

@@ -1,24 +1,15 @@
-#menu{
-    float : left;
-    width: 20%;
+th{
+    text-align: center;
 }
-#framediv{
-    float: left;
-    width: 80%;
+#indexHtml{
+    height: 100%;
 }
-#framebody{
-    background-color: white;
+#indexBody{
+    height: 100%;
 }
-body{
-    background-color: white;
+#frameContainer{
+    height: 80%;
 }
-a{
-    text-decoration: none;
-    color: black;
-}
-a:hover{
-    color: blue;
-}
-li{
-    list-style-type: none;
+#iframe{
+    height: inherit;
 }

@@ -18,10 +18,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Managers</title>
   <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/resources/styles/style.css">
 </head>
 <body id="framebody">
-  <table border="1" align="center" class="table">
+  <table align="center" class="table table-striped table-bordered">
     <th colspan="4">Managers</th>
+
+    <tr>
+      <th>Name</th>
+      <th>Surname</th>
+      <th>Deals list</th>
+    </tr>
 
     <%for (Manager manager : (List<Manager>)request.getAttribute("managers")) {%>
       <tr>

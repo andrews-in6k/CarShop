@@ -16,6 +16,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Best Manager</title>
   <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/resources/styles/style.css">
 </head>
 <body id="framebody">
   <div align="center">
@@ -38,13 +39,12 @@
   <%if (request.getAttribute("bestManager") != null) {
     Manager manager = (Manager) request.getAttribute("bestManager");
   %>
-    <table align="center" border="1" class="table">
+    <table align="center" class="table table-striped table-bordered">
       <tr>
-        <td><%=manager.getFirstName()%></td>
-        <td><%=manager.getLastName()%></td>
+        <th colspan="4"><%=manager.getFirstName()%> <%=manager.getLastName()%></th>
       </tr>
       <tr>
-        <td>Deals:</td>
+        <th colspan="4">Deals:</th>
       </tr>
       <%for (Deal deal : manager.getDeals()) {%>
         <tr>
