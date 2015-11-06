@@ -1,6 +1,8 @@
 package carShop.core.entity;
 
 import javax.persistence.*;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Date;
 
 /**
@@ -32,12 +34,12 @@ public class Deal {
         this.id = id;
     }
 
-    public Date getBuyingDate() {
-        return buyingDate;
+    public LocalDate getBuyingDate() {
+        return buyingDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
     }
 
-    public void setBuyingDate(Date buyingDate) {
-        this.buyingDate = buyingDate;
+    public void setBuyingDate(LocalDate buyingDate) {
+        this.buyingDate = Date.from(buyingDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
     }
 
     public Car getSoldCar() {

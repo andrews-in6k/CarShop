@@ -12,52 +12,31 @@
 
     <context:annotation-config/>
 
-    <!--<aop:config>-->
-    <!--<aop:pointcut id="myPointcut"-->
-    <!--expression="execution(* carShop.*.*(..))" />-->
-    <!--<aop:advisor advice-ref="txAdvice" pointcut-ref="myPointcut" />-->
-    <!--</aop:config>-->
+    <import resource="serviceContext.xml"/>
 
-    <!--<tx:advice id="txAdvice" transaction-manager="transactionManager">-->
-    <!--<tx:attributes>-->
-    <!--<tx:method name="get*" propagation="REQUIRED" read-only="true" />-->
-    <!--<tx:method name="remove*" propagation="REQUIRED" read-only="true" />-->
-    <!--<tx:method name="save*" propagation="REQUIRED" />-->
-    <!--</tx:attributes>-->
-    <!--</tx:advice>-->
+    <!-- Run -->
 
-    <bean id="dataSource"
-          class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-        <property name="url" value="jdbc:mysql://localhost:3306/carshop"/>
-        <property name="username" value="root"/>
-        <property name="password" value="andrews"/>
+    <bean id="systemIn" class="carShop.consoleCarShopHandlers.StreamFactory" factory-method="getInputStream" />
+    <bean id="systemOut" class="carShop.consoleCarShopHandlers.StreamFactory" factory-method="getPrintStream" />
+
+    <bean id="scanner" class="java.util.Scanner">
+        <constructor-arg ref="systemIn" />
+    </bean>
+    <bean id="printStream" class="java.io.PrintStream">
+        <constructor-arg ref="systemOut" />
     </bean>
 
-    <bean id="sessionFactory"
-          class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
-        <property name="dataSource" ref="dataSource"/>
-        <property name="packagesToScan" value="carShop.core.entity"/>
-        <property name="hibernateProperties">
-            <props>
-                <prop key="show_sql">true</prop>
-                <prop key="dialect">org.hibernate.dialect.MySQL5Dialect</prop>
-                <prop key="hbm2ddl.auto">create</prop>
-                <prop key="useUnicode">true</prop>
-                <prop key="hibernate.id.new_generator_mappings">false</prop>
-            </props>
-        </property>
+    <bean id="carShopInputStream" class="carShop.consoleCarShopHandlers.ConsoleCarShopInputStream">
+        <constructor-arg ref="scanner" />
     </bean>
 
-    <bean id="transactionManager"
-          class="org.springframework.orm.hibernate5.HibernateTransactionManager">
-        <property name="sessionFactory" ref="sessionFactory"/>
+    <bean id="ansiPrinter" class="carShop.consoleCarShopHandlers.ANSICarShopPrinter">
+        <constructor-arg ref="printStream" />
     </bean>
 
-    <tx:annotation-driven proxy-target-class="true" transaction-manager="transactionManager"/>
-
-    <bean id="dataDaoCar" class="carShop.core.dao.CarDAO"/>
-    <bean id="dataDaoDeal" class="carShop.core.dao.DealDAO"/>
-    <bean id="dataDaoManager" class="carShop.core.dao.ManagerDAO"/>
-
+    <bean id="carShopController" class="carShop.consoleCarShopHandlers.ConsoleCarShopController">
+        <constructor-arg ref="service" />
+        <constructor-arg ref="carShopInputStream" />
+        <constructor-arg ref="ansiPrinter" />
+    </bean>
 </beans>

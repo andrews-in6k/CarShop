@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+       <bean id="carShop" class="carShop.service.CarShopService" />
+
+       <bean id="systemIn" class="carShop.StreamFactory" factory-method="getInputStream" />
+       <bean id="systemOut" class="carShop.StreamFactory" factory-method="getPrintStream" />
+
+       <bean id="scanner" class="java.util.Scanner">
+              <constructor-arg ref="systemIn" />
+       </bean>
+       <bean id="printStream" class="java.io.PrintStream">
+              <constructor-arg ref="systemOut" />
+       </bean>
+
+       <bean id="carShopInputStream" class="carShop.ConsoleCarShopInputStream">
+              <constructor-arg ref="scanner" />
+       </bean>
+
+       <bean id="ansiPrinter" class="carShop.ANSICarShopPrinter">
+              <constructor-arg ref="printStream" />
+       </bean>
+
+       <bean id="carShopController" class="carShop.ConsoleCarShopController">
+              <constructor-arg ref="carShop" />
+              <constructor-arg ref="carShopInputStream" />
+              <constructor-arg ref="ansiPrinter" />
+       </bean>
+
+</beans>
