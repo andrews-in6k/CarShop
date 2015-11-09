@@ -7,9 +7,9 @@ th{
 #indexBody{
     height: 100%;
 }
-#frameContainer{
-    height: 80%;
-}
-#iframe{
-    height: inherit;
-}
+/*#frameContainer{*/
+    /*height: 80%;*/
+/*}*/
+/*#iframe{*/
+    /*height: inherit;*/
+/*}*/

@@ -16,6 +16,12 @@
     <link rel="stylesheet" href="/resources/styles/style.css">
     <script src="https://code.jquery.com/jquery.js"></script>
     <script type="text/javascript" src="/resources/js/bootstrap.min.js"></script>
+    <script>
+      function myFunc ()
+      {
+        document.getElementById ('iframe').style.height = window.frames ['iframe'].document.body.offsetHeight + 50 + 'px';
+      }
+    </script>
   </head>
   <body id="indexBody" class="indexBody">
     <div class="container">
@@ -61,7 +67,7 @@
     </div>
 
     <div id="frameContainer" class="container">
-      <iframe src="buyingcar" name="iframe" id="iframe" height="100%" width="100%"></iframe>
+      <iframe src="buyingcar" name="iframe" id="iframe" width="100%" onload="myFunc()"></iframe>
     </div>
   </body>
 </html>
