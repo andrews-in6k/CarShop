@@ -64,10 +64,9 @@
           </div>
         </div>
       </nav>
-    </div>
 
-    <div id="frameContainer" class="container">
       <iframe src="buyingcar" name="iframe" id="iframe" width="100%" onload="myFunc()"></iframe>
+
     </div>
   </body>
 </html>
